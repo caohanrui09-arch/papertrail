@@ -1,5 +1,12 @@
 # Papertrail
 
+![Python 3.12](https://img.shields.io/badge/python-3.12-blue)
+![FastAPI](https://img.shields.io/badge/backend-FastAPI-009688)
+![SQLite FTS5](https://img.shields.io/badge/SQLite-FTS5%20BM25-003B57)
+![tests](https://img.shields.io/badge/tests-63-brightgreen)
+![license](https://img.shields.io/badge/license-MIT-green)
+![external LLM API](https://img.shields.io/badge/external%20LLM%20API-none-lightgrey)
+
 论文检索 / 推荐与**可审计 Agent** 的本地实验项目。
 
 一个 167 篇论文的阅读站（可搜索、收藏、读原摘要、内容推荐、备份），一个基于冻结万篇目录的真实 LLM Agent 实验台（状态约束 + 预算 + 逐步事件），以及一套带收据的离线实验（冷启动融合、生成式 SID、受控 Agent 评价）。
