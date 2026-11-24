@@ -1,0 +1,25 @@
+/* Reading marks borrow the studio's paper/ink palette; explicit status only. */
+.paper-top .reading-status {margin-left:auto;flex:0 0 auto}
+.reading-status {height:28px;max-width:100px;padding:3px 9px;border:1px solid #d7d7d7;border-radius:6px;background:#f9f9f9;color:#555555;font:500 12px/1.4 var(--font-body, sans-serif);cursor:pointer}
+.reading-status:hover {border-color:#7e7e7e;background:#f0f0f0}
+.reading-status:focus-visible {outline:2px solid #646464;outline-offset:3px}
+.reading-status:disabled {opacity:.55;cursor:wait}
+.reading-status.state-reading {background:#eeeeee;color:#545454;border-color:#c3c3c3}
+.reading-status.state-read {background:#e8e8e8;color:#4b4b4b;border-color:#c4c4c4}
+.reader-action-strip .reading-status {margin-left:auto;margin-right:8px}
+.reader-action-strip .paper-preferences {margin-left:0;flex-shrink:0}
+.reader-current-id {min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.reading-list-toolbar {display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 12px;padding:10px 12px;border:1px solid #dddddd;border-radius:10px;background:#f9f9f9}
+.reading-filters {display:flex;gap:4px}
+.reading-filters button {display:flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid transparent;border-radius:6px;background:transparent;color:#666666;font-size:13px}
+.reading-filters button.active {background:#eaeaea;color:#474747;border-color:#cdcdcd}
+.reading-filters b {font:500 11px/1.4 monospace;opacity:.75}
+.reading-list-actions {display:flex;gap:8px}
+.reading-list-actions button {padding:7px 10px;border:1px solid #d7d7d7;border-radius:6px;background:#fefefe;color:#4f4f4f;font-size:12px}
+.reading-list-toolbar button:disabled {opacity:.5}
+.reading-list-toolbar button:focus-visible {outline:2px solid #646464;outline-offset:2px}
+.backup-plan h4 {margin:20px 0 8px;color:#4e4e4e;font-size:14px}
+.daily-nav .nav-item {min-height:39px}
+@media(prefers-reduced-motion:reduce){.reading-status{transition:none}}
+
+.studio.is-work .paper-top .reading-status {height:20px;padding:0 7px;font-size:11px;line-height:18px}

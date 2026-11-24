@@ -1,0 +1,43 @@
+{
+  "status": "passed_with_browser_limitation",
+  "date": "2026-11-22",
+  "stage": 84,
+  "scope": "display-only: readable reason labels in the 8802 timeline and diagnosis",
+  "server_modified": false,
+  "behavior_changed": false,
+  "reason_codes_mapped": 29,
+  "checks": {
+    "node_syntax": "passed",
+    "reason_map_tests": 3,
+    "replay_runs": 20,
+    "replay_problems": 0,
+    "codes_seen": {
+      "final_citation_count": 6,
+      "invalid_k": 14,
+      "tool_not_registered": 22,
+      "schema_type": 2
+    },
+    "http_lab_js": "200 with marker",
+    "http_workspace_css": "200 with marker"
+  },
+  "preview": "reports/stage84/reason-summary-preview.html",
+  "browser_rendering_verified": false,
+  "browser_limitation": "headless Edge cannot create the mojo channel in this sandbox; DOM verified by shim render against real trajectory",
+  "files": {
+    "docs\\AGENT_REASON_UI_V84.md": "5e77b30a792470025902cdafdb281bca9f8e3f0bf2863b790c421b371c609462",
+    "research76\\lab.js": "89f921443606b6eb2546104f5ff00b9f7b899497f28c53a8ce448d3b6404b9f0",
+    "research76\\workspace.css": "b0ee91fa574c0b30c273bf3d86b5e50d484d65630c73d17508888cd6a9bffc45",
+    "tests\\test_reason_map.py": "b52be6df43b2cc726ae3a52beeca6e6fc891bc7474ae623f01e8759b13a17a84",
+    "research84\\check_reason_ui.cjs": "880dad6075ba7cc26958e29571a25432d5dff0ece01e87b3152a1a27f2ab7aa4",
+    "research84\\render_reason_fixture.cjs": "d37f1483399354bbbf3398939568a1bc485359f50b06afc0405ff5a45ff97d3b",
+    "reports\\stage84\\reason-summary-preview.html": "ed0d16c31955178bde2b2c6312f873fddd29c507a0b4c3866153ded3ebb53da4"
+  },
+  "new_model_runs": 0,
+  "new_training": false,
+  "catalog_expansion": false,
+  "human_relevance_labels": 0,
+  "reason_codes_breakdown": {
+    "state_machine": 24,
+    "framework_fallbacks": 5
+  }
+}

@@ -1,0 +1,99 @@
+﻿{
+    "status":  "passed_with_negative_result",
+    "date":  "2026-11-22",
+    "stage":  83,
+    "scope":  "model capability ladder: 0.5B vs 1.5B under the identical harness and tasks",
+    "protocol":  "stage83-model-ladder-v1",
+    "protocol_sha256":  "4172d9464f1f6950ea02447ef0149f32a4a40112f18e2a115901c57fd633f77f",
+    "lower":  {
+                  "model":  "Qwen2.5-0.5B-Instruct",
+                  "revision":  "7ae557604adf67be50417f59c2c2f167def9a775",
+                  "license":  "apache-2.0",
+                  "runs":  8,
+                  "completed":  0,
+                  "causes":  {
+                                 "max_steps":  8
+                             },
+                  "parse_errors":  24,
+                  "rejections":  14
+              },
+    "baseline":  {
+                     "model":  "Qwen2.5-1.5B-Instruct",
+                     "revision":  "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+                     "license":  "apache-2.0",
+                     "runs":  8,
+                     "completed":  6,
+                     "causes":  {
+                                    "completed":  6,
+                                    "max_steps":  2
+                                },
+                     "parse_errors":  4,
+                     "rejections":  5
+                 },
+    "by_task":  {
+                    "e73-search":  {
+                                       "0.5B":  {
+                                                    "runs":  2,
+                                                    "completed":  0
+                                                },
+                                       "1.5B":  {
+                                                    "runs":  2,
+                                                    "completed":  2
+                                                }
+                                   },
+                    "e73-recommend":  {
+                                          "0.5B":  {
+                                                       "runs":  2,
+                                                       "completed":  0
+                                                   },
+                                          "1.5B":  {
+                                                       "runs":  2,
+                                                       "completed":  2
+                                                   }
+                                      },
+                    "e73-mixed":  {
+                                      "0.5B":  {
+                                                   "runs":  2,
+                                                   "completed":  0
+                                               },
+                                      "1.5B":  {
+                                                   "runs":  2,
+                                                   "completed":  2
+                                               }
+                                  },
+                    "e73-empty":  {
+                                      "0.5B":  {
+                                                   "runs":  2,
+                                                   "completed":  0
+                                               },
+                                      "1.5B":  {
+                                                   "runs":  2,
+                                                   "completed":  0
+                                               }
+                                  }
+                },
+    "harness_unchanged":  true,
+    "conclusion":  "harness works (1.5B 6/8); capacity dominates (0.5B 0/8, 24 parse failures); e73-empty fails at both points, so an upward arm is still needed to know whether a bigger model fixes it",
+    "upward_arm":  {
+                       "model":  "Qwen2.5-3B-Instruct",
+                       "status":  "not run",
+                       "reason":  "~0.8 MB/s on both huggingface.co and hf-mirror.com; 6.2GB would take ~2h",
+                       "license":  "qwen-research (not Apache-2.0), local non-commercial use only",
+                       "partial_bytes_removed":  1961000000
+                   },
+    "new_model_runs":  8,
+    "new_training":  false,
+    "catalog_expansion":  false,
+    "human_relevance_labels":  0,
+    "quality_scores":  null,
+    "determinism":  "both arms produced identical pairs across their two runs per task",
+    "files":  {
+                  "docs\\AGENT_MODEL_LADDER_V83.md":  "20acbcb4ae2033313493e4aedfe133b7d92dd2efa6b0b88de03a1aca1d9bd5c0",
+                  "reports\\stage83\\protocol.json":  "4172d9464f1f6950ea02447ef0149f32a4a40112f18e2a115901c57fd633f77f",
+                  "reports\\stage83\\ladder-summary.json":  "cda78233c5e740730dd7df380dc3eed77dc235faeacbda066ea490e48360dfb1",
+                  "data\\stage83-batch\\spec.json":  "810682df668c8e34291c1a389de097d56becb1131feaa75502b1fbe37493a328",
+                  "data\\stage83-batch\\result.json":  "80949ccdcb5a5a7eb639d3d80e8b5d41f7312674d539d4e0da18383143735d8c",
+                  "research83\\worker.py":  "70f2bbef715d3f3c683a27eb3311341c1c4d5773d68817b056dae299aca70618",
+                  "research83\\loader.py":  "789688cf89790e84ba5a54f70609073dae2005791b55488588ba7bacf99aa532"
+              }
+}

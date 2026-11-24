@@ -1,0 +1,108 @@
+{
+  "primitives": [
+    {
+      "source": "gsearch/visitor_profile.py",
+      "name": "PreferenceConflict",
+      "source_sha256": "a5537b79d98d2d3b29a57835ea46257b0a6d2e8eb23221e007cec1e96d749b88",
+      "methods": "all",
+      "ast_sha256": "a1d3a7b3d8882919a8c931efa229be15e9d1a0fefe5e25e0398ea21b55e7019e"
+    },
+    {
+      "source": "gsearch/visitor_profile.py",
+      "name": "Preferences",
+      "source_sha256": "a5537b79d98d2d3b29a57835ea46257b0a6d2e8eb23221e007cec1e96d749b88",
+      "methods": "all",
+      "ast_sha256": "46a3ae8ce7ad4a726639bc996b9170af9248c43a88da78b8da42986ba9fbecdd"
+    },
+    {
+      "source": "gsearch/visitor_profile.py",
+      "name": "PersonalModel",
+      "source_sha256": "a5537b79d98d2d3b29a57835ea46257b0a6d2e8eb23221e007cec1e96d749b88",
+      "methods": [
+        "__init__",
+        "explain",
+        "recommend"
+      ],
+      "ast_sha256": "451b916508d4467b177f059c6b6476c3b35c50049fefb9529ddc9c0a0c4e4215"
+    },
+    {
+      "source": "gsearch/unified_search.py",
+      "name": "request_time",
+      "source_sha256": "49d9b56c29b73f04dd82451e319c6499e9788e51729146c28e1170b75a88f9a2",
+      "methods": "all",
+      "ast_sha256": "b90dd9ae5b032ba2088122fff0c3fe4115db29636a43ef80d07320c76fe1bc30"
+    },
+    {
+      "source": "gsearch/unified_search.py",
+      "name": "AsOfBM25",
+      "source_sha256": "49d9b56c29b73f04dd82451e319c6499e9788e51729146c28e1170b75a88f9a2",
+      "methods": "all",
+      "ast_sha256": "92778fbe2e24fd264bbabbe72ac0355002faed288bf190df52efbf1a2fda46e2"
+    },
+    {
+      "source": "gsearch/preference_backup.py",
+      "name": "StrictModel",
+      "source_sha256": "1ebadc302923f8b3855f4c392d142b73be128a46c9ea2d01c9684aff1af744e7",
+      "methods": "all",
+      "ast_sha256": "4827f864bc3cff947903d52c04937279bebe3cfd0f778400fc3f618927925e5b"
+    },
+    {
+      "source": "gsearch/preference_backup.py",
+      "name": "BackupItem",
+      "source_sha256": "1ebadc302923f8b3855f4c392d142b73be128a46c9ea2d01c9684aff1af744e7",
+      "methods": "all",
+      "ast_sha256": "26170cfdb2542cf8b6b8d4488350642b6fcfa6127e1fced3fa3d8d665d8d1802"
+    },
+    {
+      "source": "gsearch/preference_backup.py",
+      "name": "Backup",
+      "source_sha256": "1ebadc302923f8b3855f4c392d142b73be128a46c9ea2d01c9684aff1af744e7",
+      "methods": "all",
+      "ast_sha256": "b285295704143a5ada5f7c314ed8b57be8b62c4ce5aa2a37656c7037f3a16a07"
+    },
+    {
+      "source": "gsearch/preference_backup.py",
+      "name": "ImportRequest",
+      "source_sha256": "1ebadc302923f8b3855f4c392d142b73be128a46c9ea2d01c9684aff1af744e7",
+      "methods": "all",
+      "ast_sha256": "a7e6685241c55ee70219e197b3fa943a01805618defbaa24c5194ba0deec9e49"
+    },
+    {
+      "source": "gsearch/preference_backup.py",
+      "name": "unique_object",
+      "source_sha256": "1ebadc302923f8b3855f4c392d142b73be128a46c9ea2d01c9684aff1af744e7",
+      "methods": "all",
+      "ast_sha256": "3b3c20f568f707ad64ebfeee57e9a742f099ae7bfa259853e2f5b24a626c6482"
+    },
+    {
+      "source": "gsearch/preference_backup.py",
+      "name": "parse_backup",
+      "source_sha256": "1ebadc302923f8b3855f4c392d142b73be128a46c9ea2d01c9684aff1af744e7",
+      "methods": "all",
+      "ast_sha256": "bf606d9ee843941e88662cbfbebd889003d84230072afeb5a69b3a3c726505fb"
+    },
+    {
+      "source": "gsearch/preference_backup.py",
+      "name": "merge_plan",
+      "source_sha256": "1ebadc302923f8b3855f4c392d142b73be128a46c9ea2d01c9684aff1af744e7",
+      "methods": "all",
+      "ast_sha256": "c45d23993b747f17dc7835954bddf5909bdd4028f99b8c8831d356213c13a6a6"
+    },
+    {
+      "source": "gsearch/personal_search_v2.py",
+      "name": "Feedback",
+      "source_sha256": "2bfa12faee2131303271a6842fae67c005c2a8893f6b74f91116fe5f34f8b212",
+      "methods": "all",
+      "ast_sha256": "d5afa01674956e1036d084e307a6ede60a72f0556c278b244d2ccdf1494b0976"
+    },
+    {
+      "source": "gsearch/personal_search_v2.py",
+      "name": "Reset",
+      "source_sha256": "2bfa12faee2131303271a6842fae67c005c2a8893f6b74f91116fe5f34f8b212",
+      "methods": "all",
+      "ast_sha256": "fc7ac47fffd5fdcba2852ebf6c42e147bea8fada7dbd8b4072111a94d919bd94"
+    }
+  ],
+  "generated_sha256": "a2b62af6c2c9023534048bc38b2eea670b1e2f02ca193e22c31b5175da3bb7df",
+  "adaptation": "only selected named methods/classes, imports and aware timestamp validation; method ASTs unchanged"
+}

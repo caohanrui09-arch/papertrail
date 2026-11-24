@@ -1,0 +1,32 @@
+import {h} from 'preact';
+import {useEffect,useRef,useState} from 'preact/hooks';
+import htm from 'htm';
+const html=htm.bind(h);
+async function request(path,body){const r=await fetch(path,{method:body?'POST':'GET',credentials:'same-origin',headers:body?{'Content-Type':'application/json'}:undefined,body:body?JSON.stringify(body):undefined});const value=await r.json();if(!r.ok){const error=Error(typeof value.detail==='string'?value.detail:'笔记请求失败（'+r.status+'）');error.status=r.status;throw error;}return value;}
+export function useNotebook(profile){
+ const [data,setData]=useState(null),[loading,setLoading]=useState(true),[busy,setBusy]=useState(false),[error,setError]=useState(''),[message,setMessage]=useState(''),[undo,setUndo]=useState(null),[paper,setPaper]=useState(null);
+ const current=useRef(null),locked=useRef(false);
+ function accept(next){current.current=next;setData(next);}
+ async function reload(){setLoading(true);setError('');setMessage('');setUndo(null);try{const next=await request('/api/profile/notes');accept(next);return next;}catch(e){setError(e.message);return null;}finally{setLoading(false);}}
+ useEffect(()=>{if(profile?.catalog_key)reload();},[profile?.catalog_key]);
+ async function save(doc,values,revision,undoing=false){
+  if(locked.current||!current.current)return null;locked.current=true;setBusy(true);setError('');setMessage('');
+  try{const next=await request('/api/profile/notes/save',{doc_id:doc.doc_id,version_key:doc.version_key,catalog_key:current.current.catalog_key,revision,problem:values.problem,questions:values.questions});accept(next);setUndo(undoing||JSON.stringify(next.change.previous)===JSON.stringify(next.change.value)?null:{paper:doc,values:next.change.previous||{problem:'',questions:''},revision:next.revision});setMessage(undoing?'已撤销上次笔记保存。':next.change.value?'笔记已保存。阅读状态、收藏和推荐画像保持不变。':'空笔记已移除，可撤销本次保存。');return next;
+  }catch(e){setError(e.message);return null;}finally{locked.current=false;setBusy(false);}
+ }
+ async function undoLast(){if(!undo||undo.revision!==current.current?.revision){setError('笔记已有后续变化，请重新载入后编辑。');return null;}return save(undo.paper,undo.values,undo.revision,true);}
+ return {data,loading,busy,error,message,undo,reload,save,undoLast,paper,open(p){setError('');setMessage('');setPaper(p);},close:()=>setPaper(null),get:doc=>data?.items.find(p=>p.doc_id===doc)||null};
+}
+export function NoteEntry({paper,notebook}){return html`<button class=${'note-entry'+(notebook.get(paper.doc_id)?' has-note':'')} aria-label=${'阅读笔记：'+paper.title} title=${notebook.get(paper.doc_id)?'查看或编辑自己的笔记':'记录这篇解决的问题和仍有的疑问'} disabled=${notebook.loading||!notebook.data} onClick=${()=>notebook.open(paper)}>笔记${notebook.get(paper.doc_id)?'·':''}</button>`;}
+export function NotePreview({note}){if(!note)return null;return html`<div class="note-preview"><span>我的笔记 · ${note.problem?'解决的问题':'仍有疑问'}</span><p>${note.problem||note.questions}</p></div>`;}
+export function NotebookDialog({notebook}){
+ const dialog=useRef(null),[problem,setProblem]=useState(''),[questions,setQuestions]=useState(''),[base,setBase]=useState(null),[revision,setRevision]=useState(0),[confirm,setConfirm]=useState('');
+ const open=!!notebook.paper,dirty=!!base&&(problem!==base.problem||questions!==base.questions);
+ function hydrate(next){const saved=next.items.find(p=>p.doc_id===notebook.paper?.doc_id)||{problem:'',questions:''};setProblem(saved.problem);setQuestions(saved.questions);setBase({problem:saved.problem,questions:saved.questions});setRevision(next.revision);setConfirm('');}
+ useEffect(()=>{if(open&&notebook.data){hydrate(notebook.data);dialog.current?.showModal();}else if(dialog.current?.open)dialog.current.close();},[open,notebook.paper?.doc_id]);
+ useEffect(()=>{if(!open||!dirty)return;const block=e=>{e.preventDefault();e.returnValue='';};window.addEventListener('beforeunload',block);return()=>window.removeEventListener('beforeunload',block);},[open,dirty]);
+ function close(e){e?.preventDefault();if(notebook.busy)return;if(dirty){setConfirm('close');return;}notebook.close();}
+ async function reload(){const next=await notebook.reload();if(next)hydrate(next);}
+ async function save(e){e?.preventDefault();const next=await notebook.save(notebook.paper,{problem,questions},revision);if(next)hydrate(next);}
+ return html`<dialog ref=${dialog} class="notebook-dialog" aria-labelledby="note-title" onCancel=${close}><header><div><span class="eyebrow">YOUR READING, IN YOUR WORDS</span><h2 id="note-title">留下你的理解。</h2></div><button aria-label="关闭阅读笔记" onClick=${close} disabled=${notebook.busy}>×</button></header><h3>${notebook.paper?.title}</h3><code>${notebook.paper?.version_key}</code><p class="note-disclaimer">这是你的私人笔记，与原摘要分开保存，不作为论文结论或推荐信号。</p><form onSubmit=${save}><label>这篇解决什么问题？<textarea aria-label="这篇解决什么问题" maxLength="1000" rows="4" value=${problem} disabled=${notebook.busy} onInput=${e=>setProblem(e.target.value)} placeholder="用自己的话记下问题、方法或值得继续读的原因"/><span>${problem.length} / 1000</span></label><label>还有什么疑问？<textarea aria-label="还有什么疑问" maxLength="1000" rows="3" value=${questions} disabled=${notebook.busy} onInput=${e=>setQuestions(e.target.value)} placeholder="尚未理解的假设、实验或想追问的地方"/><span>${questions.length} / 1000</span></label><div class="note-save-row"><span role="status">${dirty?'有未保存修改':'当前内容已与服务器同步'}</span><button type="submit" disabled=${notebook.busy||!dirty}>${notebook.busy?'正在保存…':'保存笔记'}</button></div></form>${notebook.error&&html`<p class="note-error" role="alert">${notebook.error}；当前草稿仍保留。</p>`}${notebook.message&&html`<p class="note-success" role="status">${notebook.message}</p>`}<div class="note-utilities"><button disabled=${notebook.busy} onClick=${()=>dirty?setConfirm('reload'):reload()}>重新载入已保存笔记</button>${notebook.undo?.paper.doc_id===notebook.paper?.doc_id&&html`<button disabled=${notebook.busy||dirty} onClick=${async()=>{const next=await notebook.undoLast();if(next)hydrate(next);}}>撤销本次保存</button>`}<span>笔记余量约 ${Math.floor((notebook.data?.remaining_bytes||0)/1024)} KiB</span></div>${confirm&&html`<div class="note-discard" role="alert"><p>${confirm==='close'?'关闭会放弃当前未保存修改。':'重新载入会用服务器内容替换当前草稿。'}</p><button onClick=${()=>setConfirm('')}>继续编辑</button><button onClick=${()=>{if(confirm==='close'){setConfirm('');notebook.close();}else reload();}}>${confirm==='close'?'放弃修改并关闭':'放弃草稿并重新载入'}</button></div>`}<p class="note-footnote">两栏留空后保存可移除笔记；保存后可撤销。笔记随v3备份导出，导入v1/v2不会清空笔记。</p></dialog>`;
+}

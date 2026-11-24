@@ -1,0 +1,4 @@
+# Preserve all independently installed stage17 packages; add only local HTTP components.
+-r reports/stage17/requirements-win-cpu.lock
+fastapi==0.162.0
+uvicorn==0.54.0

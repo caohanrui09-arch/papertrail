@@ -1,0 +1,60 @@
+{
+  "status": "passed",
+  "date": "2026-11-22",
+  "stage": 79,
+  "scope": "handoff_receipt_plus_real_agent_runtime_restore",
+  "machine": {
+    "logical_processors": 32,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU 8188 MiB",
+    "cuda_available_in_worker_env": true,
+    "free_disk_c": "75.2 GB"
+  },
+  "handoff_archives": {
+    "preview_sha256": "21ec205e3fd8991973026cde469338dee984bc84b8028eb57fdd0673b6256207",
+    "preview_sha256_matches_record": true,
+    "source_sha256": "1f19ebd60fc2dc0572649a40aadf6bcb409a3bbfc5ff2f9f927dda4b7d53cb69",
+    "source_sha256_matches_record": true
+  },
+  "preview_site": {
+    "checks": 15,
+    "passed": 15,
+    "failed": [],
+    "catalog": 167,
+    "llm_enabled": false
+  },
+  "research_runtime": {
+    "copied_files": 53167,
+    "copied_gb": 6.28,
+    "bundle_verified_files": 481,
+    "bundle_verify_seconds": 8.07,
+    "model_load_seconds": 49.63,
+    "catalog": 10000,
+    "cpu_env_self_contained": true,
+    "gpu_env_borrows_shared_cuda_venv": true
+  },
+  "agent_runs": {
+    "runs": 2,
+    "completed": 1,
+    "failed": 1,
+    "model_calls": 11
+  },
+  "not_done": [
+    "desktop browser screenshot/click acceptance (headless Edge blocked by sandbox mojo channel)",
+    "second physical machine reproduction",
+    "public deployment"
+  ],
+  "new_model_runs": 2,
+  "new_training": false,
+  "catalog_expansion": false,
+  "visitor_preferences_written": 0,
+  "human_relevance_labels": 0,
+  "historical_records_preserved": true,
+  "files": {
+    "docs\\TAKEOVER_AUDIT_V79.md": "256b785ed656f1a6e0457cf978ced7f7090b848e17c2091765b9c00f16ecf4de",
+    "reports\\stage79\\preview-acceptance.json": "c2b086193ca689be68f67780d74b0dc9e3aadeee3bd0082f73d4d348aebc2d47",
+    "reports\\stage79\\agent-runs.json": "740752b79efd92fe2a6acca41b2d95df85139debda93d92ddec7d1ad631153fb",
+    "research77\\server.py": "ebe5edaed5bb187fe8d4ccc3748c129b6451f0edc1b243ce202546283f0962f1",
+    "gsearch\\local_service.py": "042e78e1d6d498f6e9284189dc0d2e1eb12a503d1e99442bcb5d5e0dd6028660"
+  },
+  "ownership_note": "owner project; \"takeover\" means relocation into a new working directory, not receiving someone else's code"
+}

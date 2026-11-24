@@ -1,0 +1,136 @@
+{
+  "slug": "minionerec",
+  "title": "MiniOneRec",
+  "editorial": true,
+  "scope": "independent_educational_supplement",
+  "as_of": "2026-11-02",
+  "historic_catalog_admission": false,
+  "model_trained_here": false,
+  "repository": "https://github.com/AkaliKong/MiniOneRec",
+  "commit": "526306229326013a7ca46f5b2d8f55ea669aa159",
+  "license": "Apache-2.0",
+  "raw_sha256": "f1ec5081984598b0835e396b47f71d061de6b8fb0e500452652b1b7183830bff",
+  "papers": [
+    {
+      "doc_id": "2305.05065",
+      "title": "Recommender Systems with Generative Retrieval",
+      "abstract": "Modern recommender systems leverage large-scale retrieval models consisting of two stages: training a dual-encoder model to embed queries and candidates in the same space, followed by an Approximate Nearest Neighbor (ANN) search to select top candidates given a query's embedding. In this paper, we propose a new single-stage paradigm: a generative retrieval model which autoregressively decodes the identifiers for the target candidates in one phase. To do this, instead of assigning randomly generated atomic IDs to each item, we generate Semantic IDs: a semantically meaningful tuple of codewords for each item that serves as its unique identifier. We use a hierarchical method called RQ-VAE to generate these codewords. Once we have the Semantic IDs for all the items, a Transformer based sequence-to-sequence model is trained to predict the Semantic ID of the next item. Since this model predicts the tuple of codewords identifying the next item directly in an autoregressive manner, it can be considered a generative retrieval model. We show that our recommender system trained in this new paradigm improves the results achieved by current SOTA models on the Amazon dataset. Moreover, we demonstrate that the sequence-to-sequence model coupled with hierarchical Semantic IDs offers better generalization and hence improves retrieval of cold-start items for recommendations.",
+      "version": 1,
+      "source_url": "https://arxiv.org/abs/2305.05065v1",
+      "published_at": "2023-05-08T21:48:17+00:00",
+      "authors": [
+        "Shashank Rajput",
+        "Nikhil Mehta",
+        "Anima Singh",
+        "Raghunandan H. Keshavan",
+        "Trung Vu",
+        "Lukasz Heldt",
+        "Lichan Hong",
+        "Yi Tay",
+        "Vinh Q. Tran",
+        "Jonah Samost",
+        "Maciej Kula",
+        "Ed H. Chi",
+        "Maheswaran Sathiamoorthy"
+      ],
+      "name": "TIGER",
+      "step": "先理解 Semantic ID",
+      "question": "跟随摘要找出：物品内容怎样变成多层码字，模型为什么可以直接生成下一物品的标识？",
+      "evidence": "We use a hierarchical method called RQ-VAE to generate these codewords.",
+      "version_key": "arxiv:2305.05065v1",
+      "source_verified": true
+    },
+    {
+      "doc_id": "2510.24431",
+      "title": "MiniOneRec: An Open-Source Framework for Scaling Generative Recommendation",
+      "abstract": "The recent success of large language models (LLMs) has renewed interest in whether recommender systems can achieve similar scaling benefits. Conventional recommenders, dominated by massive embedding tables, tend to plateau as embedding dimensions grow. In contrast, the emerging generative paradigm replaces embeddings with compact Semantic ID (SID) sequences produced by autoregressive Transformers. Yet most industrial deployments remain proprietary, leaving two fundamental questions open: (1) Do the expected scaling laws hold on public benchmarks? (2) What is the minimal post-training recipe that enables competitive performance?\n  We present MiniOneRec, to the best of our knowledge, the first fully open-source generative recommendation framework, which provides an end-to-end workflow spanning SID construction, supervised fine-tuning, and recommendation-oriented reinforcement learning. We generate SIDs via a Residual Quantized VAE and post-train Qwen backbones ranging from 0.5B to 7B parameters on the Amazon Review dataset. Our experiments reveal a consistent downward trend in both training and evaluation losses with increasing model size, validating the parameter efficiency of the generative approach. To further enhance performance, we propose a lightweight yet effective post-training pipeline that (1) enforces full-process SID alignment and (2) applies reinforcement learning with constrained decoding and hybrid rewards. Together, these techniques yield significant improvements in both ranking accuracy and candidate diversity.",
+      "version": 1,
+      "source_url": "https://arxiv.org/abs/2510.24431v1",
+      "published_at": "2025-10-28T13:58:36+00:00",
+      "authors": [
+        "Xiaoyu Kong",
+        "Leheng Sheng",
+        "Junfei Tan",
+        "Yuxin Chen",
+        "Jiancan Wu",
+        "An Zhang",
+        "Xiang Wang",
+        "Xiangnan He"
+      ],
+      "name": "MiniOneRec",
+      "step": "再看端到端框架",
+      "question": "把 SID 构建、监督微调、推荐强化学习连起来；分清论文报告的实验和本站实际实现。",
+      "evidence": "spanning SID construction, supervised fine-tuning, and recommendation-oriented reinforcement learning",
+      "version_key": "arxiv:2510.24431v1",
+      "source_verified": true
+    },
+    {
+      "doc_id": "2510.12211",
+      "title": "Reinforced Preference Optimization for Recommendation",
+      "abstract": "Recent breakthroughs in large language models (LLMs) have fundamentally shifted recommender systems from discriminative to generative paradigms, where user behavior modeling is achieved by generating target items conditioned on historical interactions. Yet current generative recommenders still suffer from two core limitations: the lack of high-quality negative modeling and the reliance on implicit rewards. Reinforcement learning with verifiable rewards (RLVR) offers a natural solution by enabling on-policy sampling of harder negatives and grounding optimization in explicit reward signals. However, applying RLVR to generative recommenders remains non-trivial. Its unique generation space often leads to invalid or repetitive items that undermine sampling efficiency, and ranking supervision is sparse since most items receive identical zero rewards. To address these challenges, we propose Reinforced Preference Optimization for Recommendation (ReRe), a reinforcement-based paradigm tailored to LLM-based recommenders, an important direction in generative recommendation. ReRe incorporates constrained beam search to improve sampling efficiency and diversify hard negatives, while augmenting rule-based accuracy rewards with auxiliary ranking rewards for finer-grained supervision. Extensive experiments on three real-world datasets demonstrate that ReRe consistently outperforms both traditional and LLM-based recommenders in ranking performance. Further analysis shows that ReRe not only enhances performance across both base and SFT-initialized models but also generalizes robustly across different backbone families and scales. Beyond empirical gains, we systematically investigate the design space of RLVR in recommendation across generation, sampling strategy, reward modeling, and optimization algorithm, offering insights for future research.",
+      "version": 1,
+      "source_url": "https://arxiv.org/abs/2510.12211v1",
+      "published_at": "2025-10-14T07:04:33+00:00",
+      "authors": [
+        "Junfei Tan",
+        "Yuxin Chen",
+        "An Zhang",
+        "Junguang Jiang",
+        "Bin Liu",
+        "Ziru Xu",
+        "Han Zhu",
+        "Jian Xu",
+        "Bo Zheng",
+        "Xiang Wang"
+      ],
+      "name": "ReRe",
+      "step": "最后理解 RL 的难点",
+      "question": "为什么无效或重复物品会浪费采样？为什么只有命中与否的奖励不够细？",
+      "evidence": "ranking supervision is sparse since most items receive identical zero rewards.",
+      "version_key": "arxiv:2510.12211v1",
+      "source_verified": true
+    }
+  ],
+  "code": [
+    {
+      "path": "README.md",
+      "blob": "4e9300ca7985e320bbd4415b4b477bdcb6193db0",
+      "url": "https://github.com/AkaliKong/MiniOneRec/blob/526306229326013a7ca46f5b2d8f55ea669aa159/README.md"
+    },
+    {
+      "path": "LICENSE",
+      "blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "url": "https://github.com/AkaliKong/MiniOneRec/blob/526306229326013a7ca46f5b2d8f55ea669aa159/LICENSE"
+    },
+    {
+      "path": "sft.py",
+      "blob": "10710b7271d8c54a0655672baaaa54cf5374dc52",
+      "url": "https://github.com/AkaliKong/MiniOneRec/blob/526306229326013a7ca46f5b2d8f55ea669aa159/sft.py"
+    },
+    {
+      "path": "rl.py",
+      "blob": "ce5c37f531693979455f3c969e33d4422061cf81",
+      "url": "https://github.com/AkaliKong/MiniOneRec/blob/526306229326013a7ca46f5b2d8f55ea669aa159/rl.py"
+    },
+    {
+      "path": "calc.py",
+      "blob": "bd91af9d9bcddbd03e018b3c575a1dd51793ba9f",
+      "url": "https://github.com/AkaliKong/MiniOneRec/blob/526306229326013a7ca46f5b2d8f55ea669aa159/calc.py"
+    },
+    {
+      "path": "LogitProcessor.py",
+      "blob": "91f561990be9a17b3e9a6e26d28e76c2029e1c41",
+      "url": "https://github.com/AkaliKong/MiniOneRec/blob/526306229326013a7ca46f5b2d8f55ea669aa159/LogitProcessor.py"
+    },
+    {
+      "path": "rq/generate_indices.py",
+      "blob": "9b0e80f36696de2f3dd16d2d7e3bb9d082820ccd",
+      "url": "https://github.com/AkaliKong/MiniOneRec/blob/526306229326013a7ca46f5b2d8f55ea669aa159/rq/generate_indices.py"
+    },
+    {
+      "path": "requirements.txt",
+      "blob": "e797684645d1269ba6b236ac2d035a2e7963e516",
+      "url": "https://github.com/AkaliKong/MiniOneRec/blob/526306229326013a7ca46f5b2d8f55ea669aa159/requirements.txt"
+    }
+  ]
+}

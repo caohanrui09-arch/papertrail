@@ -1,0 +1,92 @@
+{
+  "status": "closed",
+  "date": "2026-11-22",
+  "stage": 85,
+  "scope": "wrap-up summary for stages 79-85; no new model runs, no code change",
+  "conclusion": "framework works, budget is not the binding constraint, model capability dominates; the empty-result cell fails at 0.5B and 1.5B and needs an upward arm",
+  "stage_results": {
+    "s79": {
+      "preview_checks": 15,
+      "bundle_files": 481,
+      "model_load_seconds": 49.63,
+      "agent_runs": 2,
+      "completed": 1
+    },
+    "s80": {
+      "unique_runs": 43,
+      "duplicate_copies_removed": 16,
+      "model_calls": 143,
+      "fixed": "17/17",
+      "constrained": "13/17",
+      "llm_agent": "2/9"
+    },
+    "s81": {
+      "batch": "3/4",
+      "repeat_loop": "5 -> 0",
+      "judgement_changed": false
+    },
+    "s82": {
+      "batch": "6/8",
+      "budget_exhausted_failures": 0,
+      "stop_rule_triggered": true
+    },
+    "s83": {
+      "model_0_5b": "0/8",
+      "model_1_5b": "6/8",
+      "parse_errors_0_5b": 24,
+      "parse_errors_1_5b": 4
+    },
+    "s84": {
+      "reason_codes": 29,
+      "replay_runs": 20,
+      "replay_problems": 0,
+      "browser_verified": false
+    }
+  },
+  "tests": {
+    "state_constraints": 8,
+    "messages": 11,
+    "rejection_allowance": 7,
+    "unified": 7,
+    "schema_isolation": 2,
+    "reason_map": 3,
+    "total": 38,
+    "all_passed": true
+  },
+  "services": {
+    "8791": "preview reading site",
+    "8802": "agent lab",
+    "both_http200": true
+  },
+  "upward_arm": {
+    "model": "Qwen2.5-3B-Instruct",
+    "status": "stopped by wrap-up",
+    "partial_gb": 1.43,
+    "resume_command": "research83.fetch_3b_stream",
+    "license": "qwen-research local-only"
+  },
+  "not_verified": [
+    "second physical machine",
+    "public deployment",
+    "desktop browser screenshot",
+    "3B upward arm",
+    "human relevance or semantic quality"
+  ],
+  "human_relevance_labels": 0,
+  "quality_scores": null,
+  "new_training": false,
+  "catalog_expansion": false,
+  "files": {
+    "docs\\FINAL_SUMMARY_V85.md": "eb19396ab08cdfeb4dfc538f26e20c2933fcbc0d97d6c66f6a73a9a4c30dab53",
+    "reports\\stage79\\validation.json": "0bf03063fcac8f9792bdcbe54dd3cf93387fd126c76bdca1ba5e8f1bd56c2705",
+    "reports\\stage80\\agent-reliability.json": "a1935d9a98886df93f4168dafadf1dff46fb13b6f7a53bf5fc9767e620875ffb",
+    "reports\\stage81\\validation.json": "370e1bd2994a10bd2f78be885ac942119043415847ec68ca3cc157f2378dde7c",
+    "reports\\stage82\\validation.json": "adb5532963447f83bf7c7b2bdec54546be31270b1de751b3b2a429d836a58bab",
+    "reports\\stage83\\validation.json": "7846b44d36674c80e15017b3eb7d3ea6a3a3109c0afada669e55cd74a283ec1c",
+    "reports\\stage84\\validation.json": "1a7cf3f9131798226c691b25476ef021c378f1c7e9dfd20db0743bbf6cc9f193",
+    "docs\\RESUME_V85.md": "c687a92b0433784e10cf4d896622be15a033a618a9f88b01efb03e106c527151",
+    "docs\\RESUME_TRACK_SEARCH_V85.md": "37a2f745828db7ee2a60bfb1e4bb56c8aa18ba445d21ed8fffec1a4cf4089742",
+    "docs\\RESUME_TRACK_AGENT_V85.md": "8b43842b98fdf1a0c8134f471d756b851fc8deaaf236dc029f4c5a9d4092123f",
+    "docs\\GLOSSARY_V85.md": "3a18f56a13dea87d4ce38d65643007d5b8b599eba97a2795e029517890e02a08"
+  }
+}

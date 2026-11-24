@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/0j9lLud0wW8tRbF4okyIiiXX40o</id>
+  <title>arXiv Query: search_query=&amp;id_list=1003.5956v1,1507.08439v1,1510.07025v1,1602.05352v1,2202.06991v1,2206.02743v1,2411.18814v1,2412.04746v1,2412.06308v1,2412.06791v1,2412.12464v1,2412.17032v1,2412.18082v1,2412.18715v1,2412.20250v1,2501.01945v1,2501.02178v1,2501.03447v1,2501.10871v1,2501.11034v1,2501.11391v1,2501.11759v1,2502.00321v1,2502.01630v1,2502.02788v1,2502.03041v1,2502.06097v1,2502.07219v1,2502.07555v1,2502.08277v1,2502.08993v1,2502.09375v1,2502.09757v1,2502.10049v1,2502.11562v1,2502.12958v1,2502.13423v1,2502.13539v1,2502.13840v1,2502.14041v1,2502.14662v1,2502.15957v1&amp;start=40&amp;max_results=40</title>
+  <updated>2026-10-29T07:21:09Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=40&amp;max_results=40&amp;id_list=1003.5956v1,1507.08439v1,1510.07025v1,1602.05352v1,2202.06991v1,2206.02743v1,2411.18814v1,2412.04746v1,2412.06308v1,2412.06791v1,2412.12464v1,2412.17032v1,2412.18082v1,2412.18715v1,2412.20250v1,2501.01945v1,2501.02178v1,2501.03447v1,2501.10871v1,2501.11034v1,2501.11391v1,2501.11759v1,2502.00321v1,2502.01630v1,2502.02788v1,2502.03041v1,2502.06097v1,2502.07219v1,2502.07555v1,2502.08277v1,2502.08993v1,2502.09375v1,2502.09757v1,2502.10049v1,2502.11562v1,2502.12958v1,2502.13423v1,2502.13539v1,2502.13840v1,2502.14041v1,2502.14662v1,2502.15957v1" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>40</opensearch:itemsPerPage>
+  <opensearch:totalResults>42</opensearch:totalResults>
+  <opensearch:startIndex>40</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2502.13423v1</id>
+    <title>The Policy Paradox: Government Debt Servicing and Local Bank Risk Growth</title>
+    <updated>2025-02-19T04:46:02Z</updated>
+    <link href="https://arxiv.org/abs/2502.13423v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.13423v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The issue of local government debt is widely recognized as one of the "gray rhinos" affecting the stable development of China's economy. Government debt can transmit risks to local banks, which are among the primary holders of local debt, thereby triggering systemic financial risks. Consequently, exploring debt resolution pathways and evaluating the systematic effects of debt servicing policies has become critically important. This study employs panel data from 348 local commercial banks across 29 provincial-level administrative regions in China from 2010 to 2023, and constructs a difference-in-differences (DID) model to investigate the impact of the State Council's special supervision of debt servicing on local bank risks. The findings indicate that the government's debt servicing policy essentially represents a shift of government debt from explicit to implicit forms, significantly increasing the risks faced by local banks and producing outcomes contrary to the policy's original intent. This effect is particularly pronounced for rural commercial banks and banks with high customer concentration and fewer branches. Mechanism analysis reveals two key insights. First, local banks are heavily influenced by local government control; the government's debt servicing requires banks to support the government by purchasing government bonds and other financial instruments, which leads to a deterioration in asset quality and an expansion of risk exposure. Second, government debt crowds out private credit from local banks, weakening the region's repayment capacity and ultimately increasing bank risk. Our research uncovers the counterintuitive effects of government debt servicing and offers corresponding policy recommendations.</summary>
+    <category term="econ.GN" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-19T04:46:02Z</published>
+    <arxiv:comment>16 pages, 2 figures</arxiv:comment>
+    <arxiv:primary_category term="econ.GN"/>
+    <author>
+      <name>Yan Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.11562v1</id>
+    <title>Reinforced Information Retrieval</title>
+    <updated>2025-02-17T08:52:39Z</updated>
+    <link href="https://arxiv.org/abs/2502.11562v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.11562v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>While retrieval techniques are widely used in practice, they still face significant challenges in cross-domain scenarios. Recently, generation-augmented methods have emerged as a promising solution to this problem. These methods enhance raw queries by incorporating additional information from an LLM-based generator, facilitating more direct retrieval of relevant documents. However, existing methods struggle with highly specialized situations that require extensive domain expertise. To address this problem, we present \textbf{Reinforced-IR}, a novel approach that jointly adapts a pre-trained retriever and generator for precise cross-domain retrieval. A key innovation of Reinforced-IR is its \textbf{Self-Boosting} framework, which enables retriever and generator to learn from each other's feedback. Specifically, the generator is reinforced to generate query augmentations that enhance the retriever's performance, while the retriever is trained to better discriminate the relevant documents identified by the generator. This iterative process allows the end-to-end retrieval performance to be progressively optimized using an unlabeled corpus from the target domain. In our experiment, Reinforced-IR outperforms existing domain adaptation methods by a large margin, leading to substantial improvements in retrieval quality across a wide range of application scenarios.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-17T08:52:39Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Chaofan Li</name>
+    </author>
+    <author>
+      <name>Zheng Liu</name>
+    </author>
+    <author>
+      <name>Jianlyv Chen</name>
+    </author>
+    <author>
+      <name>Defu Lian</name>
+    </author>
+    <author>
+      <name>Yingxia Shao</name>
+    </author>
+  </entry>
+</feed>

@@ -1,0 +1,207 @@
+'use strict';
+// Display adapters for native algorithm responses and retained execution records.
+// No model choices, rankings, scores or execution progress are generated here.
+const $=id=>document.getElementById(id);
+const methods={bm25:'BM25 召回',content_query:'内容召回',pool_content:'共享池查询排序',profile_rerank:'共享池画像重排',popular:'流行度',sar:'SAR 协同',content:'内容推荐',hybrid:'原 RRF',cold_aware:'冷论文融合'};
+const policies={fixed:'固定流程',llm_agent:'原 LLM',constrained:'状态约束 LLM'};
+let visualRow=null;let activeJobId=null;
+function focusCitation(doc){$('citation-details').open=true;const n=[...document.querySelectorAll('.citation-chain-card')].find(n=>n.dataset.docId===doc);if(n){n.open=true;n.scrollIntoView({block:'center',behavior:'instant'});n.querySelector('summary').focus({preventScroll:true})}else $('citation-chain').scrollIntoView({block:'center',behavior:'instant'})}
+function focusDiagnostic(doc){selectedMethod='profile_rerank';renderRanks();const n=[...document.querySelectorAll('.diagnostic-paper')].find(n=>n.dataset.docId===doc);if(n){n.tabIndex=-1;n.scrollIntoView({block:'center',behavior:'instant'});n.focus({preventScroll:true})}}
+const intents={search:'主题搜索',recommend:'个性化推荐',mixed:'搜索＋推荐'};
+let rankings=null,rankTask=null,selectedMethod='bm25',baselineMethod='content_query',examples=null,currentResults=[],selectedRun=0,active=false,rankEpoch=0;
+function el(tag,text,cls){const n=document.createElement(tag);if(text!==undefined&&text!==null)n.textContent=String(text);if(cls)n.className=cls;return n}
+function fmt(n,d=3){return typeof n==='number'&&Number.isFinite(n)?n.toFixed(d):'未提供'}
+function seconds(n){return typeof n==='number'&&Number.isFinite(n)?(n<.01?(n*1000).toFixed(2)+' ms':n.toFixed(2)+' s'):'耗时未记录'}
+function raw(value){return el('pre',JSON.stringify(value,null,2))}
+function details(label,value,cls=''){const n=el('details',null,cls);n.append(el('summary',label),raw(value));return n}
+function sourceLink(text,url){try{const u=new URL(url);if(u.protocol==='https:'&&u.hostname==='arxiv.org'){const a=el('a',text);a.href=u.href;a.target='_blank';a.rel='noopener noreferrer';return a}}catch{}return el('span',text)}
+function status(text,mode=''){ $('status').textContent=text;document.querySelector('.run-strip').className='run-strip '+mode }
+async function api(path,body){const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),45000);try{const r=await fetch(path,{signal:controller.signal,...(body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})});const value=await r.json();if(!r.ok){const error=Error(typeof value.detail==='string'?value.detail:JSON.stringify(value.detail||'请求失败'));error.status=r.status;throw error;}return value}finally{clearTimeout(timeout)}}
+function metric(label,value,note,cls){const n=el('div',null,'metric');n.append(el('span',label),el('strong',value,cls));if(note)n.append(el('small',note));return n}
+function eventDescription(event){const a=event.arguments||{},r=event.result||{};if(r.error)return String(r.error);if(event.tool==='search_papers')return `“${a.query||''}” · 返回 ${r.papers?.length??0} 篇 · ${r.method||r.index||'原生检索'}`;if(event.tool==='recommend_papers')return `${methods[a.method]||a.method||r.method||'内容推荐'} · 返回 ${r.papers?.length??0} 篇`;if(event.tool==='read_paper')return `${r.title||a.doc_id||r.doc_id} · ${r.version_key||'版本未提供'}`;if(event.tool==='finalize')return `提交 ${r.citations?.length??0} 条引用 · ${r.answer_kind||'来源校验响应'}`;return '查看原始参数与响应'}
+const REASON_TEXT={
+already_finalized:['任务已提交','提交后不再接受任何动作'],
+budget_exhausted:['动作预算耗尽','6 次已服务动作已用完'],
+retrieval_budget_exhausted:['检索次数用尽','同一任务最多 2 次检索'],
+retrieval_not_required:['检索类型不符','该检索不属于当前任务意图'],
+read_budget_exhausted:['读取次数用尽','同一任务最多读取 2 篇'],
+read_requires_returned_paper:['尚无返回论文','必须先完成检索'],
+read_requires_other_retrieval:['缺少另一类检索','mixed 任务需要两类检索各一次'],
+read_not_in_readable:['当前不可读','只允许读取当前可读集合内的 ID'],
+read_already_read:['该 ID 已读过','同一篇论文不能重复读取'],
+read_never_returned:['该 ID 从未返回','只能读取本次工具实际返回的论文'],
+read_wrong_branch:['分支不符','mixed 的第二篇必须来自另一类检索'],
+final_requires_retrieval:['提交前缺少检索','先完成本任务要求的检索'],
+final_requires_read:['提交前未读取','有返回论文但一篇都没读'],
+final_requires_two_branch_reads:['两分支读取不足','mixed 需要两类各读一篇'],
+final_citation_count:['引用数量不符','引用条数与期望不一致'],
+final_citation_fields:['引用字段不符','每条引用只能是 doc_id 与 quote_index'],
+final_citation_unusable:['引用不可用','只能引用本次实际读过且不重复的论文'],
+final_quote_index:['引文序号越界','quote_index 超出返回的摘录范围'],
+final_citation_coverage:['引用未覆盖检索类型','两条引用需分别来自两类检索'],
+invalid_k:['k 参数非法','k 必须是 1..3 的整数'],
+invalid_query:['查询词非法','查询需为非空且不超过 2000 字符'],
+action_unavailable:['当前不可用动作','该动作不在当前合法集合内'],
+search_papers_already_used:['检索已用过','不要重复同一类检索'],
+recommend_papers_already_used:['推荐已用过','不要重复同一类检索'],
+tool_not_registered:['工具已被移除','当前没有该合法动作，工具表已清空'],
+schema_type:['参数类型不符','原生 schema 在调用前已拒绝'],
+max_steps:['步数用尽','达到 7 个 Agent 步上限'],
+query_mismatch:['查询词不匹配','必须使用用户确认的检索词'],
+unknown:['其他失败','查看原始返回']
+};
+function reasonCode(text){const s=String(text||'');const m=/reason=([a-z_]+)/.exec(s);if(m)return m[1];if(/Unknown tool .*should be one of/i.test(s))return 'tool_not_registered';if(/Reached max steps/i.test(s))return 'max_steps';if(/Argument .*(has type|is required)|invalid literal/i.test(s))return 'schema_type';if(/exactly match the user-confirmed query/i.test(s))return 'query_mismatch';return ''}
+function reasonInfo(code){const v=REASON_TEXT[code]||REASON_TEXT.unknown;return {label:v[0],hint:v[1]}}
+function reasonsOf(row){const counts={};const events=(row.metadata&&row.metadata.proposal_events)||[];for(const e of events){const code=reasonCode(e.error);if(code)counts[code]=(counts[code]||0)+1}if(!Object.keys(counts).length){for(const t of (row.trace&&row.trace.trace)||[]){const code=reasonCode((t.result&&t.result.error)||t.error);if(code)counts[code]=(counts[code]||0)+1}}return counts}
+function decorateReasons(row){const host=$('timeline');if(!host)return;const old=host.querySelector('.reason-summary');if(old)old.remove();const counts=reasonsOf(row),codes=Object.keys(counts);if(codes.length){const box=el('div','','reason-summary');box.append(el('strong','失败原因'));for(const code of codes.sort((a,b)=>counts[b]-counts[a])){const info=reasonInfo(code),chip=el('span','','reason-chip');chip.dataset.reason=code;chip.title=info.hint;chip.append(el('span',info.label,'reason-label'),el('span',String(counts[code]),'reason-count'));box.append(chip)}box.append(el('span','共 '+codes.reduce((n,c)=>n+counts[c],0)+' 条被拒提案','reason-total'));host.prepend(box)}const trace=(row.trace&&row.trace.trace)||[];for(const node of host.querySelectorAll('.event.failed')){if(node.querySelector('.reason-chip'))continue;const hit=trace.find(e=>String(e.attempt)===node.dataset.attempt);const text=(hit&&hit.result&&hit.result.error)||(hit&&hit.error)||'';const code=reasonCode(text);if(!code)continue;const info=reasonInfo(code),chip=el('span','','reason-chip');chip.dataset.reason=code;chip.title=String(text).slice(0,300)||info.hint;chip.textContent=info.label;const head=node.querySelector('.event-head');if(head)head.append(chip)}}
+function renderTimeline(row){visualRow=row;window.PapertrailWorkspace?.reader(row);const entries=row.trace?.trace||[];const list=el('ol',null,'timeline');const labels={search_papers:'搜索论文',recommend_papers:'个性化推荐',read_paper:'读取原摘要',finalize:'校验并提交'};entries.forEach((e,i)=>{const failed=Boolean(e.result?.error),item=el('li',null,'event '+(e.tool==='read_paper'?'read ':e.tool==='finalize'?'final ':'')+(failed?'failed':''));item.dataset.tool=e.tool;item.dataset.attempt=String(e.attempt??i+1);item.dataset.failed=String(failed);item.append(el('span',String(e.attempt??i+1),'event-dot'));const head=el('div',null,'event-head'),title=el('div',null,'event-title');title.append(document.createTextNode(labels[e.tool]||e.tool),el('span',failed?'执行失败':'已返回','event-state'));head.append(title,el('span',seconds(e.seconds),'event-time'));item.append(head,el('p',eventDescription(e)));if(e.tool==='read_paper'&&!failed)item.append(candidateJump(e.result?.doc_id||e.arguments?.doc_id));if(e.result?.papers?.length){const ul=el('ul',null,'event-candidates');for(const p of e.result.papers.slice(0,3)){const li=el('li');li.append(sourceLink(p.title||p.doc_id,p.source_url),candidateJump(p.doc_id));ul.append(li)}item.append(ul)}const d=el('details');d.append(el('summary','查看调用参数与原始返回'),el('p',e.tool));d.append(raw({arguments:e.arguments,result:e.result,seconds:e.seconds,attempt:e.attempt}));item.append(d);list.append(item)});if(!entries.length)$('timeline').replaceChildren(el('p','本条结果没有工具执行轨迹；不补造执行步骤。','notice'));else $('timeline').replaceChildren(list);if(!row.completed_protocol&&!row._in_progress)$('timeline').append(el('p',row.error||row.metadata?.error||'执行记录已返回，但未完成最终提交。已保留全部失败与预算记录。','notice'));
+ const meta=row.metadata||{},steps=(meta.steps||[]).filter(s=>s.step_number!==undefined),rejections=Object.fromEntries(Object.entries(meta).filter(([k])=>/reject|guard|interven|budget/.test(k)));$('proposals').hidden=!steps.length&&!Object.keys(rejections).length;$('proposal-list').replaceChildren();$('proposal-title').textContent=`模型工具提案与约束记录 · ${steps.length} 个已记录步骤`;
+ for(const s of steps){const n=el('details',null,'proposal');const names=(s.tool_calls||[]).map(t=>t.function?.name||t.name||'未命名工具').join(' / ');n.append(el('summary',`模型步骤 ${s.step_number} · ${names||'未记录工具提案'} · ${seconds(s.timing?.duration)}`));n.append(raw(Object.fromEntries(Object.entries(s).filter(([k])=>['step_number','timing','tool_calls','error','token_usage','is_final_answer'].includes(k)))));$('proposal-list').append(n)}if(Object.keys(rejections).length)$('proposal-list').append(details('约束与传输拒绝原始记录',rejections));
+}
+function renderAnswer(answer){PapertrailVisuals.citationChain($('citation-chain'),visualRow?{...visualRow,answer}:null,resultContext||{description:$('task-description').textContent},{call:jumpTimeline,paper:focusActual});$('answer').replaceChildren();if(!answer)return;const box=el('div',null,'answer-card');box.append(el('h3','最终提交 · 原始响应'),el('p',answer.answer||'此响应未提供答案正文。'));for(const citation of answer.citations||[]){const c=el('div',null,'citation');c.append(el('strong',citation.version_key||citation.doc_id),el('blockquote',citation.quote||'未提供原文摘录'),sourceLink('打开版本对应来源 ↗',citation.source_url),candidateJump(citation.doc_id));box.append(c)}box.append(el('p','提交与来源字段可核对；不代表已验证回答的语义正确性。','muted'));$('answer').append(box)}
+function followupUi(row){
+  const host=$('answer');if(!host)return;
+  const old=host.querySelector('.followup');if(old)old.remove();
+  if(!activeJobId||!row.completed_protocol)return;
+  const reads=(row.trace?.trace||[]).filter(e=>e.tool==='read_paper'&&!e.result?.error);
+  if(!reads.length)return;
+  const candidates=[];
+  for(const entry of reads){const result=entry.result;(result.quotes||[]).forEach((quote,index)=>candidates.push({doc:result.doc_id,index,text:quote.text,title:result.title}))}
+  const box=el('div',null,'followup');
+  box.append(el('strong','基于已读论文追问'),el('p','先点选 1–2 句作为依据，再提问；模型只根据选中的句子作答，不重新检索。','followup-note'));
+  const list=el('div',null,'followup-candidates');
+  const checked=new Set();
+  for(const candidate of candidates){
+    const label=el('label',null,'followup-candidate');
+    const checkbox=document.createElement('input');checkbox.type='checkbox';
+    checkbox.addEventListener('change',()=>{const key=candidate.doc+'/'+candidate.index;if(checkbox.checked){if(checked.size>=2){checkbox.checked=false;return}checked.add(key)}else{checked.delete(key)}});
+    label.append(checkbox,el('span','['+candidate.doc+'] '+candidate.text));
+    list.append(label);
+  }
+  if(!candidates.length)list.append(el('p','本次没有可用的原文句子（read_paper 未返回引文）。','muted'));
+  const input=el('textarea',null,'followup-input');input.rows=2;input.maxLength=500;input.placeholder='例如：这篇论文要解决什么问题？';
+  const button=el('button','追问');button.type='button';
+  const out=el('div',null,'followup-answer');
+  button.onclick=async()=>{
+    const question=input.value.trim();
+    if(!question){out.textContent='请先输入问题。';return}
+    if(!checked.size){out.textContent='请先点选至少一句作为依据。';return}
+    const picks=[...checked].map(key=>{const parts=key.split('/');return{doc_id:parts[0],quote_index:Number(parts[1])}});
+    button.disabled=true;out.textContent='正在根据选中的句子生成回答…';
+    try{
+      const created=await api('/lab/jobs/'+encodeURIComponent(activeJobId)+'/followup',{question,picks});
+      for(let i=0;i<80;i++){
+        await new Promise(resolve=>setTimeout(resolve,1500));
+        const state=await api('/lab/followups/'+encodeURIComponent(created.id));
+        if(state.status==='running')continue;
+        if(state.result&&state.result.complete){
+          out.replaceChildren(el('p',state.result.answer));
+          for(const citation of state.result.citations||[]){out.append(el('p','· ['+citation.doc_id+'] '+(citation.title||'')+' — '+(citation.quote||''),'followup-cite'))}
+        }else{out.textContent='追问失败：'+((state.result&&state.result.error)||state.error||'未知原因')+'。原结果保留。'}
+        break;
+      }
+    }catch(error){out.textContent='追问请求失败：'+error.message}
+    finally{button.disabled=false}
+  };
+  box.append(list,input,button,out);host.append(box);
+}
+function decisionReason(error){const match=/reason=([a-z_]+)/.exec(error||'');return match?match[1]:''}
+function renderDecisions(row){
+  const host=$('decisions');if(!host)return;
+  const snapshots=row.metadata?.constraint_snapshots||[],events=row.metadata?.proposal_events||[];
+  if(!snapshots.length&&!events.length){host.hidden=true;host.replaceChildren();return}
+  const cards=el('div',null,'decision-cards');
+  for(let i=0;i<Math.max(snapshots.length,events.length);i++){
+    const snapshot=snapshots[i]||{},event=events[i]||{},chosen=event.proposal?.name||'—';
+    const card=el('article',null,'decision-card');
+    const head=el('div',null,'decision-head');
+    head.append(el('span','第 '+(i+1)+' 步','decision-step'),el('strong',chosen,'decision-chosen'));
+    card.append(head);
+    const available=snapshot.legal_tools||[];
+    card.append(el('p','当时可用：'+(available.length?available.join(' / '):'无'),'decision-available'));
+    if(event.charged===false)card.append(el('p','被拒：'+(decisionReason(event.error)||'非法动作'),'decision-rejected'));
+    else if(event.proposal)card.append(el('p','已执行','decision-ok'));
+    cards.append(card);
+  }
+  host.replaceChildren(el('p','决策记录：每一步当时的可用动作，以及模型实际选了什么。','decision-note'),cards);
+  host.hidden=false;
+}
+function comparisonRows(){
+  const seen=new Map();
+  for(const row of currentResults){if(!seen.has(row.policy))seen.set(row.policy,row)}
+  return [...seen.values()];
+}
+function renderComparison(){
+  const host=$('comparison');if(!host)return;
+  const rows=comparisonRows();
+  if(currentResults.length<2||rows.length<2){host.hidden=true;host.replaceChildren();return}
+  const table=el('table',null,'comparison-table');
+  const head=el('tr');
+  for(const title of ['策略','协议完成','工具执行','被拒提案','模型调用','Token','耗时'])head.append(el('th',title));
+  const thead=el('thead');thead.append(head);table.append(thead);
+  const body=el('tbody');
+  for(const row of rows){
+    const usage=row.metadata?.llm_usage||{};
+    const rejected=(row.metadata?.proposal_events||[]).filter(e=>e.charged===false).length;
+    const tr=el('tr');
+    tr.append(el('td',policies[row.policy]||row.policy,'comparison-policy'));
+    tr.append(el('td',row.completed_protocol?'已提交':'未提交','comparison-state '+(row.completed_protocol?'ok':'bad')));
+    tr.append(el('td',String((row.trace?.trace||[]).length)));
+    tr.append(el('td',String(rejected),rejected?'comparison-rejected':''));
+    tr.append(el('td',String(usage.calls??(row.policy==='fixed'?0:'—'))));
+    tr.append(el('td',typeof usage.input_tokens==='number'?String(usage.input_tokens+usage.output_tokens):'—'));
+    tr.append(el('td',typeof row.seconds==='number'?row.seconds.toFixed(1)+'s':'—'));
+    body.append(tr);
+  }
+  table.append(body);
+  host.replaceChildren(el('p','同一任务的策略对比：固定流程不调用模型；未约束 Agent 可能提交非法动作并被拒；约束 Agent 只能提交合法动作。','decision-note'),table);
+  host.hidden=false;
+}
+function renderRun(){const row=currentResults[selectedRun];if(!row)return;const u=row.metadata?.llm_usage||{},entries=row.trace?.trace||[],failed=entries.filter(e=>e.result?.error).length;const tokens=typeof u.input_tokens==='number'&&typeof u.output_tokens==='number'?u.input_tokens+u.output_tokens:row.policy==='fixed'?0:'—';$('summary').replaceChildren(metric('协议状态',row.completed_protocol?'已提交':'未提交',policies[row.policy]||row.policy,row.completed_protocol?'success':'failed'),metric('执行耗时',typeof row.seconds==='number'?row.seconds.toFixed(2)+'s':'—','不含 worker 模型装载'),metric('模型 Token',typeof tokens==='number'?tokens.toLocaleString():'—',`${u.calls??(row.policy==='fixed'?0:'未记录')} 次模型调用`));$('execution-note').textContent=`${row.task_id} · 工具执行 ${entries.length} 次 / 失败 ${failed} 次 · 提案与实际执行分开记录`;renderTimeline(row);renderAnswer(row.answer);renderDecisions(row);renderComparison();scheduleActual(row,selectedRun);updateStages(row);diagnose(row);$('trace').textContent=JSON.stringify(row,null,2);decorateReasons(row);followupUi(row);window.PapertrailWorkspace?.result(row);for(const [i,b]of [...$('run-picker').children].entries())b.setAttribute('aria-pressed',String(i===selectedRun))}
+function display(value){currentResults=value.results||[];selectedRun=Math.min(selectedRun,Math.max(0,currentResults.length-1));$('run-count').textContent=`${currentResults.length} 次记录`;$('run-picker').hidden=currentResults.length<2;$('run-picker').replaceChildren();currentResults.forEach((r,i)=>{const b=el('button',`${r.task_id} / ${policies[r.policy]||r.policy}`);b.setAttribute('aria-pressed',String(i===selectedRun));b.onclick=()=>{selectedRun=i;livePinnedResult=phase==='running';renderRun();$('follow-live').hidden=!livePinnedResult};$('run-picker').append(b)});if(currentResults.length)renderRun()}
+// Execution lifecycle display: authoritative jobs and read-only recovery only.
+// Inserted into lab.js by prepare_execution.py, not served as a second script.
+let phase='idle',pendingJob=null,resultKind='历史真实记录',tasksReady=false,examplesReady=false;
+const phaseLabels={idle:'待执行',submitting:'正在提交',running:'执行中',complete:'执行完成',failed:'执行未完成',disconnected:'连接中断'};
+function rememberJob(value){pendingJob=value;try{if(value)sessionStorage.setItem('papertrail-lab-job',JSON.stringify(value));else sessionStorage.removeItem('papertrail-lab-job')}catch{}}
+function savedJob(){try{const v=JSON.parse(sessionStorage.getItem('papertrail-lab-job'));return v&&typeof v.started==='number'&&typeof v.task==='string'&&(!v.id||/^[a-f0-9-]{36}$/.test(v.id))?v:null}catch{return null}}
+function syncControls(){active=['submitting','running','disconnected'].includes(phase);for(const id of ['run','compare','task','policy'])$(id).disabled=active||!tasksReady;for(const id of ['recorded','example'])$(id).disabled=active||!examplesReady;$('algorithms').disabled=active||!tasksReady||$('ranks').getAttribute('aria-busy')==='true';if(customMode==='custom'){$('run').disabled=active||!customReady();$('compare').disabled=true}for(const id of ['mode-custom','mode-preset','custom-need','custom-intent','custom-profile','prepare-custom','custom-query','query-reviewed','conditions-reviewed'])$(id).disabled=active||((id==='custom-profile'||id==='prepare-custom')&&!customOptionsReady)||(id==='prepare-custom'&&customPreparing)||(id==='custom-query'&&customPlan?.intent==='recommend');$('run').dataset.state=phase;$('run').setAttribute('aria-busy',String(['submitting','running'].includes(phase)));$('run').textContent=phase==='submitting'?'正在提交…':phase==='running'?'任务执行中…':phase==='disconnected'?'等待连接恢复':phase==='complete'?'执行完成 · 再次执行':phase==='failed'?'重新执行任务':customMode==='custom'?'确认并执行需求 ↗':'执行当前任务 ↗'}
+function setPhase(value){phase=value;document.body.dataset.executionState=value;syncControls()}
+function feedback(title,detail,state=phaseLabels[phase]){$('diagnostic').hidden=false;$('feedback-state').textContent=state;$('feedback-title').textContent=title;$('feedback-detail').textContent=detail;$('diagnostic').dataset.state=/失败|未完成/.test(state)?'failed':phase;$('recover').hidden=phase!=='disconnected';$('inspect-raw').hidden=!currentResults.length;$('locate-error').hidden=!document.querySelector('.event.failed')}
+function updateStages(row){const events=row.trace?.trace||[],retrieval=events.filter(e=>['search_papers','recommend_papers'].includes(e.tool)),papers=new Set(retrieval.flatMap(e=>e.result?.papers||[]).map(p=>p.doc_id)),reads=events.filter(e=>e.tool==='read_paper'&&!e.result?.error),finals=events.filter(e=>e.tool==='finalize'&&!e.result?.error);const stages=[['召回',retrieval.length?`${retrieval.length} 次已记录调用`:'尚无返回',retrieval.length?'blue':''],['候选',papers.size?`${papers.size} 篇实际返回`:'尚无候选',papers.size?'blue':''],['原摘要',reads.length?`${reads.length} 篇已读取`:'尚无读取返回',reads.length?'amber':''],['提交',finals.length?`${finals.at(-1).result?.citations?.length??0} 条引用`:'尚无最终提交',finals.length?'violet':'']];$('execution-stages').replaceChildren(...stages.map(([name,text,color])=>{const n=el('div',null,'execution-stage '+color);n.append(el('strong',name),el('span',text));return n}))}
+function diagnose(row){const failed=(row.trace?.trace||[]).filter(e=>e.result?.error);if(row.completed_protocol){if(!active&&resultKind==='本次真实执行')feedback('任务已完成提交',`已保留 ${(row.trace?.trace||[]).length} 次工具调用与 ${row.answer?.citations?.length??0} 条引用。${failed.length?'其中包含失败尝试，可展开核查。':''}`);else if(!active)$('diagnostic').hidden=true;return}const last=failed.at(-1),tool=last?.tool||row.trace?.trace?.at(-1)?.tool;const names={search_papers:'搜索论文',recommend_papers:'个性化推荐',read_paper:'读取原摘要',finalize:'校验提交'};const exhausted=row.metadata?.framework_steps_exhausted;const reason=last?.result?.error||row.error||row.metadata?.error||(exhausted?`模型步数预算已耗尽（实际 ${row.metadata?.llm_usage?.calls??'—'} 次模型调用），未完成合法提交。`:'调度结束时没有完成最终提交。');const advice=/budget|attempt.*exhaust|预算.*耗尽/i.test(String(reason))?(resultContext?'本轮调用额度已用尽；请核对模型提案与拒绝记录，再决定是否修改需求后手动重试。':'本轮调用额度已用尽；请先核对重复调用，可选择固定流程参照再执行。'):/invalid|null|argument|type/i.test(String(reason))?'请展开参数检查类型、空值和工具约束，再决定是否重试。':'请核查实际工具提案与最终提交条件；页面不会代替 Agent 补交答案。';feedback(`${resultKind==='历史真实记录'?'历史记录':'本次结果'}：最终提交未完成`,`${tool?'最后相关步骤：'+(names[tool]||tool)+'。':''}${reasonCode(reason)?'【'+reasonInfo(reasonCode(reason)).label+'】':''}${reason} ${advice} 已取得的候选、工具记录及已有原文均保留。`,resultKind==='历史真实记录'?'历史失败记录':'未完成')}
+function retainPrevious(){if(!currentResults.length)return;$('previous-results').hidden=false;$('previous-title').textContent=`上一次结果已保留 · ${resultKind} · ${currentResults.length} 条`;$('previous-content').textContent=JSON.stringify({source:resultKind,task_context:resultContext,results:currentResults},null,2)}
+function clearAcceptedView(){activeJobId=null;window.PapertrailWorkspace?.reset();stopLive(true);retainPrevious();invalidateActual('等待本次任务的实际工具返回。');resultKind='本次真实执行';currentResults=[];selectedRun=0;$('source-mode').textContent=resultKind;$('summary').replaceChildren(el('div','等待本次真实作业结果…','empty'));$('answer').replaceChildren();$('timeline').replaceChildren(el('p','作业运行中。当前接口在单条任务结束后返回完整轨迹，实时事件会在工具返回后追加；尚未返回的步骤不展示推测结果。','notice'));$('execution-stages').replaceChildren();$('proposals').hidden=true;$('run-picker').hidden=true;$('run-count').textContent='0 次记录';$('trace').textContent='等待本次结果。';$('execution-note').textContent='工具返回后逐步追加真实事件；最终响应用于完整核对。'}
+function disconnected(message){stopLive();setPhase('disconnected');status(message,'error');feedback('连接中断，后台状态待确认','已取得的结果没有清除。重新连接只读取作业状态，不会重新启动模型；确认后台状态前，执行按钮保持锁定。')}
+async function pollJob(job){setActualSource({kind:'job',id:job.id});activeJobId=job.id;const deadline=Date.now()+900000;let signature='';setPhase('running');startLive(job.id);resultKind='本次真实执行';$('source-mode').textContent=resultKind;try{while(Date.now()<deadline){status(`真实作业运行中 · 已等待 ${Math.max(0,Math.floor((Date.now()-job.started)/1000))} 秒。工具结果经事件通道逐步到达。`,'running');const state=await api('/lab/jobs/'+encodeURIComponent(job.id));if(state.task_context)restoreCustomContext(state.task_context);if(state.result?.results?.length){const next=JSON.stringify(state.result);if(next!==signature){signature=next;display(state.result);renderLive()}}if(state.status!=='running'){const streamEnd=await feed.drained();stopLive();if(!streamEnd||streamEnd.observability_errors||feed.cursor!==streamEnd.last_event_id||[...feed.rows.values()].some(e=>e.kind==='observation_error')){$('live-status').textContent='最终响应已返回 · 实时事件未完整核对';$('live-status').dataset.state='error'}rememberJob(null);const failures=currentResults.filter(r=>!r.completed_protocol).length;setPhase(state.status==='complete'&&currentResults.length&&!failures?'complete':'failed');if(state.status==='failed'){status('执行器结束异常，已保留已完成结果。','error');feedback('执行器未正常完成',`${state.error||'检查本机 worker.log。'} 已保留 ${currentResults.length} 条已返回记录；可核查详情后手动重新执行。`)}else if(failures){status(`作业结束 · ${failures}/${currentResults.length} 条结果未完成提交。`,'error');diagnose(currentResults.find(r=>!r.completed_protocol));if(currentResults[selectedRun]?.completed_protocol)feedback('部分任务未完成提交',`${failures} 条未提交；可在结果选择器中逐条查看。其他已完成结果与引用均保留。`)}else{status('执行完成，结果、引用与成本均已保留。');diagnose(currentResults[selectedRun])}if(currentResults.length)renderRun();return}feedback('正在等待真实执行结果',`已返回 ${currentResults.length} 条完整任务记录；工具事件独立逐步到达，未返回部分不展示推测结果。关闭或刷新页面不会取消后台作业。`);await new Promise(r=>setTimeout(r,2000))}disconnected('网页等待超过15分钟，后台状态需要重新核对。')}catch(e){if(e.status===404){stopLive();rememberJob(null);setPhase('failed');status('服务未保留此作业，可能已重启；已有结果仍保留。','error');feedback('原作业无法继续查询','可核查已有结果和本地日志；如需再次尝试，请明确点击“重新执行任务”。')}else disconnected('作业状态读取中断：'+e.message)}}
+async function start(compare=false){if(active||!tasksReady||customMode==='custom'&&!customReady())return;const isCustom=customMode==='custom';if(isCustom&&compare)return;const request=isCustom?customRunBody():{task_id:$('task').value,policy:$('policy').value,compare};const context=isCustom?{...customPlan,executed_query:request.executed_query.trim(),reviewed:true,conditions_reviewed:true}:null;rememberJob({id:null,task:isCustom?'custom-'+customPlan.id:request.task_id,policy:request.policy,compare,kind:isCustom?'custom':'preset',planId:isCustom?customPlan.id:null,started:Date.now()});setPhase('submitting');status('正在提交作业，上一条结果暂时保留。','running');feedback('正在确认服务是否接收任务','收到作业编号后才切换到新结果；提交失败不会清除已有内容。');try{const job=await api(isCustom?'/lab/custom/run':'/lab/run',request);const saved={...pendingJob,id:job.id};rememberJob(saved);clearAcceptedView();showResultContext(context);await pollJob(saved)}catch(e){if(e.status&&e.status!==409){rememberJob(null);setPhase('failed');status('任务没有成功提交：'+e.message,'error');feedback('提交作业失败',`服务返回 HTTP ${e.status}。已有结果保持不变；请核查任务参数或本地服务，再手动重新执行。`)}else disconnected('提交状态无法确认：'+e.message)}}
+async function recover(){if(['running','submitting'].includes(phase))return;const saved=pendingJob||savedJob();if(!saved){setPhase('idle');return}$('recover').disabled=true;try{if(saved.id){setPhase('running');await pollJob(saved);return}const state=await api('/lab/activity');const match=state.jobs.filter(j=>j.task_id===saved.task&&j.policy===saved.policy&&j.compare===saved.compare&&j.accepted_at>=saved.started/1000-5).sort((a,b)=>b.accepted_at-a.accepted_at)[0];if(match){const found={...saved,id:match.id};rememberJob(found);clearAcceptedView();await pollJob(found)}else if(state.jobs.some(j=>j.status==='running')){disconnected('服务已有其他作业运行。可以稍后重新检查，未启动新作业。')}else{rememberJob(null);setPhase('failed');status('未发现本次提交的作业；没有自动重新执行。','error');feedback('服务中未找到匹配作业','已有结果保持不变。如需再次尝试，可手动点击“重新执行任务”。')}}catch(e){disconnected('仍无法确认后台状态：'+e.message)}finally{$('recover').disabled=false}}
+
+function table(headers,rows){const t=el('table'),head=el('thead'),tr=el('tr');for(const s of headers){const th=el('th',s);th.scope='col';tr.append(th)}head.append(tr);const body=el('tbody');for(const row of rows){const line=el('tr');for(const x of row)line.append(el('td',x));body.append(line)}t.append(head,body);return t}
+async function research(kind){const box=$('research-result');box.hidden=false;box.replaceChildren(el('p','正在读取记录…','muted'));try{const v=await api(kind==='quality'?'/lab/quality':'/lab/aggregates');if(kind==='quality'){box.replaceChildren(el('p','历史描述性 dev：49,533 条正反馈，3,587 位用户；目录外正反馈仍计漏召回。不是本次执行的新质量评价。','muted'),table(['方法','Recall@10','NDCG@10','MRR@10'],Object.entries(v.methods).map(([m,r])=>[methods[m]||m,fmt(r['recall@10'],6),fmt(r['ndcg@10'],6),fmt(r['mrr@10'],6)])),details('原始历史质量响应',v))}else box.replaceChildren(el('p','2026-11-11 · 三条复用受控任务 × 三种策略，同条件真实进程内对照；不代表独立泛化效果。','muted'),table(['策略','任务完成','失败执行','模型 Token','平均执行耗时'],Object.entries(v.methods).map(([m,r])=>[policies[m]||m,`${r.task_success}/${r.tasks}`,r.failed_attempts,(r.input_tokens+r.output_tokens).toLocaleString(),seconds(r.mean_seconds)])),details('聚合数据与原始记录哈希',v))}catch(e){box.replaceChildren(el('p','记录读取失败：'+e.message,'notice'))}}
+let livePinnedResult=false;
+const feed=new PapertrailEventFeed(()=>renderLive(),(state,value={})=>{const labels={connected:'实时通道已连接',reconnecting:'事件通道重连中 · 已有内容保留',finished:'事件接收完成',error:'事件通道异常 · 等待最终响应核查'};$('live-status').textContent=labels[state]||state;$('live-status').dataset.state=state;if(state==='finished')$('live-status').textContent=value.observability_errors?'事件写入异常 · 核查最终响应':`事件接收完成 · ${value.last_event_id} 条`;});
+function startLive(id){$('live-bar').hidden=false;livePinnedResult=false;feed.start(id);renderLive()}
+function stopLive(hide=false){feed.stop();if(hide){$('live-bar').hidden=true;$('live-current').hidden=true;$('live-rejections').hidden=true;$('follow-live').hidden=true;livePinnedResult=false}}
+function renderLive(){if(phase!=='running')return;const records=[...feed.rows.values()];$('live-bar').hidden=false;$('follow-live').hidden=!livePinnedResult;const latest=records.at(-1);if(!latest)return;const run=records.filter(e=>e.run_index!==undefined).at(-1);if(!run)return;const context=records.filter(e=>e.run_index===run.run_index),starts=context.filter(e=>e.kind==='run_started');const toolNames={search_papers:'搜索论文',recommend_papers:'个性化推荐',read_paper:'读取原摘要',finalize:'校验提交'};
+ const descriptions={job_started:'执行器已进入，正在初始化。',model_loading:'正在装载固定基础模型。',model_ready:'固定基础模型已装载。',run_started:'原生 Agent 已开始本条任务。',tool_requested:'已收到工具请求，等待校验与返回。',tool_returned:'已追加真实工具返回。',model_step:'原生模型步骤已结束，等待后续真实事件。',constraint_state:'合法动作状态已按原规则更新。',tool_rejected:'请求被拒绝，未新增原生执行轨迹。',run_completed:'本条任务已结束，等待最终响应。',job_finished:'执行器已完成，正在核对最终响应。',worker_failed:'执行器返回异常，等待最终状态确认。',observation_error:'部分观测未成功，等待最终响应核对。'};
+ $('live-current').hidden=false;$('live-current').textContent=`${run.task_id} / ${policies[run.policy]||run.policy} · 事件 #${feed.cursor} · ${descriptions[latest.kind]||latest.kind}`;
+ const rejections=context.filter(e=>e.kind==='tool_rejected');$('live-rejections').hidden=!rejections.length;$('rejection-list').replaceChildren(...rejections.map(e=>details(`${toolNames[e.payload.tool]||e.payload.tool} · 未新增工具执行`,e.payload)));
+ if(livePinnedResult)return;
+ const entries=context.filter(e=>e.kind==='tool_returned').map(e=>e.payload).sort((a,b)=>a.attempt-b.attempt),steps=context.filter(e=>e.kind==='model_step').map(e=>({step_number:e.payload.step_number,timing:{duration:e.payload.duration},tool_calls:e.payload.tool_calls,error:e.payload.error})),usage=context.filter(e=>e.kind==='model_step').at(-1)?.payload.usage;
+ const row={task_id:run.task_id,policy:run.policy,_in_progress:true,trace:{trace:entries},metadata:{steps}};
+ $('run-count').textContent=`任务 ${run.run_index+1} · ${entries.length} 次工具返回`;
+ $('execution-note').textContent=`${run.task_id} · 本次真实执行 · 工具事件逐步到达，最终结果尚待完整核对`;
+ $('summary').replaceChildren(metric('执行状态',starts.length?'执行中':'装载中',policies[run.policy]||run.policy),metric('已返回工具',String(entries.length),'失败 '+entries.filter(e=>e.result?.error).length+' 次'),metric('已记录 Token',usage?((usage.input_tokens||0)+(usage.output_tokens||0)).toLocaleString():run.policy==='fixed'?'0':'—','已完成模型步骤的实际用量'));
+ renderTimeline(row);scheduleActual(row,run.run_index);updateStages(row);
+ if(!entries.length)$('timeline').replaceChildren(el('p',latest.kind==='model_loading'?'正在装载模型；工具尚未返回。':'等待原生步骤与工具返回，不显示推测结果。','notice'));
+ const final=entries.filter(e=>e.tool==='finalize'&&!e.result?.error).at(-1);if(final)renderAnswer(final.result);
+ $('trace').textContent=JSON.stringify({source:'live_native_events',last_event_id:feed.cursor,events:context},null,2);
+}
+
+async function init(){setupMethods();await initCustom();$('run').onclick=()=>start();$('compare').onclick=()=>start(true);$('recorded').onclick=loadExample;$('algorithms').onclick=loadRanks;$('quality').onclick=()=>research('quality');$('aggregate').onclick=()=>research('aggregate');$('recover').onclick=recover;$('follow-live').onclick=()=>{livePinnedResult=false;renderLive()};$('locate-error').onclick=()=>{const n=document.querySelector('.event.failed');if(n){n.querySelector('details').open=true;n.scrollIntoView({block:'center',behavior:'instant'})}};$('inspect-raw').onclick=()=>{const n=$('trace').closest('details');n.open=true;n.scrollIntoView({block:'center',behavior:'instant'})};
+ try{const v=await api('/lab/presets');$('task').replaceChildren();for(const t of v.tasks){const o=el('option',`${intents[t.intent]||t.intent} · ${t.query||'冻结历史中的未读论文'}`);o.value=t.id;$('task').append(o)}if(!v.tasks.length)throw Error('未返回可执行任务');function change(){$('task-description').textContent=v.tasks.find(t=>t.id===$('task').value)?.instruction||'';if(customMode==='preset')invalidateCandidateContext('冻结任务已切换，等待本次实际工具返回。')}$('task').onchange=change;tasksReady=true;syncControls();change();status('已连接真实本地服务。候选由原生算法计算。')}catch(e){status('任务连接失败：'+e.message,'error');$('ranks').replaceChildren(el('p','请确认本地服务已启动，再刷新页面。','notice'))}
+ try{examples=await api('/lab/examples');$('example').replaceChildren();for(const x of examples.items){const o=el('option',x.label);o.value=x.id;$('example').append(o)}try{const more=await api('/lab/v72/retained');for(const x of more.items){const o=el('option',x.label+' · 历史回放');o.value='v71:'+x.id;$('example').append(o)}}catch{}examplesReady=!!examples.items.length;if(!examplesReady)$('example').append(el('option','未找到历史记录'));syncControls()}catch(e){$('example').replaceChildren(el('option','历史记录不可用'));$('execution-note').textContent='历史记录读取失败；可通过执行当前任务取得新轨迹。'}
+ const saved=savedJob();if(saved&&tasksReady){if(saved.kind!=='custom')setInputMode('preset');rememberJob(saved);if([...$('task').options].some(o=>o.value===saved.task)){$('task').value=saved.task;$('task').dispatchEvent(new Event('change'))}$('policy').value=saved.policy;clearAcceptedView();setPhase('disconnected');status('发现上次未确认的作业，正在只读查询状态。','running');await recover()}else if(examplesReady&&customMode==='preset')loadExample();
+}
+init();

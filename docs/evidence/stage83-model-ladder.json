@@ -1,0 +1,340 @@
+{
+  "scope": "stage83 model ladder: same harness and tasks, only the model differs",
+  "protocol": "stage83-model-ladder-v1",
+  "lower": {
+    "model": "Qwen2.5-0.5B-Instruct",
+    "runs": 8,
+    "completed": 0,
+    "causes": {
+      "max_steps": 8
+    },
+    "parse_errors": 24,
+    "tool_errors": 24,
+    "rejections": 14,
+    "rows": [
+      {
+        "task_id": "e73-search",
+        "policy": "constrained",
+        "completed_protocol": false,
+        "failure_cause": "max_steps",
+        "failure_kind_recorded": "",
+        "steps_recorded": 9,
+        "llm_calls": 8,
+        "input_tokens": 12884,
+        "output_tokens": 316,
+        "denied_calls": 0,
+        "charged_attempts": 1,
+        "charged_calls": "search_papers",
+        "state_rejections": 0,
+        "wire_sent": 1,
+        "longest_identical_repeat": 1,
+        "identical_repeat_after_rejection": false,
+        "first_bad_tool": "",
+        "first_bad_error": "",
+        "first_bad_cause": "other",
+        "last_legal_tools": "read_paper",
+        "attempts_remaining_at_end": 5,
+        "framework_steps_exhausted": true,
+        "seconds": 11.07,
+        "last_error_text": "Reached max steps.",
+        "error_text": "",
+        "run_index": 0,
+        "step_errors": {
+          "none": 2,
+          "AgentParsingError": 6,
+          "AgentMaxStepsError": 1
+        }
+      },
+      {
+        "task_id": "e73-recommend",
+        "policy": "constrained",
+        "completed_protocol": false,
+        "failure_cause": "max_steps",
+        "failure_kind_recorded": "",
+        "steps_recorded": 9,
+        "llm_calls": 8,
+        "input_tokens": 10148,
+        "output_tokens": 152,
+        "denied_calls": 0,
+        "charged_attempts": 0,
+        "charged_calls": "",
+        "state_rejections": 6,
+        "wire_sent": 0,
+        "longest_identical_repeat": 1,
+        "identical_repeat_after_rejection": false,
+        "first_bad_tool": "recommend_papers",
+        "first_bad_error": "reason=invalid_k action=recommend_papers k must be an integer 1..3, got 4; no automatic repair | attempts=0/6 rejected=1 retrieval=0/2 read=0/2 returned=0 read_ids=[] required=['recommend_papers']",
+        "first_bad_cause": "other",
+        "last_legal_tools": "recommend_papers",
+        "attempts_remaining_at_end": 6,
+        "framework_steps_exhausted": true,
+        "seconds": 5.83,
+        "last_error_text": "Reached max steps.",
+        "error_text": "",
+        "run_index": 1,
+        "step_errors": {
+          "none": 1,
+          "AgentToolCallError": 1,
+          "AgentToolExecutionError": 6,
+          "AgentMaxStepsError": 1
+        }
+      },
+      {
+        "task_id": "e73-mixed",
+        "policy": "constrained",
+        "completed_protocol": false,
+        "failure_cause": "max_steps",
+        "failure_kind_recorded": "",
+        "steps_recorded": 9,
+        "llm_calls": 8,
+        "input_tokens": 18686,
+        "output_tokens": 176,
+        "denied_calls": 0,
+        "charged_attempts": 2,
+        "charged_calls": "search_papers|recommend_papers",
+        "state_rejections": 0,
+        "wire_sent": 2,
+        "longest_identical_repeat": 6,
+        "identical_repeat_after_rejection": false,
+        "first_bad_tool": "",
+        "first_bad_error": "",
+        "first_bad_cause": "other",
+        "last_legal_tools": "read_paper",
+        "attempts_remaining_at_end": 4,
+        "framework_steps_exhausted": true,
+        "seconds": 11.44,
+        "last_error_text": "Reached max steps.",
+        "error_text": "",
+        "run_index": 2,
+        "step_errors": {
+          "none": 3,
+          "AgentToolExecutionError": 5,
+          "AgentMaxStepsError": 1
+        }
+      },
+      {
+        "task_id": "e73-empty",
+        "policy": "constrained",
+        "completed_protocol": false,
+        "failure_cause": "max_steps",
+        "failure_kind_recorded": "",
+        "steps_recorded": 9,
+        "llm_calls": 8,
+        "input_tokens": 10293,
+        "output_tokens": 257,
+        "denied_calls": 0,
+        "charged_attempts": 0,
+        "charged_calls": "",
+        "state_rejections": 1,
+        "wire_sent": 0,
+        "longest_identical_repeat": 1,
+        "identical_repeat_after_rejection": false,
+        "first_bad_tool": "search_papers",
+        "first_bad_error": "reason=invalid_k action=search_papers k must be an integer 1..3, got 73; no automatic repair | attempts=0/6 rejected=0 retrieval=0/2 read=0/2 returned=0 read_ids=[] required=['search_papers']",
+        "first_bad_cause": "other",
+        "last_legal_tools": "search_papers",
+        "attempts_remaining_at_end": 6,
+        "framework_steps_exhausted": true,
+        "seconds": 8.63,
+        "last_error_text": "Reached max steps.",
+        "error_text": "",
+        "run_index": 3,
+        "step_errors": {
+          "none": 1,
+          "AgentToolExecutionError": 1,
+          "AgentParsingError": 6,
+          "AgentMaxStepsError": 1
+        }
+      },
+      {
+        "task_id": "e73-search",
+        "policy": "constrained",
+        "completed_protocol": false,
+        "failure_cause": "max_steps",
+        "failure_kind_recorded": "",
+        "steps_recorded": 9,
+        "llm_calls": 8,
+        "input_tokens": 15445,
+        "output_tokens": 777,
+        "denied_calls": 0,
+        "charged_attempts": 1,
+        "charged_calls": "search_papers",
+        "state_rejections": 0,
+        "wire_sent": 1,
+        "longest_identical_repeat": 1,
+        "identical_repeat_after_rejection": false,
+        "first_bad_tool": "",
+        "first_bad_error": "",
+        "first_bad_cause": "other",
+        "last_legal_tools": "read_paper",
+        "attempts_remaining_at_end": 5,
+        "framework_steps_exhausted": true,
+        "seconds": 24.7,
+        "last_error_text": "Reached max steps.",
+        "error_text": "",
+        "run_index": 4,
+        "step_errors": {
+          "none": 2,
+          "AgentParsingError": 6,
+          "AgentMaxStepsError": 1
+        }
+      },
+      {
+        "task_id": "e73-recommend",
+        "policy": "constrained",
+        "completed_protocol": false,
+        "failure_cause": "max_steps",
+        "failure_kind_recorded": "",
+        "steps_recorded": 9,
+        "llm_calls": 8,
+        "input_tokens": 10148,
+        "output_tokens": 152,
+        "denied_calls": 0,
+        "charged_attempts": 0,
+        "charged_calls": "",
+        "state_rejections": 6,
+        "wire_sent": 0,
+        "longest_identical_repeat": 1,
+        "identical_repeat_after_rejection": false,
+        "first_bad_tool": "recommend_papers",
+        "first_bad_error": "reason=invalid_k action=recommend_papers k must be an integer 1..3, got 4; no automatic repair | attempts=0/6 rejected=1 retrieval=0/2 read=0/2 returned=0 read_ids=[] required=['recommend_papers']",
+        "first_bad_cause": "other",
+        "last_legal_tools": "recommend_papers",
+        "attempts_remaining_at_end": 6,
+        "framework_steps_exhausted": true,
+        "seconds": 6.04,
+        "last_error_text": "Reached max steps.",
+        "error_text": "",
+        "run_index": 5,
+        "step_errors": {
+          "none": 1,
+          "AgentToolCallError": 1,
+          "AgentToolExecutionError": 6,
+          "AgentMaxStepsError": 1
+        }
+      },
+      {
+        "task_id": "e73-mixed",
+        "policy": "constrained",
+        "completed_protocol": false,
+        "failure_cause": "max_steps",
+        "failure_kind_recorded": "",
+        "steps_recorded": 9,
+        "llm_calls": 8,
+        "input_tokens": 18686,
+        "output_tokens": 176,
+        "denied_calls": 0,
+        "charged_attempts": 2,
+        "charged_calls": "search_papers|recommend_papers",
+        "state_rejections": 0,
+        "wire_sent": 2,
+        "longest_identical_repeat": 6,
+        "identical_repeat_after_rejection": false,
+        "first_bad_tool": "",
+        "first_bad_error": "",
+        "first_bad_cause": "other",
+        "last_legal_tools": "read_paper",
+        "attempts_remaining_at_end": 4,
+        "framework_steps_exhausted": true,
+        "seconds": 34.64,
+        "last_error_text": "Reached max steps.",
+        "error_text": "",
+        "run_index": 6,
+        "step_errors": {
+          "none": 3,
+          "AgentToolExecutionError": 5,
+          "AgentMaxStepsError": 1
+        }
+      },
+      {
+        "task_id": "e73-empty",
+        "policy": "constrained",
+        "completed_protocol": false,
+        "failure_cause": "max_steps",
+        "failure_kind_recorded": "",
+        "steps_recorded": 9,
+        "llm_calls": 8,
+        "input_tokens": 10293,
+        "output_tokens": 257,
+        "denied_calls": 0,
+        "charged_attempts": 0,
+        "charged_calls": "",
+        "state_rejections": 1,
+        "wire_sent": 0,
+        "longest_identical_repeat": 1,
+        "identical_repeat_after_rejection": false,
+        "first_bad_tool": "search_papers",
+        "first_bad_error": "reason=invalid_k action=search_papers k must be an integer 1..3, got 73; no automatic repair | attempts=0/6 rejected=0 retrieval=0/2 read=0/2 returned=0 read_ids=[] required=['search_papers']",
+        "first_bad_cause": "other",
+        "last_legal_tools": "search_papers",
+        "attempts_remaining_at_end": 6,
+        "framework_steps_exhausted": true,
+        "seconds": 36.12,
+        "last_error_text": "Reached max steps.",
+        "error_text": "",
+        "run_index": 7,
+        "step_errors": {
+          "none": 1,
+          "AgentToolExecutionError": 1,
+          "AgentParsingError": 6,
+          "AgentMaxStepsError": 1
+        }
+      }
+    ]
+  },
+  "baseline": {
+    "model": "Qwen2.5-1.5B-Instruct",
+    "runs": 8,
+    "completed": 6,
+    "causes": {
+      "completed": 6,
+      "max_steps": 2
+    },
+    "parse_errors": 4,
+    "tool_errors": 7,
+    "rejections": 5
+  },
+  "by_task": {
+    "e73-search": {
+      "0.5B": {
+        "runs": 2,
+        "completed": 0
+      },
+      "1.5B": {
+        "runs": 2,
+        "completed": 2
+      }
+    },
+    "e73-recommend": {
+      "0.5B": {
+        "runs": 2,
+        "completed": 0
+      },
+      "1.5B": {
+        "runs": 2,
+        "completed": 2
+      }
+    },
+    "e73-mixed": {
+      "0.5B": {
+        "runs": 2,
+        "completed": 0
+      },
+      "1.5B": {
+        "runs": 2,
+        "completed": 2
+      }
+    },
+    "e73-empty": {
+      "0.5B": {
+        "runs": 2,
+        "completed": 0
+      },
+      "1.5B": {
+        "runs": 2,
+        "completed": 0
+      }
+    }
+  },
+  "note": "one lower ladder point; it cannot establish where a capacity threshold is"
+}

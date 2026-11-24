@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/m+0pTyAwETrHLUZXZCLMyRerm+U</id>
+  <title>arXiv Query: search_query=&amp;id_list=2504.18458v1,2506.00806v1,2511.16670v1,2610.15810v1,2610.25999v1&amp;start=0&amp;max_results=100</title>
+  <updated>2026-11-06T18:06:42Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=100&amp;id_list=2504.18458v1,2506.00806v1,2511.16670v1,2610.15810v1,2610.25999v1" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>100</opensearch:itemsPerPage>
+  <opensearch:totalResults>5</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2506.00806v1</id>
+    <title>Fast or Slow? Integrating Fast Intuition and Deliberate Thinking for Enhancing Visual Question Answering</title>
+    <updated>2025-06-01T03:15:29Z</updated>
+    <link href="https://arxiv.org/abs/2506.00806v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2506.00806v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Multimodal large language models (MLLMs) still struggle with complex reasoning tasks in Visual Question Answering (VQA). While current methods have advanced by incorporating visual prompts, our study uncovers critical limitations: these approaches indiscriminately annotate all detected objects for every visual question, generating excessive visual markers that degrade task performance. This issue stems primarily from a lack of focus on key visual elements, raising two important questions: Are all objects equally important, and do all questions require visual prompts? Motivated by Dual Process Theory, which distinguishes between instinctive and deliberate cognitive modes in human reasoning, we propose FOCUS, a plug-and-play approach that dynamically adapts to the complexity of questions, combining fast intuitive judgments with deliberate analytical reasoning to enhance the vision-language reasoning capability of the MLLM. For straightforward questions, FOCUS supports efficient zero-shot reasoning. For more complex tasks, it employs the conceptualizing before observation strategy to highlight critical elements. Extensive experiments on four benchmarks, ScienceQA, TextQA, VizWiz, and MME, demonstrate that FOCUS consistently improves the performance of both open-source and black-box MLLMs, achieving significant gains across all datasets. Ablation studies further validate the importance of combining diverse cognitive strategies with refined visual information for superior performance. Code will be released.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-06-01T03:15:29Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Songtao Jiang</name>
+    </author>
+    <author>
+      <name>Chenyi Zhou</name>
+    </author>
+    <author>
+      <name>Yan Zhang</name>
+    </author>
+    <author>
+      <name>Yeying Jin</name>
+    </author>
+    <author>
+      <name>Zuozhu Liu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.15810v1</id>
+    <title>Adaptive Look, Flexible Thought: Learning How and How Long to Think in Multimodal Reasoning</title>
+    <updated>2026-10-11T17:57:17Z</updated>
+    <link href="https://arxiv.org/abs/2610.15810v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.15810v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The introduction of long chain-of-thought (CoT) reasoning and external tools has substantially improved the performance of multimodal large language models (MLLMs) on general and reasoning tasks. However, existing fast-slow reasoning paradigms mainly regulate textual reasoning length, while visual computation introduced by external tools or visual tokens is often treated as an auxiliary component. This separation prevents MLLMs from jointly optimizing visual perception and textual reasoning. To address this issue, we propose L2T (adaptive Look, flexible Thought), a unified reasoning framework that jointly optimizes the form and depth of computation. L2T first discretizes tool-produced visual states into visual tokens, bringing visual perception and textual reasoning into a shared autoregressive space. Based on this unified representation, L2T introduces a modality-aware routing reward to select appropriate reasoning modes and a difficulty-aware fast-slow strategy to adapt reasoning depth according to task complexity. Experiments on general perception and reasoning-intensive tasks demonstrate the effectiveness of L2T. Compared with explicit tool-calling approaches, L2T maintains competitive performance while achieving 1.7--3.6 times higher throughput.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-11T17:57:17Z</published>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Quanlin Chen</name>
+    </author>
+    <author>
+      <name>Xiuwei Chen</name>
+    </author>
+    <author>
+      <name>Kun Xiang</name>
+    </author>
+    <author>
+      <name>Zehua Ma</name>
+    </author>
+    <author>
+      <name>Chunjin Ye</name>
+    </author>
+    <author>
+      <name>Boqiang Guo</name>
+    </author>
+    <author>
+      <name>Xianming Liu</name>
+    </author>
+    <author>
+      <name>Xiaodan Liang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2504.18458v1</id>
+    <title>Fast-Slow Thinking for Large Vision-Language Model Reasoning</title>
+    <updated>2025-04-25T16:11:23Z</updated>
+    <link href="https://arxiv.org/abs/2504.18458v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2504.18458v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recent advances in large vision-language models (LVLMs) have revealed an \textit{overthinking} phenomenon, where models generate verbose reasoning across all tasks regardless of questions. To address this issue, we present \textbf{FAST}, a novel \textbf{Fa}st-\textbf{S}low \textbf{T}hinking framework that dynamically adapts reasoning depth based on question characteristics. Through empirical analysis, we establish the feasibility of fast-slow thinking in LVLMs by investigating how response length and data distribution affect performance. We develop FAST-GRPO with three components: model-based metrics for question characterization, an adaptive thinking reward mechanism, and difficulty-aware KL regularization. Experiments across seven reasoning benchmarks demonstrate that FAST achieves state-of-the-art accuracy with over 10\% relative improvement compared to the base model, while reducing token usage by 32.7-67.3\% compared to previous slow-thinking approaches, effectively balancing reasoning length and accuracy.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-04-25T16:11:23Z</published>
+    <arxiv:comment>16 pages, 5 figures, and 12 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Wenyi Xiao</name>
+    </author>
+    <author>
+      <name>Leilei Gan</name>
+    </author>
+    <author>
+      <name>Weilong Dai</name>
+    </author>
+    <author>
+      <name>Wanggui He</name>
+    </author>
+    <author>
+      <name>Ziwei Huang</name>
+    </author>
+    <author>
+      <name>Haoyuan Li</name>
+    </author>
+    <author>
+      <name>Fangxun Shu</name>
+    </author>
+    <author>
+      <name>Zhelun Yu</name>
+    </author>
+    <author>
+      <name>Peng Zhang</name>
+    </author>
+    <author>
+      <name>Hao Jiang</name>
+    </author>
+    <author>
+      <name>Fei Wu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2511.16670v1</id>
+    <title>Learning to Think Fast and Slow for Visual Language Models</title>
+    <updated>2025-11-20T18:59:48Z</updated>
+    <link href="https://arxiv.org/abs/2511.16670v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2511.16670v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>When confronted with complex problems, we tend to think slowly; conversely, for simple questions, we think quickly. Such a two-system thinking mechanism allows us to efficiently allocate cognitive resources, enabling quick decision-making for straightforward issues while reserving deeper analytical thinking for more intricate challenges. However, existing reasoning-oriented visual language models (VLMs), whether trained with explicit chain-of-thought annotations or rule-based RL rewards, mainly pursue lengthy, detailed reasoning chains, which often lead to excessive computational costs. In this work, we propose a simple RL approach, which enables VLMs to automatically switch between fast and slow thinking modes depending on task difficulty. The approach consists of two stages: in the first stage, we label data as either requiring fast thinking or slow thinking based on the model output length, which is inspired by the observation that pre-trained VLMs typically produce answers of varying lengths for different types of questions; in the second stage, we train the model using GRPO along with the thinking mode labels to develop dual-mode thinking. Despite its simplicity, our model, named DualMindVLM, significantly outperforms the base model and achieves performance on par with state-of-the-art visual reasoning models, while maintaining exceptionally high token efficiency.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-11-20T18:59:48Z</published>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Chenyu Lin</name>
+    </author>
+    <author>
+      <name>Cheng Chi</name>
+    </author>
+    <author>
+      <name>Jinlin Wu</name>
+    </author>
+    <author>
+      <name>Sharon Li</name>
+    </author>
+    <author>
+      <name>Kaiyang Zhou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.25999v1</id>
+    <title>TempoMoE: Identifying and Steering Fast-Slow Thinking Experts for Efficient Multimodal Reasoning</title>
+    <updated>2026-10-19T08:22:28Z</updated>
+    <link href="https://arxiv.org/abs/2610.25999v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2610.25999v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Multimodal Mixture-of-Experts (MoE) reasoning models rely on long chain-of-thought (CoT) for complex tasks, yet often overthink easy inputs, increasing token cost and latency, and sometimes degrading accuracy. Existing methods optimize reasoning length during training or impose external control at inference, but leave the underlying reasoning mechanism a black box. We find that fast and slow thinking exhibit distinct expert-routing patterns: holding the input fixed and varying only the prompted reasoning tempo produces stable routing shifts. Suppressing slow-thinking experts shortens the reasoning chain, whereas suppressing fast-thinking experts lengthens it, providing causal evidence that these experts influence reasoning depth. Based on this finding, we propose TempoMoE, a training-free, two-stage framework. It identifies fast- and slow-thinking experts via tempo-contrastive routing analysis and redistributes routing weights within the original top-k set according to sample difficulty. It amplifies fast-thinking experts and suppresses slow-thinking experts on easy inputs and reverses this adjustment on hard ones, enabling difficulty-adaptive control over reasoning depth. We evaluate TempoMoE on Kimi-VL, Qwen3-VL, and ERNIE-4.5-VL across six benchmarks. Compared with Vanilla, TempoMoE consistently improves accuracy while reducing output tokens, with accuracy gains of up to 2.6 points and token reductions of up to 35.4%.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-10-19T08:22:28Z</published>
+    <arxiv:comment>11 pages, 3 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Xiyue Zhang</name>
+    </author>
+    <author>
+      <name>Keru Zhou</name>
+    </author>
+    <author>
+      <name>Ziyi Wang</name>
+    </author>
+    <author>
+      <name>Bing Hu</name>
+    </author>
+    <author>
+      <name>Li Wang</name>
+    </author>
+  </entry>
+</feed>

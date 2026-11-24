@@ -1,0 +1,60 @@
+/* Shared across all current Papertrail entries. Neutral page surfaces stay intact.
+   Color belongs to graphics, data categories, progress and explicit user states. */
+:root{--graphic-blue:#3979d9;--graphic-blue-dark:#28559c;--graphic-violet:#8762c5;--graphic-violet-dark:#644291;--graphic-amber:#d58a30;--graphic-amber-dark:#965819;--graphic-coral:#ce6657;--graphic-error:#ae453d;--graphic-blue-soft:#edf3ff;--graphic-violet-soft:#f3edfc;--graphic-amber-soft:#fff3e1;--graphic-error-soft:#fcf0ee}
+
+/* Home: the existing orbit / paper sculpture, recolored by material and role. */
+.orbit-scene #orb stop:nth-of-type(1){stop-color:#92bcff}.orbit-scene #orb stop:nth-of-type(2){stop-color:#4b82e9}.orbit-scene #orb stop:nth-of-type(3){stop-color:#294eaa}
+.orbit-scene #sheet stop:last-of-type{stop-color:#e5edfd}.orbit-scene #glass stop:first-of-type{stop-color:#b3c6f4}.orbit-scene #glass stop:last-of-type{stop-color:#8d75c7}
+.orbit-scene>circle:first-of-type{fill:#eaf0fc}.orbit-scene>circle[stroke-dasharray]{stroke:#c4cee6}.orbit-scene>ellipse[stroke]{stroke:#9aadd6}
+.orbit-scene .hero-pages>path[fill="#cecece"]{fill:#b0c2e6}.orbit-scene .hero-pages>path[fill="#e3e3e3"]{fill:#d9e4fa}.orbit-scene .hero-pages>path[stroke="#d0d0d0"]{stroke:#9bafd2}
+.orbit-scene .hero-pages>path[fill="url(#orb)"]{stroke:#5e82c7}.orbit-scene .hero-pages>path[stroke="#d9d9d9"]{stroke:#c2d8ff;stroke-opacity:.8}
+.orbit-scene .hero-pages>path[fill="#e5e5e5"]{fill:#edf4ff}.orbit-scene .hero-pages>path[stroke="#353535"]{stroke:#2d57a5}
+.orbit-scene>path[stroke="#b9b9b9"]{stroke:#a1a7cf}.orbit-scene>circle[fill="#1e1e1e"]{fill:#e69b46}.orbit-scene>circle[fill="#e5e5e5"]{fill:#c9b6ed;stroke:#a68bce}.orbit-scene>circle[fill="#888888"]{fill:#d76e60}
+.orbit-scene>circle[fill="#898989"]{fill:var(--graphic-blue)}.orbit-scene>path[stroke="#979797"]{stroke:#9c9fbd}
+
+/* Topic illustrations retain paper/ink; colored chips, heart and bars carry focus. */
+.index-sculpture #gallery-blue stop:nth-of-type(1){stop-color:#9ad6ff}.index-sculpture #gallery-blue stop:nth-of-type(2){stop-color:#4c94ff}.index-sculpture #gallery-blue stop:nth-of-type(3){stop-color:#2d58c9}
+.index-sculpture #gallery-halo stop:first-of-type{stop-color:#5379b4}.index-sculpture #gallery-glass stop:first-of-type{stop-color:#a8bbdf}.index-sculpture #gallery-glass stop:last-of-type{stop-color:#8c84bf}
+.index-sculpture .sculpture-id rect{fill:#bfddff}.index-sculpture .sculpture-chip path[fill="url(#gallery-blue)"]{stroke:#baddff}
+.interest-sculpture #interest-paper stop:last-of-type{stop-color:#e8e2f4}.interest-sculpture .interest-back{stroke:#c0a8d9}.interest-sculpture .interest-heart path{fill:#cf7751}.interest-sculpture .interest-heart circle{fill:#ffebd7;stroke:#e8b782}
+.evaluation-sculpture #eval-bar stop:first-of-type{stop-color:#aaa4ff}.evaluation-sculpture #eval-bar stop:last-of-type{stop-color:#6b61c6}
+
+/* Historical evidence diagrams and actual numeric charts; values/geometry unchanged. */
+.evidence-art .art-dot{fill:#bac9df}.evidence-art .art-path{stroke:var(--graphic-blue)}.evidence-art .art-guide{stroke:#c5c8d3}.evidence-art .art-marker{fill:var(--graphic-amber)}
+.evidence-art>g:nth-of-type(1) .art-node{fill:#eaf1ff;stroke:#4f7fc5}.evidence-art>g:nth-of-type(2) .art-node{fill:#f2eafc;stroke:#8a6ab7}.evidence-art>g:nth-of-type(3) .art-node{fill:#fff0da;stroke:#cb8a3b}
+.evidence-art .art-number{fill:#3a4d69}.quality-chart .chart-bar{fill:#9981cb}.quality-chart .chart-bar.retained{fill:#4b80d3}
+.evidence-status>span{background:#5a80bf}
+
+/* MiniOneRec concept flow; colors identify history, model, SID positions and item. */
+.project-chain>path{stroke:#a398c4}.project-chain>rect:nth-of-type(1){fill:#3667b3;stroke:#7399cf}.project-chain>rect:nth-of-type(2){fill:#7b5db0;stroke:#b49bd9;stroke-width:1}.project-chain>rect:nth-of-type(3){fill:#ad722e;stroke:#deb47d}
+.project-chain>text:not(.chain-small){fill:#fff}.project-chain>text.chain-small{fill:#dde8fc!important}.project-chain>text.chain-small:last-child{fill:#b8b4cc!important}
+.project-chain>g:nth-of-type(1)>rect:nth-child(1){fill:#4280d1}.project-chain>g:nth-of-type(1)>rect:nth-child(2){fill:#9671c8}.project-chain>g:nth-of-type(1)>rect:nth-child(3){fill:#c88c3b}.project-chain>g:nth-of-type(2){fill:#fff}
+.project-chain>rect[fill="#e5e5e5"],.project-chain>g[fill="#e5e5e5"]>rect{stroke:#fff;stroke-width:2;filter:drop-shadow(0 0 4px #ffffff30)}
+
+/* SID: the same layer has the same color in tokens and occupancy bars. */
+.sid-tokens code:nth-child(1){background:var(--graphic-blue-soft);border-color:#b8cef0;color:#315c9a}.sid-tokens code:nth-child(2){background:var(--graphic-violet-soft);border-color:#cfbce5;color:#745398}.sid-tokens code:nth-child(3){background:var(--graphic-amber-soft);border-color:#e9c594;color:#9a651f}
+.sid-tokens .identity-token{background:#f5f5f5;border-color:#c4c4c4;color:#686868}.sid-book-grid>article:nth-child(1) .sid-bars i{background:#6596df;border-color:#5283cf}.sid-book-grid>article:nth-child(2) .sid-bars i{background:#a285ce;border-color:#8b6aba}.sid-book-grid>article:nth-child(3) .sid-bars i{background:#d9a455;border-color:#c58d3b}
+.sid-mini-chain strong{background:#dce9ff;color:#294f8d}.sid-mini-chain span:first-child{border-color:#7999cc;color:#c1d5f4}.sid-mini-chain span:last-child{border-color:#aa88cb;color:#d9c9ed}
+
+/* Reading / search feedback is colored only when there is a real state. */
+.studio .query-hit,.studio.is-work .paper-card .query-hit,.studio .abstract .query-hit,.query-hit{background:#fff0c8;color:#564311}
+.empty-pages>span{background:#e7effd;border-color:#bdcde7;color:#5a82bd}.empty-pages>span:nth-child(2){background:#eee8f7;border-color:#cfc0e1}.empty-pages>span:last-child{background:#fff;border-color:#c5d5ec;color:#537fbe;box-shadow:0 8px 24px #476aa21a}.empty-state>svg{stroke:#6e92c5}.mini-orbits{color:#ad9acc}.topic-art{color:#628bd0}.explore-cold .topic-art{color:#9a79c4}.explore-bias .topic-art{color:#c79450}
+.reading-status.state-reading{background:#fff2df;border-color:#e2bb83;color:#925d1b}.reading-status.state-read{background:#eaf1fc;border-color:#b2c9e7;color:#356197}
+.studio button[aria-pressed="true"].favorite-button,.studio .feedback-button.active{color:#8860b7;border-color:#cab3e0;background:#f3edfb}
+.studio .paper-preferences .pref-like.on{color:#8655b1;border-color:#cbb3df;background:#f3edfb}.studio .paper-preferences .pref-hide.on{color:#a05e3d;border-color:#e4c0aa;background:#fcf0e7}.personal-notice.failure{color:#a14637;border-color:#e3b4ab;background:#fcf0ed}
+.backup-dialog .backup-error{background:#fcf0ed;color:#a34537;border-color:#e0b1a9}.backup-dialog .backup-success{background:#edf3fd;color:#355f99;border-color:#b4c9e8}
+.online-paper.selected .online-source,.online-source{color:#426ca7}.studio .evidence-dot{background:#7296ce}.studio .step-dot{border-color:#bccbe3;background:#eff4fd;color:#5274a6}
+
+/* Agent and evaluation: use the same palette as the main site, keep chart scales. */
+.evidence-visual{--v-blue:#3979d9;--v-purple:#8762c5;--v-amber:#c8842e}
+.flow-node.search rect{fill:#e9f1ff;stroke:#9fbee9}.flow-node.recommend rect{fill:#f0e9fa;stroke:#c3a9df}.flow-node.read rect{fill:#fff0da;stroke:#ddae6c}.flow-node.cited rect{fill:#496aab;stroke:#3a5a97}
+.flow-link.search{stroke:#4c87e1;opacity:.7}.flow-link.recommend{stroke:#9870cf;opacity:.7}.flow-link.read{stroke:#cc8c3b;opacity:.7}.flow-link.cited{stroke:#6489c6;opacity:.75}
+.outcome.pass{background:#eaf1fe!important;border-color:#a8c0e6!important;color:#305e9f!important}.outcome.fail{background:#fcf0ec!important;border-color:#dfb4aa!important;color:#a14635!important}
+.cost-bar.fixed{background:#5284ca}.cost-bar.llm_agent{background:#d07b58}.cost-bar.constrained{background:#8e6abd}
+.chain-pass{background:#e9f0fc;color:#355f9f}.chain-warning{background:#fff0da;color:#966021}.chain-steps blockquote{border-left-color:#7595d0!important}
+.lab-root .event.failed .event-dot{background:#fcf0ec;color:#a14635;border-color:#d9aaa1}.lab-root .event.read .event-dot{background:#fff0da;color:#9c6b26;border-color:#e0bc86}.lab-root .event.final .event-dot{background:#f0e9fa;color:#765298;border-color:#c9b2df}
+.lab-root .pill.read{background:#fff0da;color:#996322}.lab-root .pill.cited{background:#f0e9fa;color:#765298}.lab-root .actual-flags .pill.up{background:#e9f1ff;color:#3f69a7}
+.lab-root .method-tabs button[aria-pressed="true"]{border-color:#9bb8e2;background:#edf3fd;color:#325f9f}
+
+/* Focus is visible, but the body, rail, cards, primary buttons and text stay neutral. */
+:focus-visible{outline-color:#668dd0}::selection{background:#dce8fc;color:#264e8c}

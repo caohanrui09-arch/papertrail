@@ -1,0 +1,158 @@
+﻿{
+    "status":  "passed_with_negative_result",
+    "date":  "2026-11-22",
+    "stage":  82,
+    "scope":  "B: rejected proposals do not consume the six-action budget",
+    "protocol":  "stage82-b-free-rejections-v2",
+    "protocol_sha256":  "1105f244c3ab692784bbb107f6a13babe92ea65978e59dd26281a6b308a0061c",
+    "amendment_sha256":  "3570c94db1a4748579da03f3fc0a2eb8d91822e0be24046e8711d01bf9e93b19",
+    "pre_change_module_sha256":  "bb5a6f30ae719a481378f47053baf341eb5d6e035ddc16da5fba0044ad89f4ed",
+    "final_module_sha256":  "7c4fe9b8aad6ba917cdad4730d395bda8a71f55a7c7357493c590146c5073918",
+    "final_custom_prompt_sha256":  "cf6506b67cb31e2dcae2b01edb138368f7720a81bb73e138de6ac8b999810f55",
+    "final_unified_prompt_sha256":  "19daf9407928cd71f9ee70cb02bbb642f7ea2cdb8496658f375c49e166a4e055",
+    "decision_logic_changed":  false,
+    "budget_semantics_changed":  true,
+    "tests":  {
+                  "ledger":  7,
+                  "messages":  11,
+                  "state":  8,
+                  "unified_and_schema":  9,
+                  "total":  35,
+                  "all_passed":  true
+              },
+    "ablation":  {
+                     "state_fields_added":  "4/8 batch with e73-recommend 0/2",
+                     "state_fields_removed":  "2/2 e73-recommend",
+                     "files":  [
+                                   "data/stage82-ablation/result.json",
+                                   "reports/stage82/batch-summary-state-fields.json"
+                               ],
+                     "conclusion":  "two informational JSON fields in the state string deterministically derailed the 1.5B model; fields removed"
+                 },
+    "batch":  {
+                  "runs":  8,
+                  "completed":  6,
+                  "failed":  2,
+                  "terminal_causes":  {
+                                          "completed":  6,
+                                          "max_steps":  2
+                                      },
+                  "input_tokens":  70266,
+                  "output_tokens":  1644,
+                  "rows":  [
+                               {
+                                   "run":  0,
+                                   "task":  "e73-search",
+                                   "completed":  true,
+                                   "charged":  3,
+                                   "rejections":  0,
+                                   "steps":  4,
+                                   "calls":  3,
+                                   "seconds":  6.07,
+                                   "cause":  "completed"
+                               },
+                               {
+                                   "run":  1,
+                                   "task":  "e73-recommend",
+                                   "completed":  true,
+                                   "charged":  3,
+                                   "rejections":  0,
+                                   "steps":  6,
+                                   "calls":  5,
+                                   "seconds":  8.11,
+                                   "cause":  "completed"
+                               },
+                               {
+                                   "run":  2,
+                                   "task":  "e73-mixed",
+                                   "completed":  true,
+                                   "charged":  5,
+                                   "rejections":  0,
+                                   "steps":  6,
+                                   "calls":  5,
+                                   "seconds":  10.97,
+                                   "cause":  "completed"
+                               },
+                               {
+                                   "run":  3,
+                                   "task":  "e73-empty",
+                                   "completed":  false,
+                                   "charged":  1,
+                                   "rejections":  3,
+                                   "steps":  9,
+                                   "calls":  8,
+                                   "seconds":  17.15,
+                                   "cause":  "max_steps"
+                               },
+                               {
+                                   "run":  4,
+                                   "task":  "e73-search",
+                                   "completed":  true,
+                                   "charged":  3,
+                                   "rejections":  0,
+                                   "steps":  4,
+                                   "calls":  3,
+                                   "seconds":  6.44,
+                                   "cause":  "completed"
+                               },
+                               {
+                                   "run":  5,
+                                   "task":  "e73-recommend",
+                                   "completed":  true,
+                                   "charged":  3,
+                                   "rejections":  0,
+                                   "steps":  6,
+                                   "calls":  5,
+                                   "seconds":  9.27,
+                                   "cause":  "completed"
+                               },
+                               {
+                                   "run":  6,
+                                   "task":  "e73-mixed",
+                                   "completed":  true,
+                                   "charged":  5,
+                                   "rejections":  0,
+                                   "steps":  6,
+                                   "calls":  5,
+                                   "seconds":  12.06,
+                                   "cause":  "completed"
+                               },
+                               {
+                                   "run":  7,
+                                   "task":  "e73-empty",
+                                   "completed":  false,
+                                   "charged":  1,
+                                   "rejections":  2,
+                                   "steps":  9,
+                                   "calls":  8,
+                                   "seconds":  23.84,
+                                   "cause":  "max_steps"
+                               }
+                           ]
+              },
+    "stop_rule":  {
+                      "declared":  "if e73-empty still fails and terminates by max_steps rather than budget_exhausted, the six-action budget is not binding",
+                      "triggered":  true,
+                      "evidence":  "both empty runs charged=1/6, max_steps"
+                  },
+    "budget_exhausted_failures":  0,
+    "conclusion":  "budget is not the binding constraint; failure is model capability (fabricated IDs, format compliance, termination)",
+    "next_recommended":  "model capability comparison under the same protocol",
+    "new_model_runs":  18,
+    "new_training":  false,
+    "catalog_expansion":  false,
+    "human_relevance_labels":  0,
+    "quality_scores":  null,
+    "files":  {
+                  "docs\\AGENT_BUDGET_V82.md":  "fd68aa143497e21c4168f04d9783c2d6e042b44359d64deba38995f1762635ba",
+                  "reports\\stage82\\protocol.json":  "1105f244c3ab692784bbb107f6a13babe92ea65978e59dd26281a6b308a0061c",
+                  "reports\\stage82\\protocol-amendment-1.json":  "3570c94db1a4748579da03f3fc0a2eb8d91822e0be24046e8711d01bf9e93b19",
+                  "reports\\stage82\\batch-summary.json":  "77afdf0aa2bcf21a71417bfe9bfcfddd5f8493189515337349282c8e40d1ae7a",
+                  "reports\\stage82\\batch-summary-state-fields.json":  "87b79ece3382c0ebb9c77edc37495f1a620370de476ce25ef726d4852cc1fffa",
+                  "tests\\test_rejection_allowance.py":  "a97b312f862006ffb02a5784648c6be6a69fa1941e7b64f81174e2dc99497597",
+                  "data\\stage82-batch\\result.json":  "2f66eca7584419e4e5c188ffdec55cdca5dc85d6a9ef220d463bd5ea2eb7688c",
+                  "data\\stage82-batch\\result-state-fields.json":  "175b485249c9e92a00eebad87f4d6d81e6c3293a2642f80aed2b06f5f6da74d5",
+                  "data\\stage82-ablation\\result.json":  "83bb86fefec8863140330eef15d4c51ee39521f549a9b0c3fb1b21d437fec5ce",
+                  "gsearch\\state_constraints.py":  "7c4fe9b8aad6ba917cdad4730d395bda8a71f55a7c7357493c590146c5073918"
+              }
+}

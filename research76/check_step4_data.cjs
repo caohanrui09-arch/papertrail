@@ -1,0 +1,20 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+const box={window:{},crypto:crypto.webcrypto,TextEncoder,URL,Date};vm.runInNewContext(fs.readFileSync('research76/task-report.js','utf8'),box);const R=box.window.PapertrailTaskReport;
+const read=p=>JSON.parse(fs.readFileSync(p,'utf8')),normal=x=>JSON.parse(JSON.stringify(x)),rows=read('reports/stage74/example-rows.json'),actual=read('reports/stage74/actual-fixed.json'),checks=[];
+function check(n,v){assert.ok(v,n);checks.push(n)}function rejects(n,fn){assert.throws(fn);checks.push(n)}
+(async()=>{
+const fixed=await R.pack({row:rows.fixed,actual,context:{original_need:'Find and cite actual papers.'}},'2026-11-17T00:00:00Z'),p=normal(fixed.envelope.payload);
+assert.deepEqual(p.execution.trace.trace,rows.fixed.trace.trace);checks.push('all_actual_tool_arguments_results_and_failures_preserved');check('fixed_cost_is_real_zero_and_seconds_exact',p.cost.model_calls===0&&p.cost.input_tokens===0&&p.cost.execution_seconds===rows.fixed.seconds);
+check('two_quotes_exact_versions_and_links',p.execution.answer.citations.length===2&&p.accepted_answer_source_checks.every(c=>c.passed)&&p.execution.answer.citations[0].quote===rows.fixed.answer.citations[0].quote);
+check('json_content_hash_roundtrips',crypto.createHash('sha256').update(JSON.stringify(p)).digest('hex')===fixed.envelope.content_sha256);
+const failed=read('reports/stage74/retained-no_results.json'),fr=failed.record.result.results[0],f=normal((await R.pack({row:fr,actual:failed.candidates,context:failed.record.task_context})).envelope.payload);
+check('failure_empty_candidates_rejections_and_usage_preserved',!f.protocol_completed&&f.actual_candidates.papers.length===0&&f.execution.answer===null&&f.cost.model_calls===fr.metadata.llm_usage.calls&&f.execution.metadata.proposal_events.length===fr.metadata.proposal_events.length);
+let bad=normal(rows.fixed);bad.metadata.model_input_messages='PRIVATE_SYSTEM';bad.metadata.unverified_model_final='PRIVATE_OUTPUT';bad.metadata.steps=[{step_number:1,model_input_messages:'PRIVATE_SYSTEM',model_output:'PRIVATE_OUTPUT'}];check('private_messages_and_unverified_prose_not_exported',!JSON.stringify(R.payload({row:bad,actual})).includes('PRIVATE_'));
+bad=normal(rows.fixed);bad.answer.citations[0].version=2;const invalid=R.payload({row:bad,actual});check('invalid_source_not_presented_as_accepted_answer',invalid.execution.answer===null&&invalid.source_check_status==='rejected_for_export'&&invalid.protocol_completed===true);
+rejects('different_task_rejected',()=>R.payload({row:{...rows.fixed,task_id:'other'},actual}));rejects('in_progress_task_rejected',()=>R.payload({row:{...rows.fixed,_in_progress:true},actual}));rejects('provisional_candidates_rejected',()=>R.payload({row:rows.fixed,actual:{...actual,provisional:true}}));
+rejects('different_run_same_task_rejected',()=>R.payload({row:rows.fixed,actual:{...actual,source:{kind:'job',run_index:1}},runIndex:0}));
+const noUsage=normal(rows.llm_agent);delete noUsage.metadata.llm_usage;const noA={...actual,task_id:noUsage.task_id};check('missing_model_usage_remains_unknown',R.payload({row:noUsage,actual:noA}).cost.model_calls===null);
+const safe=await R.pack({row:rows.fixed,actual,context:{original_need:'<script>alert(1)</script> ``` question'}});check('markdown_plain_text_escaped_and_json_original_kept',safe.markdown.includes('&lt;script&gt;')&&safe.envelope.payload.scope.context.original_need.includes('<script>'));
+check('diagnostic_and_quality_not_misrepresented',p.independent_diagnostic_injected===false&&p.quality_scores===null&&p.source_checks_are_not_semantic_quality===true);
+fs.writeFileSync('reports/stage76/step4-export-sample.json',JSON.stringify(fixed.envelope,null,2));fs.writeFileSync('reports/stage76/step4-export-sample.md',fixed.markdown);fs.writeFileSync('reports/stage76/step4-data-validation.json',JSON.stringify({status:'passed',checks:checks.length,passed:checks,model_calls:0},null,2));console.log({status:'passed',checks:checks.length});
+})().catch(e=>{console.error(e);process.exitCode=1});

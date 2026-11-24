@@ -1,0 +1,162 @@
+{
+  "schema": 1,
+  "source": {
+    "kind": "historical_http_acceptance",
+    "date": "2026-11-14",
+    "label": "历史真实执行 · 非实时演示",
+    "sha256": "43da978087461ee055b22faca22886e35ceec45f92ac2e89c412495690637490"
+  },
+  "task": {
+    "id": "evaluation-000",
+    "query": "Efficient Geometry-aware 3D Generative Adversarial Networks",
+    "instruction": "Find the paper with this exact title; read it and cite one original abstract excerpt."
+  },
+  "policy": "constrained",
+  "model": "Qwen2.5-1.5B-Instruct / smolagents",
+  "completed_protocol": true,
+  "seconds": 17.220003599999472,
+  "model_calls": 3,
+  "tokens": {
+    "input": 4908,
+    "output": 112
+  },
+  "trace": [
+    {
+      "tool": "search_papers",
+      "arguments": {
+        "query": "Efficient Geometry-aware 3D Generative Adversarial Networks",
+        "k": 3
+      },
+      "result": {
+        "papers": [
+          {
+            "doc_id": "2112.07945",
+            "score": 18.012772688466114,
+            "title": "Efficient Geometry-aware 3D Generative Adversarial Networks",
+            "version": 1,
+            "source_url": "https://arxiv.org/abs/2112.07945v1"
+          },
+          {
+            "doc_id": "2303.13071",
+            "score": 14.54069638295813,
+            "title": "PanoHead: Geometry-Aware 3D Full-Head Synthesis in 360$^{\\circ}$",
+            "version": 1,
+            "source_url": "https://arxiv.org/abs/2303.13071v1"
+          },
+          {
+            "doc_id": "2404.10625",
+            "score": 14.52846235449302,
+            "title": "Gaussian Splatting Decoder for 3D-aware Generative Adversarial Networks",
+            "version": 1,
+            "source_url": "https://arxiv.org/abs/2404.10625v1"
+          }
+        ],
+        "as_of": "2025-02-23T05:28:26.401006+00:00",
+        "method": "sqlite_fts5_bm25",
+        "index": {
+          "available_documents": 10000,
+          "snapshot_cache_hit": true,
+          "snapshot_seconds": 0.0004544999683275819,
+          "sqlite_version": "3.45.1",
+          "statistics_scope": "only available documents; all users share IDF at this time"
+        }
+      },
+      "seconds": 0.04071490000933409,
+      "attempt": 1
+    },
+    {
+      "tool": "read_paper",
+      "arguments": {
+        "doc_id": "2112.07945"
+      },
+      "result": {
+        "doc_id": "2112.07945",
+        "version": 1,
+        "version_key": "arxiv:2112.07945v1",
+        "title": "Efficient Geometry-aware 3D Generative Adversarial Networks",
+        "abstract": "Unsupervised generation of high-quality multi-view-consistent images and 3D shapes using only collections of single-view 2D photographs has been a long-standing challenge. Existing 3D GANs are either compute-intensive or make approximations that are not 3D-consistent; the former limits quality and resolution of the generated images and the latter adversely affects multi-view consistency and shape quality. In this work, we improve the computational efficiency and image quality of 3D GANs without overly relying on these approximations. For this purpose, we introduce an expressive hybrid explicit-implicit network architecture that, together with other design choices, synthesizes not only high-resolution multi-view-consistent images in real time but also produces high-quality 3D geometry. By decoupling feature generation and neural rendering, our framework is able to leverage state-of-the-art 2D CNN generators, such as StyleGAN2, and inherit their efficiency and expressiveness. We demonstrate state-of-the-art 3D-aware synthesis with FFHQ and AFHQ Cats, among other experiments.",
+        "published_at": "2021-12-15T08:01:43+00:00",
+        "available_at": "2021-12-17T00:00:00+00:00",
+        "source_url": "https://arxiv.org/abs/2112.07945v1",
+        "source_verified": true,
+        "semantic_stance_verified": false,
+        "time_assumption": "submission-day end plus24h proxy; not historical first-ingest proof",
+        "quotes": [
+          {
+            "quote_index": 0,
+            "text": "Unsupervised generation of high-quality multi-view-consistent images and 3D shapes using only collections of single-view 2D photographs has been a long-standing challenge."
+          },
+          {
+            "quote_index": 1,
+            "text": "Existing 3D GANs are either compute-intensive or make approximations that are not 3D-consistent; the former limits quality and resolution of the generated images and the latter adversely affects multi-view consistency and shape quality."
+          },
+          {
+            "quote_index": 2,
+            "text": "In this work, we improve the computational efficiency and image quality of 3D GANs without overly relying on these approximations."
+          }
+        ]
+      },
+      "seconds": 0.023032100056298077,
+      "attempt": 2
+    },
+    {
+      "tool": "finalize",
+      "arguments": {
+        "citations": [
+          {
+            "doc_id": "2112.07945",
+            "quote_index": 0
+          }
+        ]
+      },
+      "result": {
+        "citations": [
+          {
+            "doc_id": "2112.07945",
+            "version": 1,
+            "version_key": "arxiv:2112.07945v1",
+            "title": "Efficient Geometry-aware 3D Generative Adversarial Networks",
+            "source_url": "https://arxiv.org/abs/2112.07945v1",
+            "quote": "Unsupervised generation of high-quality multi-view-consistent images and 3D shapes using only collections of single-view 2D photographs has been a long-standing challenge.",
+            "quote_index": 0,
+            "source_verified": true,
+            "retrieved_by": [
+              "search_papers"
+            ]
+          }
+        ],
+        "answer_kind": "extractive_original_abstract",
+        "as_of": "2025-02-23T05:28:26.401006+00:00",
+        "answer": "[2112.07945v1] Efficient Geometry-aware 3D Generative Adversarial Networks\nUnsupervised generation of high-quality multi-view-consistent images and 3D shapes using only collections of single-view 2D photographs has been a long-standing challenge.\nhttps://arxiv.org/abs/2112.07945v1",
+        "semantic_correctness_verified": false,
+        "time_assumption": "v1 submission-day end plus24h; not proven historical ingestion"
+      },
+      "seconds": 4.2199972085654736e-05,
+      "attempt": 3
+    }
+  ],
+  "answer": {
+    "citations": [
+      {
+        "doc_id": "2112.07945",
+        "version": 1,
+        "version_key": "arxiv:2112.07945v1",
+        "title": "Efficient Geometry-aware 3D Generative Adversarial Networks",
+        "source_url": "https://arxiv.org/abs/2112.07945v1",
+        "quote": "Unsupervised generation of high-quality multi-view-consistent images and 3D shapes using only collections of single-view 2D photographs has been a long-standing challenge.",
+        "quote_index": 0,
+        "source_verified": true,
+        "retrieved_by": [
+          "search_papers"
+        ]
+      }
+    ],
+    "answer_kind": "extractive_original_abstract",
+    "as_of": "2025-02-23T05:28:26.401006+00:00",
+    "answer": "[2112.07945v1] Efficient Geometry-aware 3D Generative Adversarial Networks\nUnsupervised generation of high-quality multi-view-consistent images and 3D shapes using only collections of single-view 2D photographs has been a long-standing challenge.\nhttps://arxiv.org/abs/2112.07945v1",
+    "semantic_correctness_verified": false,
+    "time_assumption": "v1 submission-day end plus24h; not proven historical ingestion"
+  },
+  "catalog": 10000,
+  "as_of": "2025-02-23T05:28:26.401006+00:00"
+}

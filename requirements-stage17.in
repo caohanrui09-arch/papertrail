@@ -1,0 +1,17 @@
+# Windows CPython3.12 isolated CPU recommendation replay; no shared CUDA packages.
+torch @ https://download-r2.pytorch.org/whl/cpu/torch-2.6.0%2Bcpu-cp312-cp312-win_amd64.whl#sha256=4027d982eb2781c93825ab9527f17fbbb12dbabf422298e4b954be60016f87d8
+transformers==4.57.1
+smolagents==1.22.0
+numpy==2.5.4
+scipy==1.18.1
+pandas==3.1.0
+scikit-learn==1.9.1
+joblib==1.6.0
+threadpoolctl==3.7.0
+cloudpickle==3.1.2
+narwhals==2.27.1
+psutil==7.2.2
+requests==2.34.2
+filelock==4.2.4
+lxml==6.1.3
+sentencepiece==0.2.1

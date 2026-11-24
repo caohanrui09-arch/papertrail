@@ -1,0 +1,36 @@
+{
+  "scope": "编辑整理的摘要阅读路径；不是自动难度评分、真人相关性标签或完整课程；不改变搜索和推荐排序。",
+  "audience": "有基础机器学习概念，正在进入搜广推与Agent方向、还不确定先读哪篇论文的学习者。",
+  "paths": {
+    "generative": {
+      "title": "从查询到文档 ID",
+      "goal": "分清生成式文档检索在生成什么，再看文档表示和训练解码的设计。",
+      "prerequisites": ["知道检索会返回文档列表", "大致了解 Transformer 与 token；不要求先会训练模型"],
+      "papers": [
+        {"doc_id":"2406.01197","stage":"先建立全貌","why":"先用综述建立文档 ID、索引、检索与扩展性之间的联系，再选择深入方向。","question":"模型输出的是文档 ID，还是自然语言答案？","follow_up":"读全文时，找出作者如何划分不同的文档 ID 设计。","evidence":"directly map queries to relevant document identifiers (DocIDs)"},
+        {"doc_id":"2202.06991","stage":"再理解一个基础方案","why":"DSI 把查询映射到文档 ID，适合用来明确模型记忆与传统索引的区别。","question":"文档信息存在哪里，文档 ID 的设计会改变什么？","follow_up":"找出摘要提到的文档表示、标识和训练过程分别解决什么问题。","evidence":"maps string queries directly to relevant docids"},
+        {"doc_id":"2206.02743","stage":"继续看设计如何细化","why":"NCI 的摘要列出了查询生成、语义文档 ID 和解码设计，可据此选择一个小问题继续阅读。","question":"除了生成 ID，这个方案还处理了哪些训练和解码问题？","follow_up":"从查询生成、语义 ID、解码中选一项，在全文中核对具体实现和实验条件。","evidence":"query generation, semantic document identifiers and consistency-based regularization"}
+      ]
+    },
+    "cold": {
+      "title":"没有点击，也能开始推荐吗？",
+      "goal":"先认识内容信息，再对比元数据与协同信号如何帮助冷物品。",
+      "prerequisites":["知道用户、物品与点击记录的含义","能区分物品内容特征和历史交互；第一篇以音乐为案例，不代表所有领域"],
+      "papers":[
+        {"doc_id":"2107.11803","stage":"先认识可用信息","why":"这篇音乐推荐综述把内容分为多个层次，可用它梳理没有点击时还剩哪些信号。","question":"哪些内容信息在一个新物品还没有点击时就能获得？","follow_up":"先看内容分类和冷启动挑战，不必一次读完全部音乐推荐方法。","evidence":"five layers, each of which corresponds to a category of music content"},
+        {"doc_id":"2404.13298","stage":"再看元数据怎么用","why":"MARec 明确围绕稀疏点击与内容元数据展开，便于对照本站基于标题和摘要的简单内容方法。","question":"交互矩阵稀疏时，元数据如何进入推荐模型？","follow_up":"在全文中分别核对冷启动设置、使用的特征和消融条件；不要只看提升数字。","evidence":"address cold-start recommendations by leveraging content metadata"},
+        {"doc_id":"2107.05315","stage":"继续理解信号融合","why":"CLCRec 讨论内容与协同表示的关系，适合在了解内容基线后再读对比学习方案。","question":"内容表示如何保留协同信号，并用于零交互物品？","follow_up":"先区分 warm 与 cold 设置，再核对对比样本和训练目标。","evidence":"preserve collaborative signals in the content representations"}
+      ]
+    },
+    "bias": {
+      "title":"指标背后，哪些反馈没被看见",
+      "goal":"区分没看见与不喜欢，再认识离线评价为什么依赖日志条件。",
+      "prerequisites":["知道推荐结果、曝光、点击的区别","能理解用历史样本评价一个策略；读后两篇时可再补概率与因果推断基础"],
+      "papers":[
+        {"doc_id":"1510.07025","stage":"先分清缺失反馈","why":"从曝光模型入手，理解未消费记录为什么不能直接解释成负偏好。","question":"没有点击，是用户不喜欢，还是根本没有看见？","follow_up":"核对作者如何把曝光表示为潜变量，以及需要哪些额外信息。","evidence":"users have a limited scope and awareness of items"},
+        {"doc_id":"1003.5956","stage":"再认识离线评价","why":"这篇上下文赌博机工作讨论不用模拟器的日志评价方法，可据此追问无偏成立的条件。","question":"不用模拟器，怎样利用已有日志评价另一套策略？","follow_up":"阅读全文时重点找日志采集与策略适用的条件，而不是把无偏视为普遍保证。","evidence":"does not require building a simulator"},
+        {"doc_id":"1602.05352","stage":"继续看选择偏差","why":"这篇工作把选择偏差与因果推断联系起来，同时讨论性能估计与模型训练。","question":"日志有选择偏差时，评价和训练分别需要怎样调整？","follow_up":"在全文中核对估计量、所需倾向信息和假设，再与普通离线指标比较。","evidence":"unbiased performance estimators despite biased data"}
+      ]
+    }
+  }
+}

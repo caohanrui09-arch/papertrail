@@ -1,0 +1,16 @@
+<View>
+  <Header value="论文相关性盲标注：需求为模型草拟，待人工确认"/>
+  <Text name="query" value="$request"/>
+  <Header value="冻结的五篇历史阅读材料；仅作上下文，显式主题优先"/>
+  <View style="max-height: 280px; overflow: auto;"><Text name="profile" value="$profile_context"/></View>
+  <Header value="候选论文原始v1标题和摘要"/>
+  <Text name="title" value="$title"/>
+  <Text name="paper" value="$abstract"/>
+  <Text name="source" value="$source_url"/>
+  <Choices name="relevance" toName="paper" choice="single" required="true" showInline="true">
+    <Choice value="0 不相关"/>
+    <Choice value="1 部分相关"/>
+    <Choice value="2 高度相关"/>
+  </Choices>
+  <TextArea name="rationale" toName="paper" required="true" rows="3" placeholder="简述相关或不相关的依据；信息不足请说明"/>
+</View>

@@ -1,0 +1,7 @@
+# Reuse the workspace CUDA torch; never replace it with a CPU build.
+torch==2.6.0
+transformers==4.57.1
+accelerate==1.15.0
+smolagents==1.22.0
+sentencepiece==0.2.1
+numpy==2.5.4

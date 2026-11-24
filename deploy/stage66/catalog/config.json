@@ -1,0 +1,71 @@
+{
+  "topics": {
+    "generative": {
+      "query": "(abs:\"generative retrieval\" OR abs:\"differentiable search index\" OR abs:\"document identifiers\")",
+      "core": "generative retrieval document identifiers"
+    },
+    "cold": {
+      "query": "(abs:\"cold start\" OR abs:\"cold-start\") AND (abs:recommendation OR abs:recommender) AND (abs:content OR abs:metadata)",
+      "core": "item cold start content features recommendation"
+    },
+    "bias": {
+      "query": "(abs:exposure OR abs:propensity OR abs:counterfactual) AND (abs:recommendation OR abs:recommender)",
+      "core": "recommendation exposure bias counterfactual offline evaluation"
+    }
+  },
+  "at": "2025-02-23T05:28:26.401006+00:00",
+  "scenes": {
+    "origin": "synthetic_content_context",
+    "real_user_feedback": false,
+    "history_selection": "assistant abstract-reviewed development amendment",
+    "topic_assignment": "assistant-confirmed related context, not human feedback or relevance qrels",
+    "same": {
+      "generative": [
+        "2502.02788",
+        "2502.07219"
+      ],
+      "cold": [
+        "2501.01945",
+        "2412.06308"
+      ],
+      "bias": [
+        "2502.08993",
+        "2502.13840"
+      ]
+    },
+    "cross": {
+      "generative": [
+        "2501.01945",
+        "2412.06308"
+      ],
+      "cold": [
+        "2502.08993",
+        "2502.13840"
+      ],
+      "bias": [
+        "2502.02788",
+        "2502.07219"
+      ]
+    },
+    "shared_seen_filter": [
+      "2412.06308",
+      "2501.01945",
+      "2502.02788",
+      "2502.07219",
+      "2502.08993",
+      "2502.13840"
+    ]
+  },
+  "documents_sha256": "365ca7fdae2d148965e933159c26c43ce97a7e89bc8a72c95066f4c2d01d54f7",
+  "params": {
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 2,
+    "max_features": 30000,
+    "stop_words": "english",
+    "sublinear_tf": true,
+    "norm": "l2"
+  }
+}

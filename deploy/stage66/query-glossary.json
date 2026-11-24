@@ -1,0 +1,226 @@
+{
+  "version": "domain-terms-2026-11-07-v1",
+  "scope": "本站搜广推与Agent主题术语辅助，不是全文翻译或语义理解",
+  "entries": [
+    [
+      "多模态快慢思考",
+      "multimodal fast slow thinking"
+    ],
+    [
+      "快慢思考",
+      "fast slow thinking"
+    ],
+    [
+      "快慢推理",
+      "fast slow reasoning"
+    ],
+    [
+      "多模态",
+      "multimodal"
+    ],
+    [
+      "视觉语言模型",
+      "vision language model"
+    ],
+    [
+      "双系统",
+      "dual system"
+    ],
+    [
+      "按需思考",
+      "adaptive thinking"
+    ],
+    [
+      "推理深度",
+      "reasoning depth"
+    ],
+    [
+      "生成式检索",
+      "generative retrieval"
+    ],
+    [
+      "生成式推荐",
+      "generative recommendation"
+    ],
+    [
+      "神经索引",
+      "neural index"
+    ],
+    [
+      "文档标识",
+      "document identifiers"
+    ],
+    [
+      "文档ID",
+      "document identifiers"
+    ],
+    [
+      "语义标识",
+      "semantic identifiers"
+    ],
+    [
+      "语义ID",
+      "semantic identifiers"
+    ],
+    [
+      "残差量化",
+      "residual quantization"
+    ],
+    [
+      "推荐冷启动",
+      "cold start recommendation"
+    ],
+    [
+      "冷启动",
+      "cold start"
+    ],
+    [
+      "没有交互",
+      "cold start"
+    ],
+    [
+      "无交互",
+      "cold start"
+    ],
+    [
+      "内容推荐",
+      "content based recommendation"
+    ],
+    [
+      "协同过滤",
+      "collaborative filtering"
+    ],
+    [
+      "矩阵分解",
+      "matrix factorization"
+    ],
+    [
+      "序列推荐",
+      "sequential recommendation"
+    ],
+    [
+      "个性化推荐",
+      "personalized recommendation"
+    ],
+    [
+      "重排序",
+      "reranking"
+    ],
+    [
+      "曝光偏差",
+      "exposure bias"
+    ],
+    [
+      "选择偏差",
+      "selection bias"
+    ],
+    [
+      "流行度偏差",
+      "popularity bias"
+    ],
+    [
+      "反事实评估",
+      "counterfactual evaluation"
+    ],
+    [
+      "离线评估",
+      "offline evaluation"
+    ],
+    [
+      "逆倾向评分",
+      "inverse propensity scoring"
+    ],
+    [
+      "倾向评分",
+      "propensity score"
+    ],
+    [
+      "上下文老虎机",
+      "contextual bandit"
+    ],
+    [
+      "强化学习",
+      "reinforcement learning"
+    ],
+    [
+      "监督微调",
+      "supervised fine tuning"
+    ],
+    [
+      "大语言模型",
+      "large language model"
+    ],
+    [
+      "小样本",
+      "few shot"
+    ],
+    [
+      "零样本",
+      "zero shot"
+    ],
+    [
+      "推荐系统",
+      "recommendation systems"
+    ],
+    [
+      "用户画像",
+      "user profile"
+    ],
+    [
+      "兴趣画像",
+      "user profile"
+    ],
+    [
+      "历史记录",
+      "user history"
+    ],
+    [
+      "向量检索",
+      "dense retrieval"
+    ],
+    [
+      "稀疏检索",
+      "sparse retrieval"
+    ],
+    [
+      "可解释性",
+      "explainability"
+    ],
+    [
+      "多样性",
+      "diversity"
+    ],
+    [
+      "候选集",
+      "candidate set"
+    ],
+    [
+      "点击率",
+      "click through rate"
+    ],
+    [
+      "召回",
+      "recall"
+    ],
+    [
+      "排序",
+      "ranking"
+    ],
+    [
+      "智能体",
+      "agent"
+    ],
+    [
+      "搜索",
+      "search"
+    ],
+    [
+      "检索",
+      "retrieval"
+    ],
+    [
+      "推荐",
+      "recommendation"
+    ]
+  ]
+}

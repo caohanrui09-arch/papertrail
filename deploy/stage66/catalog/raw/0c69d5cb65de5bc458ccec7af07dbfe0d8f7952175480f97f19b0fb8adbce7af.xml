@@ -1,0 +1,1350 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/W5e8gUvzbJgFWyFCHG6FnilqLnM</id>
+  <title>arXiv Query: search_query=&amp;id_list=1003.5956v1,1507.08439v1,1510.07025v1,1602.05352v1,2202.06991v1,2206.02743v1,2411.18814v1,2412.04746v1,2412.06308v1,2412.06791v1,2412.12464v1,2412.17032v1,2412.18082v1,2412.18715v1,2412.20250v1,2501.01945v1,2501.02178v1,2501.03447v1,2501.10871v1,2501.11034v1,2501.11391v1,2501.11759v1,2502.00321v1,2502.01630v1,2502.02788v1,2502.03041v1,2502.06097v1,2502.07219v1,2502.07555v1,2502.08277v1,2502.08993v1,2502.09375v1,2502.09757v1,2502.10049v1,2502.11562v1,2502.12958v1,2502.13423v1,2502.13539v1,2502.13840v1,2502.14041v1,2502.14662v1,2502.15957v1&amp;start=0&amp;max_results=40</title>
+  <updated>2026-10-29T07:21:03Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=40&amp;id_list=1003.5956v1,1507.08439v1,1510.07025v1,1602.05352v1,2202.06991v1,2206.02743v1,2411.18814v1,2412.04746v1,2412.06308v1,2412.06791v1,2412.12464v1,2412.17032v1,2412.18082v1,2412.18715v1,2412.20250v1,2501.01945v1,2501.02178v1,2501.03447v1,2501.10871v1,2501.11034v1,2501.11391v1,2501.11759v1,2502.00321v1,2502.01630v1,2502.02788v1,2502.03041v1,2502.06097v1,2502.07219v1,2502.07555v1,2502.08277v1,2502.08993v1,2502.09375v1,2502.09757v1,2502.10049v1,2502.11562v1,2502.12958v1,2502.13423v1,2502.13539v1,2502.13840v1,2502.14041v1,2502.14662v1,2502.15957v1" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>40</opensearch:itemsPerPage>
+  <opensearch:totalResults>42</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/1003.5956v1</id>
+    <title>An Unbiased, Data-Driven, Offline Evaluation Method of Contextual Bandit Algorithms</title>
+    <updated>2010-03-31T01:20:07Z</updated>
+    <link href="https://arxiv.org/abs/1003.5956v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1003.5956v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Offline evaluation of reinforcement learning algorithms based on collected data (state transitions and rewards) has remained a challenging problem.  Common practice is to create a simulator based on collected data and then run the algorithm against this simulator.  Such an approach involves creating a simulator of the problem at hand, which is often difficult and may introduce bias to the evaluation results.  In this paper, we introduce an offline evaluation method for a subclass of reinforcement learning problems known as contextual bandits.  This method is completely driven by data, does not require building a simulator, and gives provably unbiased evaluation results.  Its effectiveness is also empirically validated using a large-scale news article recommendation dataset collected from Yahoo! Frontpage.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2010-03-31T01:20:07Z</published>
+    <arxiv:comment>13 pages, 5 figures, in submission (under review).</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Lihong Li</name>
+    </author>
+    <author>
+      <name>Wei Chu</name>
+    </author>
+    <author>
+      <name>John Langford</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2202.06991v1</id>
+    <title>Transformer Memory as a Differentiable Search Index</title>
+    <updated>2022-02-14T19:12:43Z</updated>
+    <link href="https://arxiv.org/abs/2202.06991v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2202.06991v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this paper, we demonstrate that information retrieval can be accomplished with a single Transformer, in which all information about the corpus is encoded in the parameters of the model. To this end, we introduce the Differentiable Search Index (DSI), a new paradigm that learns a text-to-text model that maps string queries directly to relevant docids; in other words, a DSI model answers queries directly using only its parameters, dramatically simplifying the whole retrieval process. We study variations in how documents and their identifiers are represented, variations in training procedures, and the interplay between models and corpus sizes. Experiments demonstrate that given appropriate design choices, DSI significantly outperforms strong baselines such as dual encoder models. Moreover, DSI demonstrates strong generalization capabilities, outperforming a BM25 baseline in a zero-shot setup.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2022-02-14T19:12:43Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Yi Tay</name>
+    </author>
+    <author>
+      <name>Vinh Q. Tran</name>
+    </author>
+    <author>
+      <name>Mostafa Dehghani</name>
+    </author>
+    <author>
+      <name>Jianmo Ni</name>
+    </author>
+    <author>
+      <name>Dara Bahri</name>
+    </author>
+    <author>
+      <name>Harsh Mehta</name>
+    </author>
+    <author>
+      <name>Zhen Qin</name>
+    </author>
+    <author>
+      <name>Kai Hui</name>
+    </author>
+    <author>
+      <name>Zhe Zhao</name>
+    </author>
+    <author>
+      <name>Jai Gupta</name>
+    </author>
+    <author>
+      <name>Tal Schuster</name>
+    </author>
+    <author>
+      <name>William W. Cohen</name>
+    </author>
+    <author>
+      <name>Donald Metzler</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1507.08439v1</id>
+    <title>Metadata Embeddings for User and Item Cold-start Recommendations</title>
+    <updated>2015-07-30T10:08:14Z</updated>
+    <link href="https://arxiv.org/abs/1507.08439v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1507.08439v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>I present a hybrid matrix factorisation model representing users and items as linear combinations of their content features' latent factors. The model outperforms both collaborative and content-based models in cold-start or sparse interaction data scenarios (using both user and item metadata), and performs at least as well as a pure collaborative matrix factorisation model where interaction data is abundant. Additionally, feature embeddings produced by the model encode semantic information in a way reminiscent of word embedding approaches, making them useful for a range of related tasks such as tag recommendations.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2015-07-30T10:08:14Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Maciej Kula</name>
+      <arxiv:affiliation>Lyst.com</arxiv:affiliation>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2412.18082v1</id>
+    <title>Prompt Tuning for Item Cold-start Recommendation</title>
+    <updated>2024-12-24T01:38:19Z</updated>
+    <link href="https://arxiv.org/abs/2412.18082v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2412.18082v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The item cold-start problem is crucial for online recommender systems, as the success of the cold-start phase determines whether items can transition into popular ones. Prompt learning, a powerful technique used in natural language processing (NLP) to address zero- or few-shot problems, has been adapted for recommender systems to tackle similar challenges. However, existing methods typically rely on content-based properties or text descriptions for prompting, which we argue may be suboptimal for cold-start recommendations due to 1) semantic gaps with recommender tasks, 2) model bias caused by warm-up items contribute most of the positive feedback to the model, which is the core of the cold-start problem that hinders the recommender quality on cold-start items. We propose to leverage high-value positive feedback, termed pinnacle feedback as prompt information, to simultaneously resolve the above two problems. We experimentally prove that compared to the content description proposed in existing works, the positive feedback is more suitable to serve as prompt information by bridging the semantic gaps. Besides, we propose item-wise personalized prompt networks to encode pinnaclce feedback to relieve the model bias by the positive feedback dominance problem. Extensive experiments on four real-world datasets demonstrate the superiority of our model over state-of-the-art methods. Moreover, PROMO has been successfully deployed on a popular short-video sharing platform, a billion-user scale commercial short-video application, achieving remarkable performance gains across various commercial metrics within cold-start scenarios</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-12-24T01:38:19Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Yuezihan Jiang</name>
+    </author>
+    <author>
+      <name>Gaode Chen</name>
+    </author>
+    <author>
+      <name>Wenhan Zhang</name>
+    </author>
+    <author>
+      <name>Jingchi Wang</name>
+    </author>
+    <author>
+      <name>Yinjie Jiang</name>
+    </author>
+    <author>
+      <name>Qi Zhang</name>
+    </author>
+    <author>
+      <name>Jingjian Lin</name>
+    </author>
+    <author>
+      <name>Peng Jiang</name>
+    </author>
+    <author>
+      <name>Kaigui Bian</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.08277v1</id>
+    <title>ChorusCVR: Chorus Supervision for Entire Space Post-Click Conversion Rate Modeling</title>
+    <updated>2025-02-12T10:31:45Z</updated>
+    <link href="https://arxiv.org/abs/2502.08277v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.08277v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Post-click conversion rate (CVR) estimation is a vital task in many recommender systems of revenue businesses, e.g., e-commerce and advertising. In a perspective of sample, a typical CVR positive sample usually goes through a funnel of exposure to click to conversion. For lack of post-event labels for un-clicked samples, CVR learning task commonly only utilizes clicked samples, rather than all exposed samples as for click-through rate (CTR) learning task. However, during online inference, CVR and CTR are estimated on the same assumed exposure space, which leads to a inconsistency of sample space between training and inference, i.e., sample selection bias (SSB). To alleviate SSB, previous wisdom proposes to design novel auxiliary tasks to enable the CVR learning on un-click training samples, such as CTCVR and counterfactual CVR, etc. Although alleviating SSB to some extent, none of them pay attention to the discrimination between ambiguous negative samples (un-clicked) and factual negative samples (clicked but un-converted) during modelling, which makes CVR model lacks robustness. To full this gap, we propose a novel ChorusCVR model to realize debiased CVR learning in entire-space.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-12T10:31:45Z</published>
+    <arxiv:comment>Work in progress</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Wei Cheng</name>
+    </author>
+    <author>
+      <name>Yucheng Lu</name>
+    </author>
+    <author>
+      <name>Boyang Xia</name>
+    </author>
+    <author>
+      <name>Jiangxia Cao</name>
+    </author>
+    <author>
+      <name>Kuan Xu</name>
+    </author>
+    <author>
+      <name>Mingxing Wen</name>
+    </author>
+    <author>
+      <name>Wei Jiang</name>
+    </author>
+    <author>
+      <name>Jiaming Zhang</name>
+    </author>
+    <author>
+      <name>Zhaojie Liu</name>
+    </author>
+    <author>
+      <name>Kun Gai</name>
+    </author>
+    <author>
+      <name>Guorui Zhou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.14041v1</id>
+    <title>Fiscal Policy and Household Savings in Central Europe (Poland, Croatia, and Slovak Republic) -- A Markov Switching VAR with Covid Shock</title>
+    <updated>2025-02-19T19:00:54Z</updated>
+    <link href="https://arxiv.org/abs/2502.14041v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.14041v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This study investigates the effectiveness of fiscal policies on household consumption, disposable income, and the propensity to consume during the COVID-19 pandemic across Croatia, Slovakia, and Poland. The purpose is to assess how variations in government debt, expenditures, revenue, and subsidies influenced household financial behaviors in response to economic shocks. Using a Markov Switching VAR model across three regimes: initial impact, peak crisis, and recovery.This analysis captures changes in household consumption, disposable income, and consumption propensities under different fiscal policy measures.
+  The findings reveal that the Slovak Republic exhibited the highest fiscal effectiveness, demonstrating effective government policies that stimulated consumer spending and supported household income during the pandemic. Croatia also showed positive outcomes, particularly in terms of income, although rising government debt posed challenges to overall effectiveness. Conversely, Poland faced significant obstacles, with its fiscal measures leading to lower consumption and income outcomes, indicating limited policy efficacy.
+  Conclusions emphasize the importance of tailored fiscal measures, as their effectiveness varied across countries and economic contexts. Recommendations include reinforcing consumption-supportive policies, particularly during crisis periods, to stabilize income and consumption expectations. This study underscores the significance of targeted fiscal actions in promoting household resilience and economic stability, as exemplified by the successful approach taken by the Slovak Republic.</summary>
+    <category term="econ.GN" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-19T19:00:54Z</published>
+    <arxiv:comment>54</arxiv:comment>
+    <arxiv:primary_category term="econ.GN"/>
+    <author>
+      <name>Tuhin G M Al Mamun</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2412.04746v1</id>
+    <title>Diff4Steer: Steerable Diffusion Prior for Generative Music Retrieval with Semantic Guidance</title>
+    <updated>2024-12-06T03:18:18Z</updated>
+    <link href="https://arxiv.org/abs/2412.04746v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2412.04746v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Modern music retrieval systems often rely on fixed representations of user preferences, limiting their ability to capture users' diverse and uncertain retrieval needs. To address this limitation, we introduce Diff4Steer, a novel generative retrieval framework that employs lightweight diffusion models to synthesize diverse seed embeddings from user queries that represent potential directions for music exploration. Unlike deterministic methods that map user query to a single point in embedding space, Diff4Steer provides a statistical prior on the target modality (audio) for retrieval, effectively capturing the uncertainty and multi-faceted nature of user preferences. Furthermore, Diff4Steer can be steered by image or text inputs, enabling more flexible and controllable music discovery combined with nearest neighbor search. Our framework outperforms deterministic regression methods and LLM-based generative retrieval baseline in terms of retrieval and ranking metrics, demonstrating its effectiveness in capturing user preferences, leading to more diverse and relevant recommendations. Listening examples are available at tinyurl.com/diff4steer.</summary>
+    <category term="cs.SD" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.MM" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.AS" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-12-06T03:18:18Z</published>
+    <arxiv:comment>NeurIPS 2024 Creative AI Track</arxiv:comment>
+    <arxiv:primary_category term="cs.SD"/>
+    <arxiv:journal_ref>Proc. IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP), 2025</arxiv:journal_ref>
+    <author>
+      <name>Xuchan Bao</name>
+    </author>
+    <author>
+      <name>Judith Yue Li</name>
+    </author>
+    <author>
+      <name>Zhong Yi Wan</name>
+    </author>
+    <author>
+      <name>Kun Su</name>
+    </author>
+    <author>
+      <name>Timo Denk</name>
+    </author>
+    <author>
+      <name>Joonseok Lee</name>
+    </author>
+    <author>
+      <name>Dima Kuzmin</name>
+    </author>
+    <author>
+      <name>Fei Sha</name>
+    </author>
+    <arxiv:doi>10.1109/ICASSP49660.2025.10887608</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/ICASSP49660.2025.10887608" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.14662v1</id>
+    <title>InstructAgent: Building User Controllable Recommender via LLM Agent</title>
+    <updated>2025-02-20T15:58:25Z</updated>
+    <link href="https://arxiv.org/abs/2502.14662v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.14662v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Traditional recommender systems usually take the user-platform paradigm, where users are directly exposed under the control of the platform's recommendation algorithms. However, the defect of recommendation algorithms may put users in very vulnerable positions under this paradigm. First, many sophisticated models are often designed with commercial objectives in mind, focusing on the platform's benefits, which may hinder their ability to protect and capture users' true interests. Second, these models are typically optimized using data from all users, which may overlook individual user's preferences. Due to these shortcomings, users may experience several disadvantages under the traditional user-platform direct exposure paradigm, such as lack of control over the recommender system, potential manipulation by the platform, echo chamber effects, or lack of personalization for less active users due to the dominance of active users during collaborative learning. Therefore, there is an urgent need to develop a new paradigm to protect user interests and alleviate these issues. Recently, some researchers have introduced LLM agents to simulate user behaviors, these approaches primarily aim to optimize platform-side performance, leaving core issues in recommender systems unresolved. To address these limitations, we propose a new user-agent-platform paradigm, where agent serves as the protective shield between user and recommender system that enables indirect exposure. To this end, we first construct four recommendation datasets, denoted as $\dataset$, along with user instructions for each record.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-20T15:58:25Z</published>
+    <arxiv:comment>WWW2025@HCRS</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Wujiang Xu</name>
+    </author>
+    <author>
+      <name>Yunxiao Shi</name>
+    </author>
+    <author>
+      <name>Zujie Liang</name>
+    </author>
+    <author>
+      <name>Xuying Ning</name>
+    </author>
+    <author>
+      <name>Kai Mei</name>
+    </author>
+    <author>
+      <name>Kun Wang</name>
+    </author>
+    <author>
+      <name>Xi Zhu</name>
+    </author>
+    <author>
+      <name>Min Xu</name>
+    </author>
+    <author>
+      <name>Yongfeng Zhang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.09757v1</id>
+    <title>The AI-Therapist Duo: Exploring the Potential of Human-AI Collaboration in Personalized Art Therapy for PICS Intervention</title>
+    <updated>2025-02-13T20:31:28Z</updated>
+    <link href="https://arxiv.org/abs/2502.09757v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.09757v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Post-intensive care syndrome (PICS) is a multifaceted condition that arises from prolonged stays in an intensive care unit (ICU). While preventing PICS among ICU patients is becoming increasingly important, interventions remain limited. Building on evidence supporting the effectiveness of art exposure in addressing the psychological aspects of PICS, we propose a novel art therapy solution through a collaborative Human-AI approach that enhances personalized therapeutic interventions using state-of-the-art Visual Art Recommendation Systems. We developed two Human-in-the-Loop (HITL) personalization methods and assessed their impact through a large-scale user study (N=150). Our findings demonstrate that this Human-AI collaboration not only enhances the personalization and effectiveness of art therapy but also supports therapists by streamlining their workload. While our study centres on PICS intervention, the results suggest that human-AI collaborative Art therapy could potentially benefit other areas where emotional support is critical, such as cases of anxiety and depression.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-13T20:31:28Z</published>
+    <arxiv:primary_category term="cs.HC"/>
+    <author>
+      <name>Bereket A. Yilma</name>
+    </author>
+    <author>
+      <name>Chan Mi Kim</name>
+    </author>
+    <author>
+      <name>Geke Ludden</name>
+    </author>
+    <author>
+      <name>Thomas van Rompay</name>
+    </author>
+    <author>
+      <name>Luis A. Leiva</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2501.10871v1</id>
+    <title>Enhancing User Intent for Recommendation Systems via Large Language Models</title>
+    <updated>2025-01-18T20:35:03Z</updated>
+    <link href="https://arxiv.org/abs/2501.10871v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2501.10871v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recommendation systems play a critical role in enhancing user experience and engagement in various online platforms. Traditional methods, such as Collaborative Filtering (CF) and Content-Based Filtering (CBF), rely heavily on past user interactions or item features. However, these models often fail to capture the dynamic and evolving nature of user preferences. To address these limitations, we propose DUIP (Dynamic User Intent Prediction), a novel framework that combines LSTM networks with Large Language Models (LLMs) to dynamically capture user intent and generate personalized item recommendations. The LSTM component models the sequential and temporal dependencies of user behavior, while the LLM utilizes the LSTM-generated prompts to predict the next item of interest. Experimental results on three diverse datasets ML-1M, Games, and Bundle show that DUIP outperforms a wide range of baseline models, demonstrating its ability to handle the cold-start problem and real-time intent adaptation. The integration of dynamic prompts based on recent user interactions allows DUIP to provide more accurate, context-aware, and personalized recommendations. Our findings suggest that DUIP is a promising approach for next-generation recommendation systems, with potential for further improvements in cross-modal recommendations and scalability.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-01-18T20:35:03Z</published>
+    <arxiv:comment>CAIMLR 2024 accepted</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Xiaochuan Xu</name>
+    </author>
+    <author>
+      <name>Zeqiu Xu</name>
+    </author>
+    <author>
+      <name>Peiyang Yu</name>
+    </author>
+    <author>
+      <name>Jiani Wang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2501.02178v1</id>
+    <title>The Application of Large Language Models in Recommendation Systems</title>
+    <updated>2025-01-04T04:02:23Z</updated>
+    <link href="https://arxiv.org/abs/2501.02178v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2501.02178v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The integration of Large Language Models into recommendation frameworks presents key advantages for personalization and adaptability of experiences to the users. Classic methods of recommendations, such as collaborative filtering and content-based filtering, are seriously limited in the solution of cold-start problems, sparsity of data, and lack of diversity in information considered. LLMs, of which GPT-4 is a good example, have emerged as powerful tools that enable recommendation frameworks to tap into unstructured data sources such as user reviews, social interactions, and text-based content. By analyzing these data sources, LLMs improve the accuracy and relevance of recommendations, thereby overcoming some of the limitations of traditional approaches. This work discusses applications of LLMs in recommendation systems, especially in electronic commerce, social media platforms, streaming services, and educational technologies. This showcases how LLMs enrich recommendation diversity, user engagement, and the system's adaptability; yet it also looks into the challenges connected to their technical implementation. This can also be presented as a study that shows the potential of LLMs for changing user experiences and making innovation possible in industries.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-01-04T04:02:23Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Peiyang Yu</name>
+    </author>
+    <author>
+      <name>Zeqiu Xu</name>
+    </author>
+    <author>
+      <name>Jiani Wang</name>
+    </author>
+    <author>
+      <name>Xiaochuan Xu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.02788v1</id>
+    <title>Inducing Diversity in Differentiable Search Indexing</title>
+    <updated>2025-02-05T00:21:17Z</updated>
+    <link href="https://arxiv.org/abs/2502.02788v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.02788v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Differentiable Search Indexing (DSI) is a recent paradigm for information retrieval which uses a transformer-based neural network architecture as the document index to simplify the retrieval process. A differentiable index has many advantages enabling modifications, updates or extensions to the index. In this work, we explore balancing relevance and novel information content (diversity) for training DSI systems inspired by Maximal Marginal Relevance (MMR), and show the benefits of our approach over the naive DSI training. We present quantitative and qualitative evaluations of relevance and diversity measures obtained using our method on NQ320K and MSMARCO datasets in comparison to naive DSI. With our approach, it is possible to achieve diversity without any significant impact to relevance. Since we induce diversity while training DSI, the trained model has learned to diversify while being relevant. This obviates the need for a post-processing step to induce diversity in the recall set as typically performed using MMR. Our approach will be useful for Information Retrieval problems where both relevance and diversity are important such as in sub-topic retrieval. Our work can also be easily be extended to the incremental DSI settings which would enable fast updates to the index while retrieving a diverse recall set.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-05T00:21:17Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Abhijeet Phatak</name>
+    </author>
+    <author>
+      <name>Jayant Sachdev</name>
+    </author>
+    <author>
+      <name>Sean D Rosario</name>
+    </author>
+    <author>
+      <name>Swati Kirti</name>
+    </author>
+    <author>
+      <name>Chittaranjan Tripathy</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.13539v1</id>
+    <title>Bursting Filter Bubble: Enhancing Serendipity Recommendations with Aligned Large Language Models</title>
+    <updated>2025-02-19T08:47:42Z</updated>
+    <link href="https://arxiv.org/abs/2502.13539v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.13539v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recommender systems (RSs) often suffer from the feedback loop phenomenon, e.g., RSs are trained on data biased by their recommendations. This leads to the filter bubble effect that reinforces homogeneous content and reduces user satisfaction. To this end, serendipity recommendations, which offer unexpected yet relevant items, are proposed. Recently, large language models (LLMs) have shown potential in serendipity prediction due to their extensive world knowledge and reasoning capabilities. However, they still face challenges in aligning serendipity judgments with human assessments, handling long user behavior sequences, and meeting the latency requirements of industrial RSs. To address these issues, we propose SERAL (Serendipity Recommendations with Aligned Large Language Models), a framework comprising three stages: (1) Cognition Profile Generation to compress user behavior into multi-level profiles; (2) SerenGPT Alignment to align serendipity judgments with human preferences using enriched training data; and (3) Nearline Adaptation to integrate SerenGPT into industrial RSs pipelines efficiently. Online experiments demonstrate that SERAL improves exposure ratio (PVR), clicks, and transactions of serendipitous items by 5.7%, 29.56%, and 27.6%, enhancing user experience without much impact on overall revenue. Now, it has been fully deployed in the "Guess What You Like" of the Taobao App homepage.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-19T08:47:42Z</published>
+    <arxiv:comment>15 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Yunjia Xi</name>
+    </author>
+    <author>
+      <name>Muyan Weng</name>
+    </author>
+    <author>
+      <name>Wen Chen</name>
+    </author>
+    <author>
+      <name>Chao Yi</name>
+    </author>
+    <author>
+      <name>Dian Chen</name>
+    </author>
+    <author>
+      <name>Gaoyang Guo</name>
+    </author>
+    <author>
+      <name>Mao Zhang</name>
+    </author>
+    <author>
+      <name>Jian Wu</name>
+    </author>
+    <author>
+      <name>Yuning Jiang</name>
+    </author>
+    <author>
+      <name>Qingwen Liu</name>
+    </author>
+    <author>
+      <name>Yong Yu</name>
+    </author>
+    <author>
+      <name>Weinan Zhang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2501.11391v1</id>
+    <title>Revisiting Language Models in Neural News Recommender Systems</title>
+    <updated>2025-01-20T10:35:36Z</updated>
+    <link href="https://arxiv.org/abs/2501.11391v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2501.11391v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Neural news recommender systems (RSs) have integrated language models (LMs) to encode news articles with rich textual information into representations, thereby improving the recommendation process. Most studies suggest that (i) news RSs achieve better performance with larger pre-trained language models (PLMs) than shallow language models (SLMs), and (ii) that large language models (LLMs) outperform PLMs. However, other studies indicate that PLMs sometimes lead to worse performance than SLMs. Thus, it remains unclear whether using larger LMs consistently improves the performance of news RSs. In this paper, we revisit, unify, and extend these comparisons of the effectiveness of LMs in news RSs using the real-world MIND dataset. We find that (i) larger LMs do not necessarily translate to better performance in news RSs, and (ii) they require stricter fine-tuning hyperparameter selection and greater computational resources to achieve optimal recommendation performance than smaller LMs. On the positive side, our experiments show that larger LMs lead to better recommendation performance for cold-start users: they alleviate dependency on extensive user interaction history and make recommendations more reliant on the news content.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-01-20T10:35:36Z</published>
+    <arxiv:comment>16 pages, ECIR 2025, the 47th European Conference on Information Retrieval</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Yuyue Zhao</name>
+    </author>
+    <author>
+      <name>Jin Huang</name>
+    </author>
+    <author>
+      <name>David Vos</name>
+    </author>
+    <author>
+      <name>Maarten de Rijke</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.10049v1</id>
+    <title>The Probability of Tiered Benefit: Partial Identification with Robust and Stable Inference</title>
+    <updated>2025-02-14T09:56:40Z</updated>
+    <link href="https://arxiv.org/abs/2502.10049v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.10049v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We define the probability of tiered benefit in scenarios with a binary exposure and an outcome that is either ordered categorical with $K \geq 2$ tiers or continuous partitioned by $K-1$ fixed thresholds into disjoint intervals. Similar to other pure counterfactual queries, this parameter is not $g$-identifiable without additional assumptions. We demonstrate that strong monotonicity does not suffice for point identification when $K \geq 3$ and provide sharp bounds both with and without this constraint. Inference and uncertainty quantification for these bounds are challenging due to potential nonregularity induced by ambiguities in the individualized optimization problems underlying the bounds. Such ambiguities can arise from immunities or null treatment effects in subpopulations with positive probability, affecting the lower bound estimate and hindering conservative inference. To address these issues, we extend the available stabilized one-step correction (S1S) procedure by incorporating stratum-specific stabilizing matrices. Through simulations, we illustrate the benefits of this approach over existing alternatives. We apply our method to estimate bounds on the probability of tiered benefit and harm from ADHD pharmacological treatment upon academic achievement, employing observational data from Norwegian schoolchildren with ADHD. Our findings suggest that although girls and children with previously low numeracy scores experience moderate probabilities of both treatment benefit and harm, in no group does the minimum benefit surpass the maximum harm, complicating a clear-cut treatment recommendation.</summary>
+    <category term="stat.ME" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-14T09:56:40Z</published>
+    <arxiv:primary_category term="stat.ME"/>
+    <author>
+      <name>Johan de Aguas</name>
+    </author>
+    <author>
+      <name>Sebastian Krumscheid</name>
+    </author>
+    <author>
+      <name>Johan Pensar</name>
+    </author>
+    <author>
+      <name>Guido Biele</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2206.02743v1</id>
+    <title>A Neural Corpus Indexer for Document Retrieval</title>
+    <updated>2022-06-06T16:56:52Z</updated>
+    <link href="https://arxiv.org/abs/2206.02743v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2206.02743v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Current state-of-the-art document retrieval solutions mainly follow an index-retrieve paradigm, where the index is hard to be optimized for the final retrieval target. In this paper, we aim to show that an end-to-end deep neural network unifying training and indexing stages can significantly improve the recall performance of traditional methods. To this end, we propose Neural Corpus Indexer (NCI), a sequence-to-sequence network that generates relevant document identifiers directly for a designated query. To optimize the recall performance of NCI, we invent a prefix-aware weight-adaptive decoder architecture, and leverage tailored techniques including query generation, semantic document identifiers and consistency-based regularization. Empirical studies demonstrated the superiority of NCI on a commonly used academic benchmark, achieving +51.9% relative improvement on NQ320k dataset compared to the best baseline.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2022-06-06T16:56:52Z</published>
+    <arxiv:comment>18 pages, 4 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Yujing Wang</name>
+    </author>
+    <author>
+      <name>Yingyan Hou</name>
+    </author>
+    <author>
+      <name>Haonan Wang</name>
+    </author>
+    <author>
+      <name>Ziming Miao</name>
+    </author>
+    <author>
+      <name>Shibin Wu</name>
+    </author>
+    <author>
+      <name>Hao Sun</name>
+    </author>
+    <author>
+      <name>Qi Chen</name>
+    </author>
+    <author>
+      <name>Yuqing Xia</name>
+    </author>
+    <author>
+      <name>Chengmin Chi</name>
+    </author>
+    <author>
+      <name>Guoshuai Zhao</name>
+    </author>
+    <author>
+      <name>Zheng Liu</name>
+    </author>
+    <author>
+      <name>Xing Xie</name>
+    </author>
+    <author>
+      <name>Hao Allen Sun</name>
+    </author>
+    <author>
+      <name>Weiwei Deng</name>
+    </author>
+    <author>
+      <name>Qi Zhang</name>
+    </author>
+    <author>
+      <name>Mao Yang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2411.18814v1</id>
+    <title>Unifying Generative and Dense Retrieval for Sequential Recommendation</title>
+    <updated>2024-11-27T23:36:59Z</updated>
+    <link href="https://arxiv.org/abs/2411.18814v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2411.18814v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Sequential dense retrieval models utilize advanced sequence learning techniques to compute item and user representations, which are then used to rank relevant items for a user through inner product computation between the user and all item representations. However, this approach requires storing a unique representation for each item, resulting in significant memory requirements as the number of items grow. In contrast, the recently proposed generative retrieval paradigm offers a promising alternative by directly predicting item indices using a generative model trained on semantic IDs that encapsulate items' semantic information. Despite its potential for large-scale applications, a comprehensive comparison between generative retrieval and sequential dense retrieval under fair conditions is still lacking, leaving open questions regarding performance, and computation trade-offs. To address this, we compare these two approaches under controlled conditions on academic benchmarks and propose LIGER (LeveragIng dense retrieval for GEnerative Retrieval), a hybrid model that combines the strengths of these two widely used methods. LIGER integrates sequential dense retrieval into generative retrieval, mitigating performance differences and enhancing cold-start item recommendation in the datasets evaluated. This hybrid approach provides insights into the trade-offs between these approaches and demonstrates improvements in efficiency and effectiveness for recommendation systems in small-scale benchmarks.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-11-27T23:36:59Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Liu Yang</name>
+    </author>
+    <author>
+      <name>Fabian Paischer</name>
+    </author>
+    <author>
+      <name>Kaveh Hassani</name>
+    </author>
+    <author>
+      <name>Jiacheng Li</name>
+    </author>
+    <author>
+      <name>Shuai Shao</name>
+    </author>
+    <author>
+      <name>Zhang Gabriel Li</name>
+    </author>
+    <author>
+      <name>Yun He</name>
+    </author>
+    <author>
+      <name>Xue Feng</name>
+    </author>
+    <author>
+      <name>Nima Noorshams</name>
+    </author>
+    <author>
+      <name>Sem Park</name>
+    </author>
+    <author>
+      <name>Bo Long</name>
+    </author>
+    <author>
+      <name>Robert D Nowak</name>
+    </author>
+    <author>
+      <name>Xiaoli Gao</name>
+    </author>
+    <author>
+      <name>Hamid Eghbalzadeh</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.07555v1</id>
+    <title>O1 Embedder: Let Retrievers Think Before Action</title>
+    <updated>2025-02-11T13:48:10Z</updated>
+    <link href="https://arxiv.org/abs/2502.07555v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.07555v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The growing power of large language models (LLMs) has revolutionized how people access and utilize information. Notably, the LLMs excel at performing fine-grained data representation, which facilitates precise retrieval of information. They also generate high-quality answers based on external references, enabling the production of useful knowledge. The recent introduction of reasoning models, like OpenAI O1 and DeepSeek R1, marks another leap forward, highlighting LLMs' ability to think progressively before delivering final answers. This breakthrough significantly improves the ability to address complex tasks, e.g., coding and math proofs.
+  Inspired by this progress, we aim to develop similar capabilities for retrieval models, which hold great promise for tackling critical challenges in the field, including multi-task retrieval, zero-shot retrieval, and tasks requiring intensive reasoning of complex relationships. With this motivation, we propose a novel approach called O1 Embedder, which generates useful thoughts for the input query before making retrieval for the target documents. To realize this objective, we conquer two technical difficulties. First, we design a data synthesis workflow, creating training signals for O1 Embedder by generating initial thoughts from an LLM-expert and subsequently refining them using a retrieval committee. Second, we optimize the training process, enabling a pre-trained model to be jointly fine-tuned to generate retrieval thoughts via behavior cloning and perform dense retrieval through contrastive learning. Our approach is evaluated by comprehensive experiments, where substantial improvements are achieved across 12 popular datasets, spanning both in-domain and out-of-domain scenarios. These results highlight O1 Embedder's remarkable accuracy and generalizability, paving the way for the development of next-generation IR foundation models.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-11T13:48:10Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Ruin Yan</name>
+    </author>
+    <author>
+      <name>Zheng Liu</name>
+    </author>
+    <author>
+      <name>Defu Lian</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2412.06791v1</id>
+    <title>Enhancing Prediction Models with Reinforcement Learning</title>
+    <updated>2024-11-21T12:24:11Z</updated>
+    <link href="https://arxiv.org/abs/2412.06791v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2412.06791v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We present a large-scale news recommendation system implemented at Ringier Axel Springer Polska, focusing on enhancing prediction models with reinforcement learning techniques. The system, named Aureus, integrates a variety of algorithms, including multi-armed bandit methods and deep learning models based on large language models (LLMs). We detail the architecture and implementation of Aureus, emphasizing the significant improvements in online metrics achieved by combining ranking prediction models with reinforcement learning. The paper further explores the impact of different models mixing on key business performance indicators. Our approach effectively balances the need for personalized recommendations with the ability to adapt to rapidly changing news content, addressing common challenges such as the cold start problem and content freshness. The results of online evaluation demonstrate the effectiveness of the proposed system in a real-world production environment.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-11-21T12:24:11Z</published>
+    <arxiv:comment>INRA 24: 12th International Workshop on News Recommendation and Analytics in Conjunction with ACM RecSys 2024</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <arxiv:journal_ref>Proceedings of the International Workshop on News Recommendation and Analytics co-located with the 2024 ACM Conference on Recommender Systems (RecSys 2024)</arxiv:journal_ref>
+    <author>
+      <name>Karol Radziszewski</name>
+    </author>
+    <author>
+      <name>Piotr Ociepka</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2412.17032v1</id>
+    <title>MINTQA: A Multi-Hop Question Answering Benchmark for Evaluating LLMs on New and Tail Knowledge</title>
+    <updated>2024-12-22T14:17:12Z</updated>
+    <link href="https://arxiv.org/abs/2412.17032v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2412.17032v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language models (LLMs) have demonstrated impressive capabilities in various reasoning tasks but face significant challenges with complex, knowledge-intensive multi-hop queries, particularly those involving new or long-tail knowledge. Existing benchmarks often fail to fully address these challenges. To bridge this gap, we introduce MINTQA (Multi-hop Question Answering on New and Tail Knowledge), a comprehensive benchmark to evaluate LLMs' capabilities in multi-hop reasoning across four critical dimensions: question handling strategy, sub-question generation, retrieval-augmented generation, and iterative or dynamic decomposition and retrieval. MINTQA comprises 10,479 question-answer pairs for evaluating new knowledge and 17,887 pairs for assessing long-tail knowledge, with each question equipped with corresponding sub-questions and answers. Our systematic evaluation of 22 state-of-the-art LLMs on MINTQA reveals significant limitations in their ability to handle complex knowledge base queries, particularly in handling new or unpopular knowledge. Our findings highlight critical challenges and offer insights for advancing multi-hop reasoning capabilities. The MINTQA benchmark is available at https://github.com/probe2/multi-hop/.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-12-22T14:17:12Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Jie He</name>
+    </author>
+    <author>
+      <name>Nan Hu</name>
+    </author>
+    <author>
+      <name>Wanqiu Long</name>
+    </author>
+    <author>
+      <name>Jiaoyan Chen</name>
+    </author>
+    <author>
+      <name>Jeff Z. Pan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2412.12464v1</id>
+    <title>LLM is Knowledge Graph Reasoner: LLM's Intuition-aware Knowledge Graph Reasoning for Cold-start Sequential Recommendation</title>
+    <updated>2024-12-17T01:52:15Z</updated>
+    <link href="https://arxiv.org/abs/2412.12464v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2412.12464v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Knowledge Graphs (KGs) represent relationships between entities in a graph structure and have been widely studied as promising tools for realizing recommendations that consider the accurate content information of items. However, traditional KG-based recommendation methods face fundamental challenges: insufficient consideration of temporal information and poor performance in cold-start scenarios. On the other hand, Large Language Models (LLMs) can be considered databases with a wealth of knowledge learned from the web data, and they have recently gained attention due to their potential application as recommendation systems. Although approaches that treat LLMs as recommendation systems can leverage LLMs' high recommendation literacy, their input token limitations make it impractical to consider the entire recommendation domain dataset and result in scalability issues. To address these challenges, we propose a LLM's Intuition-aware Knowledge graph Reasoning model (LIKR). Our main idea is to treat LLMs as reasoners that output intuitive exploration strategies for KGs. To integrate the knowledge of LLMs and KGs, we trained a recommendation agent through reinforcement learning using a reward function that integrates different recommendation strategies, including LLM's intuition and KG embeddings. By incorporating temporal awareness through prompt engineering and generating textual representations of user preferences from limited interactions, LIKR can improve recommendation performance in cold-start scenarios. Furthermore, LIKR can avoid scalability issues by using KGs to represent recommendation domain datasets and limiting the LLM's output to KG exploration strategies. Experiments on real-world datasets demonstrate that our model outperforms state-of-the-art recommendation methods in cold-start sequential recommendation scenarios.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-12-17T01:52:15Z</published>
+    <arxiv:comment>Accepted to the 47th European Conference on Information Retrieval (ECIR2025)</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Keigo Sakurai</name>
+    </author>
+    <author>
+      <name>Ren Togo</name>
+    </author>
+    <author>
+      <name>Takahiro Ogawa</name>
+    </author>
+    <author>
+      <name>Miki Haseyama</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2501.01945v1</id>
+    <title>Cold-Start Recommendation towards the Era of Large Language Models (LLMs): A Comprehensive Survey and Roadmap</title>
+    <updated>2025-01-03T18:51:18Z</updated>
+    <link href="https://arxiv.org/abs/2501.01945v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2501.01945v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Cold-start problem is one of the long-standing challenges in recommender systems, focusing on accurately modeling new or interaction-limited users or items to provide better recommendations. Due to the diversification of internet platforms and the exponential growth of users and items, the importance of cold-start recommendation (CSR) is becoming increasingly evident. At the same time, large language models (LLMs) have achieved tremendous success and possess strong capabilities in modeling user and item information, providing new potential for cold-start recommendations. However, the research community on CSR still lacks a comprehensive review and reflection in this field. Based on this, in this paper, we stand in the context of the era of large language models and provide a comprehensive review and discussion on the roadmap, related literature, and future directions of CSR. Specifically, we have conducted an exploration of the development path of how existing CSR utilizes information, from content features, graph relations, and domain information, to the world knowledge possessed by large language models, aiming to provide new insights for both the research and industrial communities on CSR. Related resources of cold-start recommendations are collected and continuously updated for the community in https://github.com/YuanchenBei/Awesome-Cold-Start-Recommendation.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-01-03T18:51:18Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Weizhi Zhang</name>
+    </author>
+    <author>
+      <name>Yuanchen Bei</name>
+    </author>
+    <author>
+      <name>Liangwei Yang</name>
+    </author>
+    <author>
+      <name>Henry Peng Zou</name>
+    </author>
+    <author>
+      <name>Peilin Zhou</name>
+    </author>
+    <author>
+      <name>Aiwei Liu</name>
+    </author>
+    <author>
+      <name>Yinghui Li</name>
+    </author>
+    <author>
+      <name>Hao Chen</name>
+    </author>
+    <author>
+      <name>Jianling Wang</name>
+    </author>
+    <author>
+      <name>Yu Wang</name>
+    </author>
+    <author>
+      <name>Feiran Huang</name>
+    </author>
+    <author>
+      <name>Sheng Zhou</name>
+    </author>
+    <author>
+      <name>Jiajun Bu</name>
+    </author>
+    <author>
+      <name>Allen Lin</name>
+    </author>
+    <author>
+      <name>James Caverlee</name>
+    </author>
+    <author>
+      <name>Fakhri Karray</name>
+    </author>
+    <author>
+      <name>Irwin King</name>
+    </author>
+    <author>
+      <name>Philip S. Yu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.09375v1</id>
+    <title>FARM: Frequency-Aware Model for Cross-Domain Live-Streaming Recommendation</title>
+    <updated>2025-02-13T14:44:15Z</updated>
+    <link href="https://arxiv.org/abs/2502.09375v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.09375v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Live-streaming services have attracted widespread popularity due to their real-time interactivity and entertainment value. Users can engage with live-streaming authors by participating in live chats, posting likes, or sending virtual gifts to convey their preferences and support. However, the live-streaming services faces serious data-sparsity problem, which can be attributed to the following two points: (1) User's valuable behaviors are usually sparse, e.g., like, comment and gift, which are easily overlooked by the model, making it difficult to describe user's personalized preference. (2) The main exposure content on our platform is short-video, which is 9 times higher than the exposed live-streaming, leading to the inability of live-streaming content to fully model user preference. To this end, we propose a Frequency-Aware Model for Cross-Domain Live-Streaming Recommendation, termed as FARM. Specifically, we first present the intra-domain frequency aware module to enable our model to perceive user's sparse yet valuable behaviors, i.e., high-frequency information, supported by the Discrete Fourier Transform (DFT). To transfer user preference across the short-video and live-streaming domains, we propose a novel preference align before fuse strategy, which consists of two parts: the cross-domain preference align module to align user preference in both domains with contrastive learning, and the cross-domain preference fuse module to further fuse user preference in both domains using a serious of tailor-designed attention mechanisms. Extensive offline experiments and online A/B testing on Kuaishou live-streaming services demonstrate the effectiveness and superiority of FARM. Our FARM has been deployed in online live-streaming services and currently serves hundreds of millions of users on Kuaishou.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-13T14:44:15Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Xiaodong Li</name>
+    </author>
+    <author>
+      <name>Ruochen Yang</name>
+    </author>
+    <author>
+      <name>Shuang Wen</name>
+    </author>
+    <author>
+      <name>Shen Wang</name>
+    </author>
+    <author>
+      <name>Yueyang Liu</name>
+    </author>
+    <author>
+      <name>Guoquan Wang</name>
+    </author>
+    <author>
+      <name>Weisong Hu</name>
+    </author>
+    <author>
+      <name>Qiang Luo</name>
+    </author>
+    <author>
+      <name>Jiawei Sheng</name>
+    </author>
+    <author>
+      <name>Tingwen Liu</name>
+    </author>
+    <author>
+      <name>Jiangxia Cao</name>
+    </author>
+    <author>
+      <name>Shuang Yang</name>
+    </author>
+    <author>
+      <name>Zhaojie Liu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.06097v1</id>
+    <title>NLGR: Utilizing Neighbor Lists for Generative Rerank in Personalized Recommendation Systems</title>
+    <updated>2025-02-10T02:06:17Z</updated>
+    <link href="https://arxiv.org/abs/2502.06097v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.06097v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Reranking plays a crucial role in modern multi-stage recommender systems by rearranging the initial ranking list. Due to the inherent challenges of combinatorial search spaces, some current research adopts an evaluator-generator paradigm, with a generator generating feasible sequences and an evaluator selecting the best sequence based on the estimated list utility. However, these methods still face two issues. Firstly, due to the goal inconsistency problem between the evaluator and generator, the generator tends to fit the local optimal solution of exposure distribution rather than combinatorial space optimization. Secondly, the strategy of generating target items one by one is difficult to achieve optimality because it ignores the information of subsequent items.
+  To address these issues, we propose a utilizing Neighbor Lists model for Generative Reranking (NLGR), which aims to improve the performance of the generator in the combinatorial space. NLGR follows the evaluator-generator paradigm and improves the generator's training and generating methods. Specifically, we use neighbor lists in combination space to enhance the training process, making the generator perceive the relative scores and find the optimization direction. Furthermore, we propose a novel sampling-based non-autoregressive generation method, which allows the generator to jump flexibly from the current list to any neighbor list. Extensive experiments on public and industrial datasets validate NLGR's effectiveness and we have successfully deployed NLGR on the Meituan food delivery platform.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-10T02:06:17Z</published>
+    <arxiv:comment>Accepted by WWW 2025 Industry Track</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Shuli Wang</name>
+    </author>
+    <author>
+      <name>Xue Wei</name>
+    </author>
+    <author>
+      <name>Senjie Kou</name>
+    </author>
+    <author>
+      <name>Chi Wang</name>
+    </author>
+    <author>
+      <name>Wenshuai Chen</name>
+    </author>
+    <author>
+      <name>Qi Tang</name>
+    </author>
+    <author>
+      <name>Yinhua Zhu</name>
+    </author>
+    <author>
+      <name>Xiong Xiao</name>
+    </author>
+    <author>
+      <name>Xingxing Wang</name>
+    </author>
+    <arxiv:doi>10.1145/3701716.3715251</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3701716.3715251" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2501.03447v1</id>
+    <title>CoReQA: Uncovering Potentials of Language Models in Code Repository Question Answering</title>
+    <updated>2025-01-07T00:24:07Z</updated>
+    <link href="https://arxiv.org/abs/2501.03447v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2501.03447v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language models that enhance software development tasks, such as code generation, code completion, and code question answering (QA), have been extensively studied in both academia and the industry. The models are integrated into popular intelligent IDEs like JetBrains and Cursor. Current benchmarks for evaluating models' code comprehension capabilities primarily focus on code generation or completion, often neglecting QA, which is a crucial aspect of understanding code. Existing code QA benchmarks are derived from code comments with predefined patterns (e.g., CodeQA) or focus on specific domains, such as education (e.g., CS1QA). These benchmarks fail to capture the real-world complexity of software engineering and user requirements for understanding code repositories. To address this gap, we introduce CoReQA, a benchmark for Code Repository-level question answering, constructed from GitHub issues and comments from 176 popular repositories across four programming languages. Since questions and answers may include both natural language and code snippets, traditional evaluation metrics such as BLEU are inadequate for assessing repository-level QA performance. Thus, we provide an LLM-as-a-judge framework to evaluate QA performance from five aspects. Based on CoReQA, we evaluate the performance of three baselines, including two short-context models using generic retrieval strategies and one long-context model that utilizes the entire repository context. Evaluation results show that state-of-the-art proprietary and long-context models struggle to address repository-level questions effectively. Our analysis highlights the limitations of language models in assisting developers in understanding repositories and suggests future directions for improving repository comprehension systems through effective context retrieval methodologies.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-01-07T00:24:07Z</published>
+    <arxiv:comment>12 pages, 7 figures, 8 tables</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Jialiang Chen</name>
+    </author>
+    <author>
+      <name>Kaifa Zhao</name>
+    </author>
+    <author>
+      <name>Jie Liu</name>
+    </author>
+    <author>
+      <name>Chao Peng</name>
+    </author>
+    <author>
+      <name>Jierui Liu</name>
+    </author>
+    <author>
+      <name>Hang Zhu</name>
+    </author>
+    <author>
+      <name>Pengfei Gao</name>
+    </author>
+    <author>
+      <name>Ping Yang</name>
+    </author>
+    <author>
+      <name>Shuiguang Deng</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2501.11034v1</id>
+    <title>Generative Retrieval for Book search</title>
+    <updated>2025-01-19T12:57:13Z</updated>
+    <link href="https://arxiv.org/abs/2501.11034v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2501.11034v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In book search, relevant book information should be returned in response to a query. Books contain complex, multi-faceted information such as metadata, outlines, and main text, where the outline provides hierarchical information between chapters and sections. Generative retrieval (GR) is a new retrieval paradigm that consolidates corpus information into a single model to generate identifiers of documents that are relevant to a given query. How can GR be applied to book search? Directly applying GR to book search is a challenge due to the unique characteristics of book search: The model needs to retain the complex, multi-faceted information of the book, which increases the demand for labeled data. Splitting book information and treating it as a collection of separate segments for learning might result in a loss of hierarchical information. We propose an effective Generative retrieval framework for Book Search (GBS) that features two main components: data augmentation and outline-oriented book encoding. For data augmentation, GBS constructs multiple query-book pairs for training; it constructs multiple book identifiers based on the outline, various forms of book contents, and simulates real book retrieval scenarios with varied pseudo-queries. This includes coverage-promoting book identifier augmentation, allowing the model to learn to index effectively, and diversity-enhanced query augmentation, allowing the model to learn to retrieve effectively. Outline-oriented book encoding improves length extrapolation through bi-level positional encoding and retentive attention mechanisms to maintain context over long sequences. Experiments on a proprietary Baidu dataset demonstrate that GBS outperforms strong baselines, achieving a 9.8\% improvement in terms of MRR@20, over the state-of-the-art RIPOR method...</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-01-19T12:57:13Z</published>
+    <arxiv:comment>Accepted at KDD ADS 2025</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Yubao Tang</name>
+    </author>
+    <author>
+      <name>Ruqing Zhang</name>
+    </author>
+    <author>
+      <name>Jiafeng Guo</name>
+    </author>
+    <author>
+      <name>Maarten de Rijke</name>
+    </author>
+    <author>
+      <name>Shihao Liu</name>
+    </author>
+    <author>
+      <name>Shuaiqing Wang</name>
+    </author>
+    <author>
+      <name>Dawei Yin</name>
+    </author>
+    <author>
+      <name>Xueqi Cheng</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.13840v1</id>
+    <title>Mitigating Popularity Bias in Collaborative Filtering through Fair Sampling</title>
+    <updated>2025-02-19T15:59:49Z</updated>
+    <link href="https://arxiv.org/abs/2502.13840v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.13840v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recommender systems often suffer from popularity bias, where frequently interacted items are overrepresented in recommendations. This bias stems from propensity factors influencing training data, leading to imbalanced exposure. In this paper, we introduce a Fair Sampling (FS) approach to address this issue by ensuring that both users and items are selected with equal probability as positive and negative instances. Unlike traditional inverse propensity score (IPS) methods, FS does not require propensity estimation, eliminating errors associated with inaccurate calculations. Our theoretical analysis demonstrates that FS effectively neutralizes the influence of propensity factors, achieving unbiased learning. Experimental results validate that FS outperforms state-of-the-art methods in both point-wise and pair-wise recommendation tasks, enhancing recommendation fairness without sacrificing accuracy. The implementation is available at https://anonymous.4open.science/r/Fair-Sampling.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-19T15:59:49Z</published>
+    <arxiv:comment>6 pages, under review</arxiv:comment>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Jiahao Liu</name>
+    </author>
+    <author>
+      <name>Dongsheng Li</name>
+    </author>
+    <author>
+      <name>Hansu Gu</name>
+    </author>
+    <author>
+      <name>Peng Zhang</name>
+    </author>
+    <author>
+      <name>Tun Lu</name>
+    </author>
+    <author>
+      <name>Li Shang</name>
+    </author>
+    <author>
+      <name>Ning Gu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.03041v1</id>
+    <title>Large Language Models Are Universal Recommendation Learners</title>
+    <updated>2025-02-05T09:56:52Z</updated>
+    <link href="https://arxiv.org/abs/2502.03041v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.03041v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In real-world recommender systems, different tasks are typically addressed using supervised learning on task-specific datasets with carefully designed model architectures. We demonstrate that large language models (LLMs) can function as universal recommendation learners, capable of handling multiple tasks within a unified input-output framework, eliminating the need for specialized model designs. To improve the recommendation performance of LLMs, we introduce a multimodal fusion module for item representation and a sequence-in-set-out approach for efficient candidate generation. When applied to industrial-scale data, our LLM achieves competitive results with expert models elaborately designed for different recommendation tasks. Furthermore, our analysis reveals that recommendation outcomes are highly sensitive to text input, highlighting the potential of prompt engineering in optimizing industrial-scale recommender systems.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-05T09:56:52Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Junguang Jiang</name>
+    </author>
+    <author>
+      <name>Yanwen Huang</name>
+    </author>
+    <author>
+      <name>Bin Liu</name>
+    </author>
+    <author>
+      <name>Xiaoyu Kong</name>
+    </author>
+    <author>
+      <name>Ziru Xu</name>
+    </author>
+    <author>
+      <name>Han Zhu</name>
+    </author>
+    <author>
+      <name>Jian Xu</name>
+    </author>
+    <author>
+      <name>Bo Zheng</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.15957v1</id>
+    <title>R$^3$Mem: Bridging Memory Retention and Retrieval via Reversible Compression</title>
+    <updated>2025-02-21T21:39:00Z</updated>
+    <link href="https://arxiv.org/abs/2502.15957v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.15957v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Memory plays a key role in enhancing LLMs' performance when deployed to real-world applications. Existing solutions face trade-offs: explicit memory designs based on external storage require complex management and incur storage overhead, while implicit memory designs that store information via parameters struggle with reliable retrieval. In this paper, we propose R$^3$Mem, a memory network that optimizes both information Retention and Retrieval through Reversible context compression. Specifically, R$^3$Mem employs virtual memory tokens to compress and encode infinitely long histories, further enhanced by a hierarchical compression strategy that refines information from document- to entity-level for improved assimilation across granularities. For retrieval, R$^3$Mem employs a reversible architecture, reconstructing raw data by invoking the model backward with compressed information. Implemented via parameter-efficient fine-tuning, it can integrate seamlessly with any Transformer-based model. Experiments demonstrate that our memory design achieves state-of-the-art performance in long-context language modeling and retrieval-augmented generation tasks. It also significantly outperforms conventional memory modules in long-horizon interaction tasks like conversational agents, showcasing its potential for next-generation retrieval systems.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-21T21:39:00Z</published>
+    <arxiv:comment>Work in progress</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Xiaoqiang Wang</name>
+    </author>
+    <author>
+      <name>Suyuchen Wang</name>
+    </author>
+    <author>
+      <name>Yun Zhu</name>
+    </author>
+    <author>
+      <name>Bang Liu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.01630v1</id>
+    <title>TReMu: Towards Neuro-Symbolic Temporal Reasoning for LLM-Agents with Memory in Multi-Session Dialogues</title>
+    <updated>2025-02-03T18:58:19Z</updated>
+    <link href="https://arxiv.org/abs/2502.01630v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.01630v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Temporal reasoning in multi-session dialogues presents a significant challenge which has been under-studied in previous temporal reasoning benchmarks. To bridge this gap, we propose a new evaluation task for temporal reasoning in multi-session dialogues and introduce an approach to construct a new benchmark by augmenting dialogues from LoCoMo and creating multi-choice QAs. Furthermore, we present TReMu, a new framework aimed at enhancing the temporal reasoning capabilities of LLM-agents in this context. Specifically, the framework employs \textit{time-aware memorization} through timeline summarization, generating retrievable memory by summarizing events in each dialogue session with their inferred dates. Additionally, we integrate \textit{neuro-symbolic temporal reasoning}, where LLMs generate Python code to perform temporal calculations and select answers. Experimental evaluations on popular LLMs demonstrate that our benchmark is challenging, and the proposed framework significantly improves temporal reasoning performance compared to baseline methods, raising from 29.83 on GPT-4o via standard prompting to 77.67 via our approach and highlighting its effectiveness in addressing temporal reasoning in multi-session dialogues.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-03T18:58:19Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Yubin Ge</name>
+    </author>
+    <author>
+      <name>Salvatore Romeo</name>
+    </author>
+    <author>
+      <name>Jason Cai</name>
+    </author>
+    <author>
+      <name>Raphael Shu</name>
+    </author>
+    <author>
+      <name>Monica Sunkara</name>
+    </author>
+    <author>
+      <name>Yassine Benajiba</name>
+    </author>
+    <author>
+      <name>Yi Zhang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.12958v1</id>
+    <title>Preventing the Popular Item Embedding Based Attack in Federated Recommendations</title>
+    <updated>2025-02-18T15:43:14Z</updated>
+    <link href="https://arxiv.org/abs/2502.12958v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.12958v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Privacy concerns have led to the rise of federated recommender systems (FRS), which can create personalized models across distributed clients. However, FRS is vulnerable to poisoning attacks, where malicious users manipulate gradients to promote their target items intentionally. Existing attacks against FRS have limitations, as they depend on specific models and prior knowledge, restricting their real-world applicability. In our exploration of practical FRS vulnerabilities, we devise a model-agnostic and prior-knowledge-free attack, named PIECK (Popular Item Embedding based Attack). The core module of PIECK is popular item mining, which leverages embedding changes during FRS training to effectively identify the popular items. Built upon the core module, PIECK branches into two diverse solutions: The PIECKIPE solution employs an item popularity enhancement module, which aligns the embeddings of targeted items with the mined popular items to increase item exposure. The PIECKUEA further enhances the robustness of the attack by using a user embedding approximation module, which approximates private user embeddings using mined popular items. Upon identifying PIECK, we evaluate existing federated defense methods and find them ineffective against PIECK, as poisonous gradients inevitably overwhelm the cold target items. We then propose a novel defense method by introducing two regularization terms during user training, which constrain item popularity enhancement and user embedding approximation while preserving FRS performance. We evaluate PIECK and its defense across two base models, three real datasets, four top-tier attacks, and six general defense methods, affirming the efficacy of both PIECK and its defense.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.DB" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-18T15:43:14Z</published>
+    <arxiv:comment>Accepted at ICDE 2024, Extension</arxiv:comment>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Jun Zhang</name>
+    </author>
+    <author>
+      <name>Huan Li</name>
+    </author>
+    <author>
+      <name>Dazhong Rong</name>
+    </author>
+    <author>
+      <name>Yan Zhao</name>
+    </author>
+    <author>
+      <name>Ke Chen</name>
+    </author>
+    <author>
+      <name>Lidan Shou</name>
+    </author>
+    <arxiv:doi>10.1109/ICDE60146.2024.00173</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/ICDE60146.2024.00173" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1602.05352v1</id>
+    <title>Recommendations as Treatments: Debiasing Learning and Evaluation</title>
+    <updated>2016-02-17T09:58:25Z</updated>
+    <link href="https://arxiv.org/abs/1602.05352v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1602.05352v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Most data for evaluating and training recommender systems is subject to selection biases, either through self-selection by the users or through the actions of the recommendation system itself. In this paper, we provide a principled approach to handling selection biases, adapting models and estimation techniques from causal inference. The approach leads to unbiased performance estimators despite biased data, and to a matrix factorization method that provides substantially improved prediction performance on real-world data. We theoretically and empirically characterize the robustness of the approach, finding that it is highly practical and scalable.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2016-02-17T09:58:25Z</published>
+    <arxiv:comment>10 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Tobias Schnabel</name>
+    </author>
+    <author>
+      <name>Adith Swaminathan</name>
+    </author>
+    <author>
+      <name>Ashudeep Singh</name>
+    </author>
+    <author>
+      <name>Navin Chandak</name>
+    </author>
+    <author>
+      <name>Thorsten Joachims</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2501.11759v1</id>
+    <title>Poison-RAG: Adversarial Data Poisoning Attacks on Retrieval-Augmented Generation in Recommender Systems</title>
+    <updated>2025-01-20T21:38:36Z</updated>
+    <link href="https://arxiv.org/abs/2501.11759v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2501.11759v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This study presents Poison-RAG, a framework for adversarial data poisoning attacks targeting retrieval-augmented generation (RAG)-based recommender systems. Poison-RAG manipulates item metadata, such as tags and descriptions, to influence recommendation outcomes. Using item metadata generated through a large language model (LLM) and embeddings derived via the OpenAI API, we explore the impact of adversarial poisoning attacks on provider-side, where attacks are designed to promote long-tail items and demote popular ones. Two attack strategies are proposed: local modifications, which personalize tags for each item using BERT embeddings, and global modifications, applying uniform tags across the dataset. Experiments conducted on the MovieLens dataset in a black-box setting reveal that local strategies improve manipulation effectiveness by up to 50\%, while global strategies risk boosting already popular items. Results indicate that popular items are more susceptible to attacks, whereas long-tail items are harder to manipulate. Approximately 70\% of items lack tags, presenting a cold-start challenge; data augmentation and synthesis are proposed as potential defense mechanisms to enhance RAG-based systems' resilience. The findings emphasize the need for robust metadata management to safeguard recommendation frameworks. Code and data are available at https://github.com/atenanaz/Poison-RAG.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-01-20T21:38:36Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Fatemeh Nazary</name>
+    </author>
+    <author>
+      <name>Yashar Deldjoo</name>
+    </author>
+    <author>
+      <name>Tommaso di Noia</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1510.07025v1</id>
+    <title>Modeling User Exposure in Recommendation</title>
+    <updated>2015-10-23T19:39:38Z</updated>
+    <link href="https://arxiv.org/abs/1510.07025v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1510.07025v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Collaborative filtering analyzes user preferences for items (e.g., books, movies, restaurants, academic papers) by exploiting the similarity patterns across users. In implicit feedback settings, all the items, including the ones that a user did not consume, are taken into consideration. But this assumption does not accord with the common sense understanding that users have a limited scope and awareness of items. For example, a user might not have heard of a certain paper, or might live too far away from a restaurant to experience it. In the language of causal analysis, the assignment mechanism (i.e., the items that a user is exposed to) is a latent variable that may change for various user/item combinations. In this paper, we propose a new probabilistic approach that directly incorporates user exposure to items into collaborative filtering. The exposure is modeled as a latent variable and the model infers its value from data. In doing so, we recover one of the most successful state-of-the-art approaches as a special case of our model, and provide a plug-in method for conditioning exposure on various forms of exposure covariates (e.g., topics in text, venue locations). We show that our scalable inference algorithm outperforms existing benchmarks in four different domains both with and without exposure covariates.</summary>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2015-10-23T19:39:38Z</published>
+    <arxiv:comment>11 pages, 4 figures</arxiv:comment>
+    <arxiv:primary_category term="stat.ML"/>
+    <author>
+      <name>Dawen Liang</name>
+    </author>
+    <author>
+      <name>Laurent Charlin</name>
+    </author>
+    <author>
+      <name>James McInerney</name>
+    </author>
+    <author>
+      <name>David M. Blei</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.00321v1</id>
+    <title>MIM: Multi-modal Content Interest Modeling Paradigm for User Behavior Modeling</title>
+    <updated>2025-02-01T05:06:21Z</updated>
+    <link href="https://arxiv.org/abs/2502.00321v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.00321v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Click-Through Rate (CTR) prediction is a crucial task in recommendation systems, online searches, and advertising platforms, where accurately capturing users' real interests in content is essential for performance. However, existing methods heavily rely on ID embeddings, which fail to reflect users' true preferences for content such as images and titles. This limitation becomes particularly evident in cold-start and long-tail scenarios, where traditional approaches struggle to deliver effective results. To address these challenges, we propose a novel Multi-modal Content Interest Modeling paradigm (MIM), which consists of three key stages: Pre-training, Content-Interest-Aware Supervised Fine-Tuning (C-SFT), and Content-Interest-Aware UBM (CiUBM). The pre-training stage adapts foundational models to domain-specific data, enabling the extraction of high-quality multi-modal embeddings. The C-SFT stage bridges the semantic gap between content and user interests by leveraging user behavior signals to guide the alignment of embeddings with user preferences. Finally, the CiUBM stage integrates multi-modal embeddings and ID-based collaborative filtering signals into a unified framework. Comprehensive offline experiments and online A/B tests conducted on the Taobao, one of the world's largest e-commerce platforms, demonstrated the effectiveness and efficiency of MIM method. The method has been successfully deployed online, achieving a significant increase of +14.14% in CTR and +4.12% in RPM, showcasing its industrial applicability and substantial impact on platform performance. To promote further research, we have publicly released the code and dataset at https://pan.quark.cn/s/8fc8ec3e74f3.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-01T05:06:21Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Bencheng Yan</name>
+    </author>
+    <author>
+      <name>Si Chen</name>
+    </author>
+    <author>
+      <name>Shichang Jia</name>
+    </author>
+    <author>
+      <name>Jianyu Liu</name>
+    </author>
+    <author>
+      <name>Yueran Liu</name>
+    </author>
+    <author>
+      <name>Chenghan Fu</name>
+    </author>
+    <author>
+      <name>Wanxian Guan</name>
+    </author>
+    <author>
+      <name>Hui Zhao</name>
+    </author>
+    <author>
+      <name>Xiang Zhang</name>
+    </author>
+    <author>
+      <name>Kai Zhang</name>
+    </author>
+    <author>
+      <name>Wenbo Su</name>
+    </author>
+    <author>
+      <name>Pengjie Wang</name>
+    </author>
+    <author>
+      <name>Jian Xu</name>
+    </author>
+    <author>
+      <name>Bo Zheng</name>
+    </author>
+    <author>
+      <name>Baolin Liu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2412.20250v1</id>
+    <title>Recommender Engine Driven Client Selection in Federated Brain Tumor Segmentation</title>
+    <updated>2024-12-28T19:49:02Z</updated>
+    <link href="https://arxiv.org/abs/2412.20250v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2412.20250v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>This study presents a robust and efficient client selection protocol designed to optimize the Federated Learning (FL) process for the Federated Tumor Segmentation Challenge (FeTS 2024). In the evolving landscape of FL, the judicious selection of collaborators emerges as a critical determinant for the success and efficiency of collective learning endeavors, particularly in domains requiring high precision. This work introduces a recommender engine framework based on non-negative matrix factorization (NNMF) and a hybrid aggregation approach that blends content-based and collaborative filtering. This method intelligently analyzes historical performance, expertise, and other relevant metrics to identify the most suitable collaborators. This approach not only addresses the cold start problem where new or inactive collaborators pose selection challenges due to limited data but also significantly improves the precision and efficiency of the FL process. Additionally, we propose harmonic similarity weight aggregation (HSimAgg) for adaptive aggregation of model parameters. We utilized a dataset comprising 1,251 multi-parametric magnetic resonance imaging (mpMRI) scans from individuals diagnosed with glioblastoma (GBM) for training purposes and an additional 219 mpMRI scans for external evaluations. Our federated tumor segmentation approach achieved dice scores of 0.7298, 0.7424, and 0.8218 for enhancing tumor (ET), tumor core (TC), and whole tumor (WT) segmentation tasks respectively on the external validation set. In conclusion, this research demonstrates that selecting collaborators with expertise aligned to specific tasks, like brain tumor segmentation, improves the effectiveness of FL networks.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-12-28T19:49:02Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Muhammad Irfan Khan</name>
+    </author>
+    <author>
+      <name>Elina Kontio</name>
+    </author>
+    <author>
+      <name>Suleiman A. Khan</name>
+    </author>
+    <author>
+      <name>Mojtaba Jafaritadi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2412.18715v1</id>
+    <title>Optimization and Scalability of Collaborative Filtering Algorithms in Large Language Models</title>
+    <updated>2024-12-25T00:26:51Z</updated>
+    <link href="https://arxiv.org/abs/2412.18715v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2412.18715v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>With the rapid development of large language models (LLMs) and the growing demand for personalized content, recommendation systems have become critical in enhancing user experience and driving engagement. Collaborative filtering algorithms, being core to many recommendation systems, have garnered significant attention for their efficiency and interpretability. However, traditional collaborative filtering approaches face numerous challenges when integrated into large-scale LLM-based systems, including high computational costs, severe data sparsity, cold start problems, and lack of scalability. This paper investigates the optimization and scalability of collaborative filtering algorithms in large language models, addressing these limitations through advanced optimization strategies. Firstly, we analyze the fundamental principles of collaborative filtering algorithms and their limitations when applied in LLM-based contexts. Next, several optimization techniques such as matrix factorization, approximate nearest neighbor search, and parallel computing are proposed to enhance computational efficiency and model accuracy. Additionally, strategies such as distributed architecture and model compression are explored to facilitate dynamic updates and scalability in data-intensive environments.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-12-25T00:26:51Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Haowei Yang</name>
+    </author>
+    <author>
+      <name>Longfei Yun</name>
+    </author>
+    <author>
+      <name>Jinghan Cao</name>
+    </author>
+    <author>
+      <name>Qingyi Lu</name>
+    </author>
+    <author>
+      <name>Yuming Tu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.08993v1</id>
+    <title>Off-Policy Evaluation for Recommendations with Missing-Not-At-Random Rewards</title>
+    <updated>2025-02-13T06:11:29Z</updated>
+    <link href="https://arxiv.org/abs/2502.08993v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.08993v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Unbiased recommender learning (URL) and off-policy evaluation/learning (OPE/L) techniques are effective in addressing the data bias caused by display position and logging policies, thereby consistently improving the performance of recommendations. However, when both bias exits in the logged data, these estimators may suffer from significant bias. In this study, we first analyze the position bias of the OPE estimator when rewards are missing not at random. To mitigate both biases, we propose a novel estimator that leverages two probabilities of logging policies and reward observations as propensity scores. Our experiments demonstrate that the proposed estimator achieves superior performance compared to other estimators, even as the levels of bias in reward observations increases.</summary>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-13T06:11:29Z</published>
+    <arxiv:comment>4pages</arxiv:comment>
+    <arxiv:primary_category term="stat.ML"/>
+    <author>
+      <name>Tatsuki Takahashi</name>
+    </author>
+    <author>
+      <name>Chihiro Maru</name>
+    </author>
+    <author>
+      <name>Hiroko Shoji</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2502.07219v1</id>
+    <title>DOGR: Leveraging Document-Oriented Contrastive Learning in Generative Retrieval</title>
+    <updated>2025-02-11T03:25:42Z</updated>
+    <link href="https://arxiv.org/abs/2502.07219v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2502.07219v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Generative retrieval constitutes an innovative approach in in- formation retrieval, leveraging generative language models (LM) to generate a ranked list of document identifiers (do- cid) for a given query. It simplifies the retrieval pipeline by replacing the large external index with model parameters. However, existing works merely learned the relationship be- tween queries and document identifiers, which is unable to directly represent the relevance between queries and docu- ments. To address the above problem, we propose a novel and general generative retrieval framework, namely Leverag- ing Document-Oriented Contrastive Learning in Generative Retrieval (DOGR), which leverages contrastive learning to improve generative retrieval tasks. It adopts a two-stage learn- ing strategy that captures the relationship between queries and documents comprehensively through direct interactions. Furthermore, negative sampling methods and correspond- ing contrastive learning objectives are implemented to en- hance the learning of semantic representations, thereby pro- moting a thorough comprehension of the relationship be- tween queries and documents. Experimental results demon- strate that DOGR achieves state-of-the-art performance com- pared to existing generative retrieval methods on two public benchmark datasets. Further experiments have shown that our framework is generally effective for common identifier con- struction techniques.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-02-11T03:25:42Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Penghao Lu</name>
+    </author>
+    <author>
+      <name>Xin Dong</name>
+    </author>
+    <author>
+      <name>Yuansheng Zhou</name>
+    </author>
+    <author>
+      <name>Lei Cheng</name>
+    </author>
+    <author>
+      <name>Chuan Yuan</name>
+    </author>
+    <author>
+      <name>Linjian Mo</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2412.06308v1</id>
+    <title>PRECISE: Pre-training Sequential Recommenders with Collaborative and Semantic Information</title>
+    <updated>2024-12-09T08:55:48Z</updated>
+    <link href="https://arxiv.org/abs/2412.06308v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2412.06308v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Real-world recommendation systems commonly offer diverse content scenarios for users to interact with. Considering the enormous number of users in industrial platforms, it is infeasible to utilize a single unified recommendation model to meet the requirements of all scenarios. Usually, separate recommendation pipelines are established for each distinct scenario. This practice leads to challenges in comprehensively grasping users' interests. Recent research endeavors have been made to tackle this problem by pre-training models to encapsulate the overall interests of users. Traditional pre-trained recommendation models mainly capture user interests by leveraging collaborative signals. Nevertheless, a prevalent drawback of these systems is their incapacity to handle long-tail items and cold-start scenarios. With the recent advent of large language models, there has been a significant increase in research efforts focused on exploiting LLMs to extract semantic information for users and items. However, text-based recommendations highly rely on elaborate feature engineering and frequently fail to capture collaborative similarities. To overcome these limitations, we propose a novel pre-training framework for sequential recommendation, termed PRECISE. This framework combines collaborative signals with semantic information. Moreover, PRECISE employs a learning framework that initially models users' comprehensive interests across all recommendation scenarios and subsequently concentrates on the specific interests of target-scene behaviors. We demonstrate that PRECISE precisely captures the entire range of user interests and effectively transfers them to the target interests. Empirical findings reveal that the PRECISE framework attains outstanding performance on both public and industrial datasets.</summary>
+    <category term="cs.IR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-12-09T08:55:48Z</published>
+    <arxiv:primary_category term="cs.IR"/>
+    <author>
+      <name>Chonggang Song</name>
+    </author>
+    <author>
+      <name>Chunxu Shen</name>
+    </author>
+    <author>
+      <name>Hao Gu</name>
+    </author>
+    <author>
+      <name>Yaoming Wu</name>
+    </author>
+    <author>
+      <name>Lingling Yi</name>
+    </author>
+    <author>
+      <name>Jie Wen</name>
+    </author>
+    <author>
+      <name>Chuan Chen</name>
+    </author>
+  </entry>
+</feed>

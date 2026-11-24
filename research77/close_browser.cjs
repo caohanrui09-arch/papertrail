@@ -1,0 +1,2 @@
+const {connect}=require('../research66/inspect_topics67.cjs');
+(async()=>{const v=await(await fetch('http://127.0.0.1:9327/json/version')).json();const {ws,call}=await connect(v.webSocketDebuggerUrl);await Promise.race([call('Browser.close').catch(()=>{}),new Promise(r=>setTimeout(r,1500))]);ws.close();console.log('Dedicated verification browser closed')})().catch(e=>{console.error(e);process.exitCode=1});

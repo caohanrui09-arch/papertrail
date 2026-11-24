@@ -1,0 +1,18 @@
+/* Shared Papertrail visual rules, used verbatim by reading desk and Agent lab. */
+:root{--pt-bg:#f6f6f6;--pt-surface:#fff;--pt-ink:#252525;--pt-muted:#686868;--pt-line:#dedede;--pt-primary:#202020;--pt-blue:#3463a0;--pt-amber:#99561c;--pt-violet:#7154a2;--pt-error:#a04d38;--pt-radius:8px;--pt-panel-radius:13px;--pt-body:14px;--pt-small:12px;--pt-caption:11px;--pt-label:10px;--pt-section:23px;--pt-font:"Segoe UI","Microsoft YaHei",sans-serif;--pt-display:"DengXian","Microsoft YaHei",sans-serif;--pt-mono:Consolas,monospace}
+.lab-root,.studio{font-family:var(--pt-font);background:var(--pt-bg);color:var(--pt-ink)}
+.lab-root h1,.lab-root h2,.studio .hero h1,.studio .work-heading h1,.studio .collection-heading h2{font-family:var(--pt-display)}
+.lab-root .panel-heading h2,.studio .collection-heading h2{font-size:var(--pt-section)}
+.lab-root button,.studio .query-row .search-submit,.studio .learning-start,.preview-link{border-radius:var(--pt-radius);font-family:var(--pt-font);font-size:var(--pt-small);min-height:38px;transition:background-color .18s,color .18s,border-color .18s,box-shadow .18s}
+.lab-root button.primary,.studio .query-row .search-submit,.studio .learning-start{background:var(--pt-primary);color:#fff;border-color:var(--pt-primary)}
+.lab-root button.primary:hover:not(:disabled),.studio .query-row .search-submit:hover:not(:disabled),.studio .learning-start:hover{background:#414141;border-color:#414141;color:#fff}
+.lab-root button:disabled,.studio button:disabled{opacity:.5;cursor:default}
+.lab-root button[aria-busy=true],.studio button[aria-busy=true]{cursor:wait}
+.lab-root .panel,.lab-root .task-bar,.studio .task-preview{border-radius:var(--pt-panel-radius);border-color:var(--pt-line)}
+.lab-root .brand{display:flex;align-items:center;gap:9px;font-family:var(--pt-font);font-size:24px;letter-spacing:-.9px}
+.lab-root .brand img{width:27px;height:27px}.lab-root .brand span{margin-left:12px}
+.lab-root .method-tabs button,.lab-root .run-picker button{min-height:32px;font-size:var(--pt-caption)}
+.lab-root .record-tools button{font-size:var(--pt-caption)}
+.lab-root :focus-visible,.studio :focus-visible{outline:3px solid #729bcf;outline-offset:3px}
+.lab-root ::selection,.studio ::selection{background:#dce9fb;color:#163a6b}
+@media(prefers-reduced-motion:reduce){.lab-root button,.studio .query-row .search-submit,.studio .learning-start,.preview-link{transition:none}}

@@ -1,0 +1,15 @@
+# Small trial only: no torch, transformers, recommendation training or cloud SDK.
+fastapi==0.162.0
+starlette==1.10.0
+pydantic==2.14.1
+uvicorn==0.54.0
+numpy==2.5.4
+scipy==1.18.1
+scikit-learn==1.9.1
+threadpoolctl==3.7.0
+filelock==4.2.4
+limits==5.8.0
+deprecated==3.0.1
+wrapt==2.5.2
+packaging==26.3
+typing-extensions==4.16.0

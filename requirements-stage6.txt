@@ -1,0 +1,5 @@
+# Install only in .cache/stage6-env; shared CUDA/runtime packages are inherited read-only.
+pyterrier==1.1.2
+pyterrier-alpha==0.16.5
+GitPython
+npids

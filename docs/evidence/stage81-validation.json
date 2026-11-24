@@ -1,0 +1,108 @@
+﻿{
+    "status":  "passed",
+    "date":  "2026-11-22",
+    "stage":  81,
+    "scope":  "A: rejection diagnostics messages + terminal instruction",
+    "protocol":  "stage81-a-messages-v1",
+    "protocol_sha256":  "fe5a08db78f6ee9a0bbba2e90c7921ffb734e598b20f5f120d954189bffa67f0",
+    "pre_change_module_sha256":  "fbce46b1a41c1125bcbb07512c6d80a055ea1993cf9c1f21db8aca6c52ff1e92",
+    "frozen_copy":  "research81/frozen_state_constraints_v79.py",
+    "frozen_copy_equals_pre_change":  true,
+    "post_change_module_sha256":  "bb5a6f30ae719a481378f47053baf341eb5d6e035ddc16da5fba0044ad89f4ed",
+    "decision_logic_changed":  false,
+    "differential_test":  {
+                              "scenarios":  6,
+                              "random_proposals":  300,
+                              "decisions_identical":  true,
+                              "fields_compared":  "accept/reject, charged, retrieval_charges, read_charges, readable, legal, can_finish, final_count"
+                          },
+    "tests":  {
+                  "new_message_tests":  11,
+                  "existing_state_tests":  8,
+                  "unified_and_schema_tests":  9,
+                  "passed_when_run_per_module":  true,
+                  "combined_process_error":  1,
+                  "combined_process_error_cause":  "pre-existing test-order coupling: legacy constrained_agent.run mutates shared FinalAnswerTool.inputs class default; reproduced with the frozen pre-change module",
+                  "combined_process_error_pre_existing":  true,
+                  "reproduction":  "research81/check_preexisting_isolation.py",
+                  "production_guard":  "research71.runner uses IsolatedActionState; worker asserts FinalAnswerTool.inputs unchanged after every run (4/4 batch runs passed)"
+              },
+    "batch":  {
+                  "runs":  4,
+                  "completed":  3,
+                  "failed":  1,
+                  "rows":  [
+                               {
+                                   "task_id":  "e73-search",
+                                   "completed":  true,
+                                   "charged":  3,
+                                   "rejections":  0,
+                                   "repeat":  1,
+                                   "calls":  3,
+                                   "seconds":  5.28
+                               },
+                               {
+                                   "task_id":  "e73-recommend",
+                                   "completed":  true,
+                                   "charged":  3,
+                                   "rejections":  0,
+                                   "repeat":  1,
+                                   "calls":  5,
+                                   "seconds":  11.91
+                               },
+                               {
+                                   "task_id":  "e73-mixed",
+                                   "completed":  true,
+                                   "charged":  5,
+                                   "rejections":  0,
+                                   "repeat":  1,
+                                   "calls":  5,
+                                   "seconds":  11.85
+                               },
+                               {
+                                   "task_id":  "e73-empty",
+                                   "completed":  false,
+                                   "charged":  6,
+                                   "rejections":  1,
+                                   "repeat":  1,
+                                   "calls":  8,
+                                   "seconds":  15.4
+                               }
+                           ],
+                  "task_source":  "data/stage73-evaluation/inputs/agent-tasks.json",
+                  "tasks_sha256":  "347b253840899a64d7447876eb3db47ef422a303bf535c264a31a2d98a8e514b"
+              },
+    "same_task_reference":  {
+                                "e73_search":  "completed both",
+                                "e73_recommend":  "completed both",
+                                "e73_mixed":  "completed both",
+                                "e73_empty":  "failed both; repeat 5 -\u003e 0"
+                            },
+    "combined_constrained":  {
+                                 "completed":  16,
+                                 "total":  21,
+                                 "note":  "13/17 stage80 retained runs + 4 new; descriptive, not a controlled comparison"
+                             },
+    "terminal_instruction_delivered_in_run":  true,
+    "new_model_runs":  4,
+    "new_training":  false,
+    "catalog_expansion":  false,
+    "human_relevance_labels":  0,
+    "quality_scores":  null,
+    "non_claims":  [
+                       "A does not raise completion rate",
+                       "4 runs are not a statistical sample",
+                       "historical numbers are not directly comparable after a protocol revision"
+                   ],
+    "files":  {
+                  "data\\stage81-batch\\result.json":  "3f8e1e240ef1d161b9d5eddc6d50e7d5bfdfce625a5eac577a98b1a1de74167d",
+                  "tests\\test_state_constraint_messages.py":  "6373ac16d1048087fb9116e82d2c5e3fe4626ab6465bcb59f62fc2f74e78ba7a",
+                  "research81\\frozen_state_constraints_v79.py":  "fbce46b1a41c1125bcbb07512c6d80a055ea1993cf9c1f21db8aca6c52ff1e92",
+                  "research81\\check_preexisting_isolation.py":  "e202a8514236ac3285a02c69ac756d4003b9c5e52d4e23d6fb2423db9c70676d",
+                  "reports\\stage81\\protocol.json":  "fe5a08db78f6ee9a0bbba2e90c7921ffb734e598b20f5f120d954189bffa67f0",
+                  "gsearch\\state_constraints.py":  "bb5a6f30ae719a481378f47053baf341eb5d6e035ddc16da5fba0044ad89f4ed",
+                  "research81\\compare_batch.py":  "94c8c2900be4ffe13796bf1a1a6f0d78e17fdc0238a3b6dd09c5fdeffb807b0e",
+                  "docs\\AGENT_MESSAGES_V81.md":  "a08d3303e799787923737e29ba20eeed7332fcdd13a9434889f977d4cc8e4f98",
+                  "reports\\stage81\\batch-summary.json":  "f798843562fcdc3e2034ed1dfb126db68489083151ae3e22005f0fbe6d61640b"
+              }
+}

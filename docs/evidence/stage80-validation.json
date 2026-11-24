@@ -1,0 +1,60 @@
+﻿{
+    "status":  "passed",
+    "date":  "2026-11-22",
+    "stage":  80,
+    "scope":  "read_only_agent_failure_diagnosis",
+    "runs_audited":  43,
+    "duplicate_copies_removed":  16,
+    "historical_model_calls":  143,
+    "by_policy":  {
+                      "constrained":  {
+                                          "completed":  13,
+                                          "failed":  4
+                                      },
+                      "fixed":  {
+                                    "completed":  17,
+                                    "failed":  0
+                                },
+                      "llm_agent":  {
+                                        "completed":  2,
+                                        "failed":  7
+                                    }
+                  },
+    "failure_causes":  {
+                           "budget_exhausted":  4,
+                           "completed":  32,
+                           "max_steps":  7
+                       },
+    "constrained_success_budget_usage":  {
+                                             "three_attempts":  10,
+                                             "five_attempts":  3,
+                                             "failed_at_six":  4
+                                         },
+    "failure_mechanisms":  {
+                               "mixed_branch_confusion":  2,
+                               "citation_shape_loop":  2,
+                               "unconstrained_max_steps":  7
+                           },
+    "reproduced_published_counts":  {
+                                        "stage63_fixed":  "3/3",
+                                        "stage63_llm_agent":  "2/3",
+                                        "stage63_constrained":  "2/3",
+                                        "stage73_fixed":  "4/4",
+                                        "stage73_llm_agent":  "0/4",
+                                        "stage73_constrained":  "3/4"
+                                    },
+    "new_model_runs":  0,
+    "new_training":  false,
+    "frozen_code_modified":  false,
+    "evaluation_protocol_modified":  false,
+    "human_relevance_labels":  0,
+    "quality_scores":  null,
+    "files":  {
+                  "docs\\AGENT_RELIABILITY_V80.md":  "603744a694853fb152482f65398e61c9f171850981e4e92ac0948242eb62a124",
+                  "scripts\\audit_agent_reliability.py":  "b2fb548be87e89784dd93465d3e3d2b95a5690c846f060bada5b7bd9fb9986b7",
+                  "reports\\stage80\\agent-failure-table.csv":  "3771cdcd3e2453c4f41841f3feacb1df7ccdaa5ff2585380a500905f40df8fd4",
+                  "reports\\stage80\\agent-reliability.json":  "a1935d9a98886df93f4168dafadf1dff46fb13b6f7a53bf5fc9767e620875ffb",
+                  "gsearch\\state_constraints.py":  "fbce46b1a41c1125bcbb07512c6d80a055ea1993cf9c1f21db8aca6c52ff1e92",
+                  "gsearch\\constrained_agent.py":  "bbc39f02b48e71ee8cda5b2a374dcf85a503a4fc89f0cd187a031674f78f0111"
+              }
+}

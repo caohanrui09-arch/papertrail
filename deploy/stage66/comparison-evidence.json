@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "scope": "Assistant structured extraction from verified v1 abstracts, not independent human labels or a full-text/experimental review",
+  "papers": {
+    "2504.18458": {
+      "control": {
+        "value": "推理深度与文本推理长度",
+        "evidence": "dynamically adapts reasoning depth based on question characteristics",
+        "source_url": "https://arxiv.org/abs/2504.18458v1",
+        "version_key": "arxiv:2504.18458v1",
+        "section": "Abstract",
+        "review": "assistant_source_grounded"
+      },
+      "selection": {
+        "value": "依据问题特征，结合难度相关指标与奖励",
+        "evidence": "model-based metrics for question characterization, an adaptive thinking reward mechanism, and difficulty-aware KL regularization",
+        "source_url": "https://arxiv.org/abs/2504.18458v1",
+        "version_key": "arxiv:2504.18458v1",
+        "section": "Abstract",
+        "review": "assistant_source_grounded"
+      },
+      "training": null
+    },
+    "2506.00806": {
+      "control": {
+        "value": "复杂问题才引入关键视觉提示；简单问题直接推理",
+        "evidence": "For straightforward questions, FOCUS supports efficient zero-shot reasoning. For more complex tasks, it employs the conceptualizing before observation strategy to highlight critical elements.",
+        "source_url": "https://arxiv.org/abs/2506.00806v1",
+        "version_key": "arxiv:2506.00806v1",
+        "section": "Abstract",
+        "review": "assistant_source_grounded"
+      },
+      "selection": {
+        "value": "根据问题复杂度结合快速直觉与审慎推理",
+        "evidence": "dynamically adapts to the complexity of questions, combining fast intuitive judgments with deliberate analytical reasoning",
+        "source_url": "https://arxiv.org/abs/2506.00806v1",
+        "version_key": "arxiv:2506.00806v1",
+        "section": "Abstract",
+        "review": "assistant_source_grounded"
+      },
+      "training": null
+    },
+    "2511.16670": {
+      "control": {
+        "value": "快慢双模式与推理token效率",
+        "evidence": "automatically switch between fast and slow thinking modes depending on task difficulty",
+        "source_url": "https://arxiv.org/abs/2511.16670v1",
+        "version_key": "arxiv:2511.16670v1",
+        "section": "Abstract",
+        "review": "assistant_source_grounded"
+      },
+      "selection": {
+        "value": "先按输出长度标记模式，再用GRPO学习快慢模式",
+        "evidence": "we label data as either requiring fast thinking or slow thinking based on the model output length",
+        "source_url": "https://arxiv.org/abs/2511.16670v1",
+        "version_key": "arxiv:2511.16670v1",
+        "section": "Abstract",
+        "review": "assistant_source_grounded"
+      },
+      "training": {
+        "value": "需要：摘要明确说明用GRPO训练",
+        "evidence": "we train the model using GRPO along with the thinking mode labels to develop dual-mode thinking",
+        "source_url": "https://arxiv.org/abs/2511.16670v1",
+        "version_key": "arxiv:2511.16670v1",
+        "section": "Abstract",
+        "review": "assistant_source_grounded"
+      }
+    },
+    "2610.15810": {
+      "control": {
+        "value": "联合选择视觉计算形式和推理深度",
+        "evidence": "jointly optimizes the form and depth of computation",
+        "source_url": "https://arxiv.org/abs/2610.15810v1",
+        "version_key": "arxiv:2610.15810v1",
+        "section": "Abstract",
+        "review": "assistant_source_grounded"
+      },
+      "selection": {
+        "value": "模态路由奖励选择模式，难度感知策略调节深度",
+        "evidence": "introduces a modality-aware routing reward to select appropriate reasoning modes and a difficulty-aware fast-slow strategy to adapt reasoning depth according to task complexity",
+        "source_url": "https://arxiv.org/abs/2610.15810v1",
+        "version_key": "arxiv:2610.15810v1",
+        "section": "Abstract",
+        "review": "assistant_source_grounded"
+      },
+      "training": null
+    },
+    "2610.25999": {
+      "control": {
+        "value": "在原top-k专家中重分配权重，控制推理深度",
+        "evidence": "redistributes routing weights within the original top-k set according to sample difficulty",
+        "source_url": "https://arxiv.org/abs/2610.25999v1",
+        "version_key": "arxiv:2610.25999v1",
+        "section": "Abstract",
+        "review": "assistant_source_grounded"
+      },
+      "selection": {
+        "value": "简单问题增强快专家，困难问题反向调整",
+        "evidence": "It amplifies fast-thinking experts and suppresses slow-thinking experts on easy inputs and reverses this adjustment on hard ones",
+        "source_url": "https://arxiv.org/abs/2610.25999v1",
+        "version_key": "arxiv:2610.25999v1",
+        "section": "Abstract",
+        "review": "assistant_source_grounded"
+      },
+      "training": {
+        "value": "不需要训练：摘要明确称training-free",
+        "evidence": "a training-free, two-stage framework",
+        "source_url": "https://arxiv.org/abs/2610.25999v1",
+        "version_key": "arxiv:2610.25999v1",
+        "section": "Abstract",
+        "review": "assistant_source_grounded"
+      }
+    }
+  }
+}

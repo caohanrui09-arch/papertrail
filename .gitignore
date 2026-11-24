@@ -1,0 +1,55 @@
+# Papertrail — private research assets (licence + user data)
+.cache/
+data/
+runs/
+visitor-data/
+*.sqlite3
+*.sqlite3-journal
+*.db
+session.key
+single-instance.lock
+
+# Raw derived research artefacts: not redistributable
+reports/**/raw_predictions*.json
+reports/**/full-index.json
+reports/stage7*/
+reports/verifier-*/
+reports/stage73-evaluation/agent-runs/
+reports/stage44-*/
+reports/stage45-*/
+reports/stage46-*/
+reports/stage47-*/
+reports/stage48-*/
+reports/stage49-*/
+reports/stage50-*/
+reports/stage51-*/
+
+# Personal career material
+docs/RESUME*.md
+docs/INTERVIEW*.md
+docs/GLOSSARY_V85.md
+
+# Local scratch and logs
+*.log
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Full research receipts are not published (private paths / user-derived data)
+reports/
+
+
+# Personal career artefacts and packaging noise
+deploy/stage66/experiment-artifacts/resume-*.md
+PACKAGE-MANIFEST.json
+
+
+# Internal research logs (kept locally; conclusions are in docs/)
+notes.md
+task_plan.md
+

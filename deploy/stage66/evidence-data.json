@@ -1,0 +1,266 @@
+{
+  "release": "stage52",
+  "as_of": "2026-11-04",
+  "title": "实验与证据",
+  "status": "current_budget_design_closed",
+  "live": {
+    "catalog": 162,
+    "default_search": "SQLite FTS5 BM25",
+    "default_recommendation": "基于实际收藏的 TF-IDF 内容余弦",
+    "workflow": "确定性工具流程",
+    "llm_in_live_path": false,
+    "scope": "当前网页主题试用目录，与9000篇离线SFT目录分开。"
+  },
+  "structure": {
+    "catalog": 162,
+    "codebooks": "3 × 16",
+    "fit_seeds": [
+      42,
+      2024,
+      3407
+    ],
+    "shuffle_controls": 60,
+    "scope": "早期CPU结构与碰撞诊断；近邻保留不是推荐相关性指标。",
+    "page": "/sid-lab.html"
+  },
+  "sft": {
+    "catalog": 9000,
+    "supervision_pool": 98887,
+    "samples128": 1024,
+    "samples512": 4096,
+    "steps": [
+      128,
+      512
+    ],
+    "seeds": [
+      42,
+      2024,
+      3407
+    ],
+    "arms": [
+      "content",
+      "shuffled"
+    ],
+    "batch": 8,
+    "beam": 10,
+    "raw_token_ids": true,
+    "events": 46352,
+    "outside_catalog_events": 39907,
+    "rankable_with_context": 1801,
+    "quality": [
+      {
+        "method": "popular",
+        "steps": null,
+        "ndcg": 0.0009201887310288563,
+        "recall": 0.0018304674087429517
+      },
+      {
+        "method": "content",
+        "steps": null,
+        "ndcg": 0.001775626804506857,
+        "recall": 0.003659329564740051
+      },
+      {
+        "method": "sar",
+        "steps": null,
+        "ndcg": 0.0015361102105030443,
+        "recall": 0.003195800686112493
+      },
+      {
+        "method": "content_sid",
+        "steps": 128,
+        "ndcg": 0.0008445642343195445,
+        "recall": 0.0016667918720921825
+      },
+      {
+        "method": "content_sid",
+        "steps": 512,
+        "ndcg": 0.0010344571660557175,
+        "recall": 0.0019760706427205225
+      },
+      {
+        "method": "shuffled_sid",
+        "steps": 128,
+        "ndcg": 0.0008328835743418239,
+        "recall": 0.001637600827494147
+      },
+      {
+        "method": "shuffled_sid",
+        "steps": 512,
+        "ndcg": 0.0008526652748612463,
+        "recall": 0.0016662229483829904
+      }
+    ],
+    "paired_content_minus_shuffled": [
+      0.0001744182417675145,
+      0.00040761434822309266,
+      -3.6656916407193764e-05
+    ],
+    "scope": "重复使用的tuning，完整正反馈分母，先用户内再用户宏平均；不是独立测试/线上CTR。"
+  },
+  "diagnosis": {
+    "primary": "32严格训练前缀的3语义位置平均条件NLL，越低越好",
+    "priors": [
+      {
+        "run": "content-42",
+        "marginal_nll": 4.142207674416668,
+        "prefix_nll": 3.7182769646542218,
+        "model128_nll": 4.2943092460433645,
+        "model512_nll": 4.247352821131547
+      },
+      {
+        "run": "shuffled-42",
+        "marginal_nll": 3.9842296525574845,
+        "prefix_nll": 3.735456907050722,
+        "model128_nll": 4.265097642938296,
+        "model512_nll": 4.1369757528106375
+      },
+      {
+        "run": "content-2024",
+        "marginal_nll": 4.142207674416668,
+        "prefix_nll": 3.7182769646542218,
+        "model128_nll": 4.232576929032803,
+        "model512_nll": 4.221181934078534
+      },
+      {
+        "run": "shuffled-2024",
+        "marginal_nll": 3.9842296525574845,
+        "prefix_nll": 3.735456907050722,
+        "model128_nll": 4.28169168283542,
+        "model512_nll": 4.192625934878985
+      },
+      {
+        "run": "content-3407",
+        "marginal_nll": 4.142207674416668,
+        "prefix_nll": 3.7182769646542218,
+        "model128_nll": 4.25438479334116,
+        "model512_nll": 4.347918001314004
+      },
+      {
+        "run": "shuffled-3407",
+        "marginal_nll": 3.9842296525574845,
+        "prefix_nll": 3.735456907050722,
+        "model128_nll": 4.178784529368083,
+        "model512_nll": 4.0638023515542345
+      }
+    ],
+    "gain_loss": [
+      {
+        "seed": 42,
+        "new_hits": 14,
+        "lost_hits": 1,
+        "coverage128": 163,
+        "coverage512": 54,
+        "top_user_positive_share": 0.5557522469359948
+      },
+      {
+        "seed": 2024,
+        "new_hits": 17,
+        "lost_hits": 3,
+        "coverage128": 72,
+        "coverage512": 76,
+        "top_user_positive_share": 0.6870062480705855
+      },
+      {
+        "seed": 3407,
+        "new_hits": 5,
+        "lost_hits": 5,
+        "coverage128": 99,
+        "coverage512": 55,
+        "top_user_positive_share": 0.4573225654762813
+      }
+    ],
+    "prefix_prior": "冻结4096标签；前序真实SID；Laplace α=1；完整位置码本；未见前缀均匀",
+    "models_beating_prefix_prior": 0,
+    "history_probe": {
+      "profiles": 32,
+      "beam_requests": 384,
+      "model_updates": 0,
+      "jaccard512_min": 0.4716833411686353,
+      "jaccard512_max": 0.7115280552780553
+    },
+    "decision": "关闭当前T5/SID/监督设计下的预算加量路线；保留内容推荐默认。",
+    "limits": [
+      "训练前缀损失参照，不是目录Top10排序比较。",
+      "未证明有效个性化，不外推所有生成式推荐无效。",
+      "128→512同时增加步数与样本曝光，不能单独归因步数。",
+      "原始逐用户案例、预测和模型不通过网站分发。"
+    ]
+  },
+  "downloads": {
+    "tuning": {
+      "filename": "quality.csv",
+      "media_type": "text/csv",
+      "label": "完整tuning汇总",
+      "sha256": "a9e290b5267997161795d23a969e7e0dc29166392aee50806165ec18d747e66e",
+      "source": "reports/stage48/quality-comparison.csv"
+    },
+    "priors": {
+      "filename": "prefix-priors.csv",
+      "media_type": "text/csv",
+      "label": "四方法分组损失",
+      "sha256": "593f373760527d23303324ee9638224736f47375a31ab89c68223eedde6ec17b",
+      "source": "reports/stage51/four-method-comparison.csv"
+    },
+    "closure": {
+      "filename": "closure.md",
+      "media_type": "text/plain",
+      "label": "诊断收尾报告",
+      "sha256": "6fb7bde13f7e24f404655742c3145288b7f3432d6fe5bdb905a03216c8f769cd",
+      "source": "reports/阶段51_SID前缀先验与诊断收尾.md"
+    },
+    "resume": {
+      "filename": "resume-final.md",
+      "media_type": "text/plain",
+      "label": "统一简历与面试证据",
+      "sha256": "1f0dca07e28dbc3745f3172ee49094d4a6a6e315392003f910dfb7e5d9a86cb9",
+      "source": "docs/SID_EXPERIMENT_CLOSURE_V51.md"
+    }
+  },
+  "sources": [
+    {
+      "path": "reports/stage51/final-validation.json",
+      "sha256": "b2e34a665abb82f1e90b0a3672c97aa5194c58efab2838bd0be3dcb16762c4d3"
+    },
+    {
+      "path": "reports/stage48/tuning-results.json",
+      "sha256": "859cc3697bca86f51816f74a4bd88867d30c336dc187c80d1edc2ec3701b52d6"
+    },
+    {
+      "path": "reports/stage48/summary.json",
+      "sha256": "af8352205d67c4fba4e38b9c48b684bcc6cc4b68a7b5cee49cf37a3354d001a9"
+    },
+    {
+      "path": "reports/stage51/comparison.json",
+      "sha256": "9f3b44aa89946f833f4fd4fec5bf217f415be6479283526911759a5a6da75451"
+    },
+    {
+      "path": "reports/stage51/decision.json",
+      "sha256": "4d4e1c9d2612151c55f8bd773591634f235c6935949a284497b8043299b13107"
+    },
+    {
+      "path": "reports/stage49/audit.json",
+      "sha256": "1f132dc04be53b5ea61642467166239cbf7b66f4659204fdfe6945683e26db64"
+    },
+    {
+      "path": "reports/stage50/summary.json",
+      "sha256": "02ef08f6bb54a8202e12f513b099b2dad61112f7b77683f1057fef9f2a93ffd9"
+    },
+    {
+      "path": "reports/stage43/results.json",
+      "sha256": "6c1c34b7e4aadf0cd3a545e845015b4746b5474af4c72dc40d41856a983a3f9e"
+    },
+    {
+      "path": "reports/stage45/popular.tuning.score.json",
+      "sha256": "83f9dc6ef453ca427320f180f40c4823cac5cf0c8d65ba66c688a98fc1ce4327"
+    },
+    {
+      "path": "reports/stage45/content.tuning.score.json",
+      "sha256": "15a4a969f2a3683e1e0a940331f66e1d2dd3aff5c640d5c0eb44ce37b649b91c"
+    },
+    {
+      "path": "reports/stage45/sar.tuning.score.json",
+      "sha256": "7e12bc32739baed98a0a6d81a8293189d5fac17fe0e25e69d82d78b6ddc8dffa"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+:root{--bg:#f6f6f6;--paper:#fff;--text:#303030;--muted:#777;--line:#dedede;--green:#333;--pale:#f0f0f0;--warn:#956737;--error:#a14f3e}.evaluation-context{padding:12px 14px;background:#f7f8fa;border-left:2px solid #bdcadd;font-size:12px;color:#777;line-height:1.8;overflow-wrap:anywhere}.label-header .header-scope{color:#777}.label-foot{color:#888}.native-editor textarea,.native-editor select,.native-editor input{accent-color:#333}
+
+.task-sidebar{background:#f1f1f1!important;border-color:#ddd!important}.native-editor input,.native-editor textarea,.native-editor select{border-color:#d3d3d3!important;background:#fff!important}.task-sidebar .query-list button:hover{background:#e9e9e9}
+
+.query-list button.selected{background:#e8e8e8!important;border-color:#ccc!important}.editor-card .primary:hover{background:#555!important}

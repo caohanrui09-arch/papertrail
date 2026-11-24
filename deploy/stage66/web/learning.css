@@ -1,0 +1,36 @@
+/* Extend the approved paper-and-ink workspace with quiet, explicit learning cues. */
+.learning-entry{display:flex;align-items:center;gap:19px;margin:24px 0 18px;flex-wrap:wrap}
+.learning-entry button{min-height:43px;font-size:12px;border-radius:8px}
+.learning-start{display:flex;align-items:center;gap:27px;padding:11px 17px;background:#353535;color:#f9f9f9;border:1px solid #353535}
+.learning-start:hover{background:#4a4a4a;transform:translateY(-1px)}
+.learning-start span{color:#e5e5e5;font-size:18px;line-height:1}
+.learning-search{padding:8px 0;background:none;color:#585858;border-radius:0!important;border-bottom:1px solid #bbbbbb}
+.learning-search:hover{color:#2d2d2d;border-color:#2d2d2d}
+.is-discover .hero{padding-bottom:27px}
+.is-discover .hero h1{font-size:clamp(37px,3.1vw,56px)}
+.is-discover .hero-proof{font-size:11px}
+.is-discover .topic-collection{margin-top:12px}
+.is-discover .search-box{margin-top:28px}
+.search-settings>summary{cursor:pointer;font-size:11px;color:#666666;margin-top:10px;width:max-content;padding:3px 1px}
+.search-settings[open]>summary{margin-bottom:7px}
+.search-settings .search-options{margin-top:0}
+.learning-path-intro{border-bottom:1px solid #e2e2e2;padding:0 0 14px;margin-bottom:12px}
+.learning-kicker{font:10px/1.6 Consolas,"Microsoft YaHei",sans-serif;letter-spacing:1px;color:#5a5a5a}
+.learning-path-intro h3{font-size:13px;line-height:1.8;font-weight:500;color:#444444;margin:7px 0}
+.learning-path-intro details{font-size:11px;color:#646464}
+.learning-path-intro summary{cursor:pointer;width:max-content;max-width:100%}
+.learning-path-intro ul{padding-left:18px;margin:7px 0 0}
+.learning-card-prompt{margin:10px 0 13px;padding:9px 11px;border-left:2px solid #a4a4a4;background:#f6f6f6}
+.learning-stage{font-size:10px;color:#5a5a5a;letter-spacing:.3px}
+.learning-card-prompt p{font-size:12px;line-height:1.8;color:#4f4f4f;margin:5px 0 0}
+.learning-reader-prompt{margin:13px 0 17px;padding:12px 14px;background:#f4f4f4;border:1px solid #dfdfdf;border-radius:7px}
+.learning-reader-prompt>p{font-size:14px;line-height:1.8;color:#3e3e3e;margin:5px 0 9px}
+.learning-reader-prompt details{font-size:12px;color:#585858}
+.learning-reader-prompt summary{cursor:pointer}
+.learning-reader-prompt details p{color:#515151;line-height:1.8}
+.learning-evidence{padding:8px 10px;background:#ffffff;border-left:2px solid #ababab;margin:9px 0}
+.learning-evidence>span{font-size:10px;color:#6f6f6f}
+.learning-evidence blockquote{font:13px/1.8 Georgia,serif;color:#424242;margin:6px 0 0}
+.learning-reader-prompt small{font-size:10px;line-height:1.8;color:#696969}
+.rail{overflow-y:auto;scrollbar-width:thin;scrollbar-color:#5d5d5d #1a1a1a}
+@media(prefers-reduced-motion:reduce){.learning-start:hover{transform:none}}

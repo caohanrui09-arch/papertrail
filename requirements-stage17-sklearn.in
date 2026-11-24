@@ -1,0 +1,5 @@
+# Preserve the frozen sklearn_runtime() project-local dependency layout.
+scikit-learn==1.9.1
+joblib==1.6.0
+threadpoolctl==3.7.0
+cloudpickle==3.1.2

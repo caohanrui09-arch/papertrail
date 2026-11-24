@@ -1,0 +1,8 @@
+pyterrier>=1.0.0
+pandas
+transformers
+torch
+sentencepiece
+GitPython
+npids
+pyterrier-alpha
