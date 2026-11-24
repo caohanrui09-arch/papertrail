@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Papertrail · 论文阅读站 + 可审计 Agent 实验台</title>
+<meta name="description" content="167 篇论文的本地阅读站，加上一个状态约束、可逐步审计的 LLM Agent 实验台。">
+<meta property="og:title" content="Papertrail · 论文阅读站 + 可审计 Agent 实验台">
+<meta property="og:description" content="167 篇论文的本地阅读站，加上一个状态约束、可逐步审计的 LLM Agent 实验台。">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+<link rel="stylesheet" href="landing.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#top">Papertrail</a>
+  <nav>
+    <a href="#screens">截图</a>
+    <a href="#agent">Agent</a>
+    <a href="#run">本地运行</a>
+    <a href="#limits">边界</a>
+    <a class="repo-link" href="https://github.com/caohanrui09-arch/papertrail">GitHub ↗</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <p class="eyebrow">LOCAL-FIRST · AUDITABLE AGENT</p>
+    <h1>论文阅读站，<br>加一个看得见每一步的 Agent。</h1>
+    <p class="lede">
+      167 篇论文的本地阅读站：搜索、收藏、读原摘要、内容推荐、备份。
+      旁边是一个基于冻结万篇目录的 LLM Agent 实验台：状态约束、动作预算、逐步事件、拒绝原因、来源核验。
+      所有推理都在本机完成，没有外部 LLM API。
+    </p>
+    <div class="badges">
+      <img alt="python 3.12" src="https://img.shields.io/badge/python-3.12-blue">
+      <img alt="FastAPI" src="https://img.shields.io/badge/backend-FastAPI-009688">
+      <img alt="SQLite FTS5" src="https://img.shields.io/badge/SQLite-FTS5%20BM25-003B57">
+      <img alt="tests" src="https://img.shields.io/badge/tests-63-brightgreen">
+      <img alt="license MIT" src="https://img.shields.io/badge/license-MIT-green">
+    </div>
+    <div class="cta">
+      <a class="button primary" href="https://github.com/caohanrui09-arch/papertrail">查看源码</a>
+      <a class="button" href="#run">怎么跑起来</a>
+    </div>
+  </section>
+
+  <section id="screens" class="screens">
+    <h2>它长什么样</h2>
+    <p class="section-note">真实运行截图，不是渲染稿。</p>
+    <div class="shots">
+      <figure>
+        <img src="screenshots/home-first-view.png" alt="阅读站首屏" loading="lazy">
+        <figcaption>阅读站首屏：一屏内选出想读的一篇</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/agent-lab.png" alt="Agent 实验台" loading="lazy">
+        <figcaption>Agent 实验台：任务、候选、时间线、结果与边界</figcaption>
+      </figure>
+      <figure>
+        <img src="screenshots/agent-timeline.png" alt="执行时间线" loading="lazy">
+        <figcaption>执行时间线：每一步的工具调用与依据</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="agent" class="agent">
+    <h2>Agent 体现在哪</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>自己决定检索词</h3>
+        <p>自定义任务的查询可以交给模型写，用户只给提示；模型写出的检索词会出现在决策记录里。</p>
+      </article>
+      <article class="card">
+        <h3>自己挑论文读</h3>
+        <p>检索返回后，读哪一篇由模型决定；读取预算 2 次，读过的论文才会进入可引用集合。</p>
+      </article>
+      <article class="card">
+        <h3>自己决定何时提交</h3>
+        <p>合法动作集合每一步由状态机计算：只能引用真正读过的论文，只能提交与已读数量一致的引用。</p>
+      </article>
+      <article class="card">
+        <h3>被拒也看得见</h3>
+        <p>非法动作返回 <code>reason=</code> 码（29 种），且不计入 6 次动作预算；每一步的可用动作与选择都有记录。</p>
+      </article>
+      <article class="card">
+        <h3>解码层约束</h3>
+        <p>用 lm-format-enforcer 强制工具调用的 JSON 信封，解析失败从每批 4 次降到 0。</p>
+      </article>
+      <article class="card">
+        <h3>读后追问</h3>
+        <p>任务完成后，用户点选 1–2 句原文，模型只根据这些句子作答；引用被固定，无法编造。</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="run" class="run">
+    <h2>本地跑起来</h2>
+    <p class="section-note">需要 Python 3.12。阅读站可以直接跑；Agent 实验台还需要受许可的数据与模型权重。</p>
+    <pre><code>python -m venv .venv
+.\.venv\Scripts\pip install -r deploy\stage66\requirements.lock -r deploy\stage66\api-requirements.lock
+
+$env:PAPERTRAIL_LOCAL_PREVIEW = '1'
+$env:PAPERTRAIL_DATA_DIR = '.\visitor-data'
+$env:PORT = '8791'
+.\.venv\Scripts\python -m scripts.run_research77_workbench</code></pre>
+    <p>然后打开 <code>http://127.0.0.1:8791/</code>，搜索 <code>retrieval</code>。</p>
+  </section>
+
+  <section id="limits" class="limits">
+    <h2>它不做什么</h2>
+    <ul>
+      <li><strong>不是托管服务。</strong>没有在线 demo；阅读站是本地 FastAPI 服务，这个页面只是说明。</li>
+      <li><strong>不重分发受限数据。</strong>万篇目录与训练画像来自 Scholar Inbox（CC BY-NC-ND 4.0），仓库里只有 167 篇 arXiv 公开元数据。</li>
+      <li><strong>不宣称语义正确。</strong>引用可核对、来源可验证，但"回答是否真的对"没有被程序化证明。</li>
+      <li><strong>1.5B 有明显上限。</strong>选句、多步规划这类任务仍然吃力；约束能挡住非法动作，挡不住平庸。</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Papertrail · <a href="https://github.com/caohanrui09-arch/papertrail">GitHub</a> · <a href="https://github.com/caohanrui09-arch/papertrail/blob/main/docs/FINAL_SUMMARY_V85.md">阶段总览</a> · MIT</p>
+</footer>
+</body>
+</html>
