@@ -3,7 +3,7 @@
 ![Python 3.12](https://img.shields.io/badge/python-3.12-blue)
 ![FastAPI](https://img.shields.io/badge/backend-FastAPI-009688)
 ![SQLite FTS5](https://img.shields.io/badge/SQLite-FTS5%20BM25-003B57)
-![tests](https://img.shields.io/badge/tests-63-brightgreen)
+![unit tests](https://github.com/caohanrui09-arch/papertrail/actions/workflows/tests.yml/badge.svg)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![external LLM API](https://img.shields.io/badge/external%20LLM%20API-none-lightgrey)
 
